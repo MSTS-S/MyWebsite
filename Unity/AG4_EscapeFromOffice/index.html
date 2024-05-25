@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+
+<html lang="en-us">
+	<head>
+		<title>MSTS | Unity - Escape from Office</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
+		<link rel="icon" href="../../favicons/favicon.ico">
+
+    	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    	<link rel="stylesheet" href="TemplateData/style.css">
+	</head>
+
+
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+				<section id="main" class="wrapper BackColor_Odd">
+					<div class="inner">
+						<h1 class="major">Escape from Office</h1>
+						<div class="CanvasPlace">
+							<div id="unity-container" class="unity-desktop">
+								<canvas id="unity-canvas" width=960 height=600></canvas>
+								<div id="unity-loading-bar">
+									<div id="unity-logo"></div>
+					  				<div id="unity-progress-bar-empty">
+										<div id="unity-progress-bar-full"></div>
+					  				</div>
+								</div>
+								<div id="unity-warning"> </div>
+								<div class="unity-footer">
+									<div id="unity-webgl-logo"></div>
+									<div id="unity-fullscreen-button"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class = "BlankHeight"></div>
+					</div>
+				</section>
+				<section id="main" class="wrapper BackColor_Odd">
+					<div class="inner">
+						<div class = "Unity-Discription_Space">
+							<div class = "Unity-Discription">
+								<div class = "SectionTitle">ゲーム概要</div>
+								<div class = "SectionContent">
+									オフィスルームからのVR脱出ゲームです．
+									<br \>
+									VRゲームのため物体とのインタラクションはできませんが，PCでも空間内を歩くことができるようにプログラムを改変しました．なお脱出ゲームのため，脱出のキーとなるobjectは非表示となっています．
+								</div>
+
+								<div class = "SectionTitle">操作方法</div>
+								<div class = "SectionContent">
+									カーソルキー or WASDキー：移動
+									<br \>
+									マウス：視点移動
+									<br \>
+									ドア付近でキー"C"：ドアの開閉（※タイトルシーンのドアは後の演出のため，開けることのみ可）
+								</div>
+
+								<div class = "SectionTitle">動作環境</div>
+								<div class = "SectionContent">
+									PCのみ(スマホ非対応)
+									<br \>
+									※モバイルデバイスでの操作を考慮していないため，Canvasはレスポンシブ非対応です．
+								</div>
+
+								<div class = "UpdateDate">
+									公開日：2023年10月16日
+									<br \>
+									最終更新日：2023年10月12日
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper style1-alt">
+				<div class="Copyright">
+					&copy; 2023 Masastoshi SERIZAWA. All rights reserved.
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+		  	<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../../assets/js/jquery.scrolly.min.js"></script>
+			<script src="../../assets/js/browser.min.js"></script>
+			<script src="../../assets/js/breakpoints.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<script src="../../assets/js/main.js"></script>
+
+			<!--Unity Code-->
+			<script>
+      			var container = document.querySelector("#unity-container");
+      			var canvas = document.querySelector("#unity-canvas");
+      			var loadingBar = document.querySelector("#unity-loading-bar");
+      			var progressBarFull = document.querySelector("#unity-progress-bar-full");
+      			var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+      			var warningBanner = document.querySelector("#unity-warning");
+
+		      	// Shows a temporary message banner/ribbon for a few seconds, or
+      			// a permanent error message on top of the canvas if type=='error'.
+      			// If type=='warning', a yellow highlight color is used.
+      			// Modify or remove this function to customize the visually presented
+      			// way that non-critical warnings and error messages are presented to the
+      			// user.
+
+      			function unityShowBanner(msg, type) 
+				{
+        			function updateBannerVisibility() 
+					{
+          				warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
+        			}
+        			var div = document.createElement('div');
+        			div.innerHTML = msg;
+        			warningBanner.appendChild(div);
+        			if (type == 'error') 
+					{
+            			div.style = 'background: red; padding: 10px;';
+					}
+        			else 
+					{
+          				if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
+          				setTimeout(function() 
+            			{
+             				warningBanner.removeChild(div);
+             				updateBannerVisibility();
+          				}, 5000);
+        			}
+        			updateBannerVisibility();
+      			}
+
+				/*Change Point*/
+				var buildUrl = "Build";
+        		var loaderUrl = buildUrl + "/EscapeFromOffice.loader.js";
+      			var config = 
+				{
+        			dataUrl: buildUrl + "/EscapeFromOffice.data",
+					frameworkUrl: buildUrl + "/EscapeFromOffice.framework.js",
+        			codeUrl: buildUrl + "/EscapeFromOffice.wasm",
+        			streamingAssetsUrl: "StreamingAssets",
+        			companyName: "DefaultCompany",
+        			productName: "OfficeRoomEscape",
+        			productVersion: "0.1",
+        			showBanner: unityShowBanner,
+      			};
+
+      			// By default Unity keeps WebGL canvas render target size matched with
+      			// the DOM size of the canvas element (scaled by window.devicePixelRatio)
+      			// Set this to false if you want to decouple this synchronization from
+      			// happening inside the engine, and you would instead like to size up
+      			// the canvas DOM size and WebGL render target sizes yourself.
+      			// config.matchWebGLToCanvasSize = false;
+
+      			if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) 
+				{
+        			// Mobile device style: fill the whole browser client area with the game canvas:
+
+        			var meta = document.createElement('meta');
+        			meta.name = 'viewport';
+        			meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        			document.getElementsByTagName('head')[0].appendChild(meta);
+        			container.className = "unity-mobile";
+        			canvas.className = "unity-mobile";
+
+        			// To lower canvas resolution on mobile devices to gain some
+        			// performance, uncomment the following line:
+        			// config.devicePixelRatio = 1;
+
+        			unityShowBanner('WebGL builds are not supported on mobile devices.');
+      			} 
+				else 
+				{
+        			// Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
+        			canvas.style.width = "960px";
+        			canvas.style.height = "540px";
+      			}
+
+      			loadingBar.style.display = "block";
+
+      			var script = document.createElement("script");
+      			script.src = loaderUrl;
+      			script.onload = () => {
+         		createUnityInstance(canvas, config, (progress) => {
+         		progressBarFull.style.width = 100 * progress + "%";
+        		}).then((unityInstance) => {
+          		loadingBar.style.display = "none";
+          		fullscreenButton.onclick = () => {
+          		unityInstance.SetFullscreen(1);
+          		};
+        		}).catch((message) => {
+          		alert(message);
+        		});
+      			};
+
+      			document.body.appendChild(script);
+    		</script>
+
+	</body>
+</html>
