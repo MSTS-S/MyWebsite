@@ -1,0 +1,45 @@
+.profileTitle {
+    font-size: 2.5em;
+    font-weight: bold;
+    text-align: left;
+    color: white;
+    font-weight: bold;
+    line-height: 1.5;
+    margin: 0 0 0.5em 0;
+	padding-bottom: 10px;
+}
+
+.profileSubtitle {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: left;
+    color: white;
+    font-weight: bold;
+    line-height: 1.5;
+    margin: 0, auto;
+	padding-bottom: 10px;    
+}
+
+.sectionTitle {
+    font-size: 2.5em;
+    font-weight: bold;
+    text-align: left;
+    color: #000000;
+    font-weight: bold;
+    line-height: 1.5;
+    margin: 0 0 0.5em 0;
+	padding-bottom: 10px;
+}
+
+.sectionSubtitle {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: left;
+    color: #555555cc;
+    font-weight: bold;
+    line-height: 1.5;
+    margin: 0, auto;
+	padding-bottom: 10px;    
+}
+
+

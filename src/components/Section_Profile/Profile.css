@@ -1,0 +1,48 @@
+.ProfileContents {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    /* align-items: center; */
+}
+
+.ProfileContents .ProfilePicture {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.ProfilePicture img {
+    border-radius: 125px;
+    width: 300px;
+    height: auto;
+
+    /* margin-right: 40px;
+    margin-left: 40px;
+    margin-top: 50px;
+    margin-bottom: 75px; */
+
+    border: 5px solid #ffffff;
+}
+
+.ProfileDiscription {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: left;
+    margin-right: 40px;
+    margin-left: 40px;
+    margin-top: 75px;
+    margin-bottom: 50px;
+    transform: translate(0%, 0%);
+    font-size: 20px;
+}
+
+.ProfileDiscription p {
+    color: white;
+    font-size: larger;
+    margin: 0.5rem 0;
+}
+
+.Button {
+    margin: 0, ;
+}

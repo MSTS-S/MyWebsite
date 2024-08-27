@@ -1,38 +1,52 @@
 .App {
+  margin: 0 auto;
+  width: 100%;
   text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%; /* 親要素の高さいっぱいに広げる */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.App-logo img{
+  /* height: 40vmin;
+  pointer-events: none; */
+  width: 100%;
+  height: auto;
+  max-height: 100px;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  height: 100px;
+  width: 100%;
+  background-color: white;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  position: fixed;
+  top: 0; /* ヘッダーをページの一番上に固定 */
+  border-bottom: 2px solid black;
+  z-index: 100;
 }
 
-.App-link {
-  color: #61dafb;
+.backgroundColor-profile{
+  background: linear-gradient(-20deg, #ff3beb 0%, #3223ff 100%);
+  box-sizing: border-box;
+}
+.backgroundColor-odd {
+  background-color: #F7F7FF; 
+  box-sizing: border-box;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.backgroundColor-even {
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.App-body {
+  width: 100%;
+  margin-top: 100px; /* ヘッダーの高さ分だけ余白を追加 */
 }
