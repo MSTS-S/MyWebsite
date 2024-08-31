@@ -4,40 +4,53 @@
   text-align: center;
 }
 
+.App-header {
+  width: 100%;
+  height: 100px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  /* ヘッダーをページの一番上に固定 */
+  border-bottom: 2px solid black;
+  z-index: 100;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
 .App-logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%; /* 親要素の高さいっぱいに広げる */
+  height: 100%;
+  /* 親要素の高さいっぱいに広げる */
 }
 
-.App-logo img{
-  /* height: 40vmin;
-  pointer-events: none; */
-  width: 100%;
-  height: auto;
+.App-logo img {
   max-height: 100px;
+  @media (max-width: 768px) {
+      width: 300px;
+  }
 }
 
-.App-header {
-  height: 100px;
-  width: 100%;
-  background-color: white;
+.header-right {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: fixed;
-  top: 0; /* ヘッダーをページの一番上に固定 */
-  border-bottom: 2px solid black;
-  z-index: 100;
 }
 
-.backgroundColor-profile{
-  background: linear-gradient(-20deg, #ff3beb 0%, #3223ff 100%);
+
+
+
+.backgroundColor-profile {
+  background: linear-gradient(-20deg, #ff16e8 0%, #3223ff 100%);
   box-sizing: border-box;
 }
+
 .backgroundColor-odd {
-  background-color: #F7F7FF; 
+  background-color: #f1ffff;
   box-sizing: border-box;
 }
 
@@ -46,7 +59,31 @@
   box-sizing: border-box;
 }
 
+.App-footer {
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ddd;
+  /* 背景色を統一 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  /* コンテンツがはみ出さないようにする */
+  width: 100%;
+}
+
+.backgroundColor-copyright {
+  background-color: #ddd;
+  /* 背景色を統一 */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .App-body {
   width: 100%;
-  margin-top: 100px; /* ヘッダーの高さ分だけ余白を追加 */
+  margin-top: 100px;
+  /* ヘッダーの高さ分だけ余白を追加 */
 }

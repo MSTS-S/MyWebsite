@@ -1,17 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Box, Button } from '@mui/material';
+/* import for popup-windouw */
+import Dialog from '@mui/material/Dialog';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+import Section_BusinessCard from '../Section_BusinessCard/BusinessCard';
+import CloseIcon from '@mui/icons-material/Close';
 /* import img */
 import ProfileImage from './ProfilePicture2.jpg';
 /* CSS */
 import '../Section_Title.css';
 import '../Hyperlink.css';
-import './Profile.css'
+import './Profile.css';
 
 function Programing() {
+    const [openPopup, setOpenPopup] = React.useState(false);
+
+    const handlePopupOpen = () => {
+        setOpenPopup(true);
+    };
+
+    const handlePopupClose = () => {
+        setOpenPopup(false);
+    };
 
     return (
         <div>
             <div className='profileTitle'>Profile</div>
             <div className='profileSubtitle'>ープロフィールー</div>
+            <br />
+            <br />
             <div className="ProfileContents">
                 <div className="ProfilePicture">
                     <img src={ProfileImage} alt="Logo" />
@@ -28,10 +46,41 @@ function Programing() {
                     </p>
                 </div>
             </div>
-
-            {/* <div class="NameCardDisplay">
-                <a href="BusinessCard.html" class="button" onclick="BusinessCard.html"> 名刺 </a>
-            </div> */}
+            <br />
+            <Dialog
+                open={openPopup}
+                onClose={handlePopupClose}
+                maxWidth="md"
+                fullWidth
+                disableEnforceFocus
+            >
+                <DialogActions className="closeButtonContainer">
+                    <Button className="closeButton" onClick={handlePopupClose}>
+                        {/* ボタンサイズ、色調整 */}
+                        <CloseIcon sx={{ fontSize: '2rem', color: 'black' }} />
+                    </Button>
+                </DialogActions>
+                <DialogContent>
+                    <Section_BusinessCard />
+                </DialogContent>
+            </Dialog>
+            <div className='Button' style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+                <Box sx={{ width: '100%', maxWidth: '450px', textAlign: 'center' }}>
+                    <Button
+                        type="submit"
+                        variant="contained"
+                        sx={{
+                            width: '100%',
+                            backgroundColor: 'black',
+                            color: 'white',
+                            '&:hover': { backgroundColor: '#333' }
+                        }}
+                        onClick={handlePopupOpen}
+                    >
+                        名刺 (Business Card)
+                    </Button>
+                </Box>
+            </div>
         </div>
     );
 };

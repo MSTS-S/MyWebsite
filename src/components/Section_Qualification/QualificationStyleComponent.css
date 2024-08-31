@@ -1,0 +1,31 @@
+.date-text-table {
+    font-size: 1.25em;
+    width: 100%;
+    border-spacing: 10px; /* Spacing between columns */
+}
+
+.date-text-table th,
+.date-text-table td {
+    padding: 10px 10px;
+    border-bottom: 1px solid #555;
+}
+
+.date-text-table th {
+    text-align: center;
+    border-top: 3px solid #333;
+    border-bottom: 3px solid #333;
+}
+
+.date-col {
+    text-align: center;
+    width: 30%;
+}
+
+.text-col {
+    text-align: left;
+    width: 70%;
+}
+
+.date-text-table td.text-col {
+    padding: 0 1em; /* Add Blank to the left of the text */
+}

@@ -1,0 +1,11 @@
+.BusinessCard {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.BusinessCard img {
+    width: 75%; /* 親要素の幅に対する割合 */
+    height: auto; /* アスペクト比を保つ */
+}

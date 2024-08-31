@@ -43,6 +43,14 @@
     margin: 0.5rem 0;
 }
 
-.Button {
-    margin: 0, ;
+.closeButtonContainer {
+    justify-content: flex-end; /* 右端に配置 */
+    padding-top: 16px; /* 上部の余白を追加 */
+    padding-right: 16px; /* 右側の余白を追加 */
+}
+
+.closeButton {
+    position: relative;
+    top: 20px; /* 必要に応じて調整 */
+    left: -10px; /* 必要に応じて調整 */
 }

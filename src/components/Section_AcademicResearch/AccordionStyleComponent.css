@@ -1,0 +1,55 @@
+/* CSSの競合:
+CSSの指定が正しく適用されていない可能性があります。いくつかの原因が考えられますので、以下を確認してみてください。
+
+1. CSSの競合:
+　他のCSSルールが競合している可能性があります。特にMUIのコンポーネントは内部でスタイルを持っていることがあるため、それが干渉しているかもしれません。
+
+2．CSSの指定の優先度:
+　CSSの優先度が低いために変更が反映されていない可能性があります。
+　特にMUIのコンポーネントには強いスタイルが設定されている場合があるため、!importantを使ってみると良いでしょう。
+*/
+
+.accordion-background {
+    background-color: rgb(245, 245, 245) !important;
+    border: 1px solid #ccc;
+}
+
+.accordion-expanded .MuiAccordion-region {
+    height: auto;
+}
+
+.accordion-expanded .MuiAccordionDetails-root {
+    display: block;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}
+
+.accordion-collapsed .MuiAccordion-region {
+    height: 0;
+}
+
+.accordion-collapsed .MuiAccordionDetails-root {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.9s ease;
+}
+
+.Accordion-title {
+    text-align: left;
+    font-size: 18px !important;
+}
+
+.Accordion-date {
+    text-align: left;
+    text-decoration: underline;
+}
+
+.Accordion-place {
+    text-align: left;
+    text-decoration: underline;
+}
+
+.Accordion-description {
+    text-align: justify;
+    line-height: 2em;
+}
