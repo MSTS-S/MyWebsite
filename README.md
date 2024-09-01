@@ -102,15 +102,41 @@ PROGRAMINGにおけるプログラミング言語や開発環境のアイコン�
 ├── src/
 │   ├── components /
 │   │   ├── img /       # Header image
-│   │   ├── Section_AcademicResearch /...
-│   │   ├── Section_BusinessCard /...
-│   │   ├── Section_Copyright /...
-│   │   ├── Section_History /...
-│   │   ├── Section_LinkContact /...
-│   │   ├── Section_Profile /...
-│   │   ├── Section_Programing /...
-│   │   ├── Section_Qualification /...
-│   │   ├── Section_Unity /...
+│   │   ├── Section_AcademicResearch /
+│   │   │   ├── AcademicResearch.jsx
+│   │   │   ├── AccordionStyleComponent.css
+│   │   │   └──  AccordionStyleComponent.jsx
+│   │   ├── Section_BusinessCard /
+│   │   │   ├── BusinessCard.css
+│   │   │   ├── BusinessCard.jsx
+│   │   │   └── MSTS_BusinessCard.png
+│   │   ├── Section_Copyright /
+│   │   │   └──  Copyright.jsx
+│   │   ├── Section_History /
+│   │   │   ├── History.jsx
+│   │   │   ├── HistoryStyleComponent.css
+│   │   │   └── HistoryStyleComponent.jsx
+│   │   ├── Section_LinkContact /
+│   │   │   ├── Discord.png
+│   │   │   └── LinkContact.jsx
+│   │   ├── Section_Profile /
+│   │   │   ├── Profile.css
+│   │   │   ├── Profile.jsx
+│   │   │   ├── ProfilePicture1.jpg
+│   │   │   └── ProfilePicture2.jpg
+│   │   ├── Section_Programing /
+│   │   │   ├── img /...
+│   │   │   ├── Priograming.jsx
+│   │   │   └── ProgramingCard.jsx
+│   │   ├── Section_Qualification /
+│   │   │   ├── Qualification.jsx
+│   │   │   ├── QualificationStyleComponent.css
+│   │   │   └── QualificationStyleComponent.jsx
+│   │   ├── Section_Unity /
+│   │   │   ├── img /...
+│   │   │   ├── Unity.jsx
+│   │   │   ├── UnityCardComponent.css
+│   │   │   └── UnityCardComponent.jsx
 │   │   ├── Hyperlink.css
 │   │   ├── Section_Title.css
 │   ├── App.css
