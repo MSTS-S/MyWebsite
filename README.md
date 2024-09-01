@@ -14,54 +14,64 @@ This is the package of my website. All previously released versions are managed 
 
 
 ## リリースノート
-**ver01 : 2023-10-16 ブランチへのリンクは[こちら](https://github.com/MSTS-S/MyWebsite/tree/ver01-2023/10/16)**
-> webサイト初公開日です．WebサイトのTemplateが公開されている[サイト](https://html5up.net/)からダウンロード後，編集を加えました．PROFILE，CAREER HISTORY, ACADEMIC REASERCH, PROGRAMING, CERTIFICATIONS, UNITY PROJECT, SNSLINK/CONTACTから構成されています．
-<br>
+> **ver01 : 2023-10-16 ブランチへのリンクは[こちら](https://github.com/MSTS-S/MyWebsite/tree/ver01-2023/10/16)**
 
-**ver02 : 2024-02-17 ブランチへのリンクは[こちら](https://github.com/MSTS-S/MyWebsite/tree/ver02-2024/02/17)**
-> ACADEMIC REASERCHに学部における研究 - Research in Bachelor's Degreeを追加しました．ただし，研究内容については新規性保持のため未公開です．また，UNITY PROJECTで公開されている自作のゲームの説明文を一部改変し，ゲーム画面におけるUIを変更しました．
-<br>
+webサイト初公開日です．WebサイトのTemplateが公開されている[サイト](https://html5up.net/)からダウンロード後，編集を加えました．PROFILE，CAREER HISTORY, ACADEMIC REASERCH, PROGRAMING, CERTIFICATIONS, UNITY PROJECT, SNSLINK/CONTACTから構成されています．
+<br><br>
 
-**ver03 : 2024-02-24 ブランチへのリンクは[こちら](https://github.com/MSTS-S/MyWebsite/tree/ver03-2024/02/24)**
-> WebサイトのfaviconをMicrosoft PowerPointで作成した新しいデザインに変更しました．また，名刺カードのデザインを変更しました．さらにSNSLINK/Contactにおいて表示されているアプリのアイコンをカラーから白黒の丸形に変更しました．
-<br>
+> **ver02 : 2024-02-17 ブランチへのリンクは[こちら](https://github.com/MSTS-S/MyWebsite/tree/ver02-2024/02/17)**
 
-**ver04 : 2024-02-28 ブランチへのリンクは[こちら](https://github.com/MSTS-S/MyWebsite/tree/ver04-2024/02/28)**
-> WebサイトのfaviconをMicrosoft PowerPointで作成した新しいデザインに変更しました．かなり工夫を凝らしたデザインとなっていて，よりブランドのロゴのような印象を与えるものを作成しました．
-<br>
+ACADEMIC REASERCHに学部における研究 - Research in Bachelor's Degreeを追加しました．ただし，研究内容については新規性保持のため未公開です．また，UNITY PROJECTで公開されている自作のゲームの説明文を一部改変し，ゲーム画面におけるUIを変更しました．
+<br><br>
 
-**ver05 : 2024-04-02 ブランチへのリンクは[こちら](https://github.com/MSTS-S/MyWebsite/tree/ver05-2024/04/02)**
-> [東京都立大学院](https://www.tmu.ac.jp/academics/graduate.html)に進学したため，PROFILEに記載されている所属を変更し，名刺のデザイン変更を行いました．また，CAREER HISTORYに記載されている経歴の変更及び追記を行いました．CERTIFICATIONSに学士（情報科学）を追記しました．
-<br>
+> **ver03 : 2024-02-24 ブランチへのリンクは[こちら](https://github.com/MSTS-S/MyWebsite/tree/ver03-2024/02/24)**
 
-**ver06 : 2024-04-20 ブランチへのリンクは[こちら](https://github.com/MSTS-S/MyWebsite/tree/ver06-2024/04/20)**
-> UNITY PROJECTにMovie Theaterを追加しました．Webブラウザ上での実行のため，UIに凝って作成しました．なお，こちらの映画館で上映される映像は映像生成AIの[Haiper](https://haiper.ai/)を利用しました．
-<br>
+WebサイトのfaviconをMicrosoft PowerPointで作成した新しいデザインに変更しました．また，名刺カードのデザインを変更しました．さらにSNSLINK/Contactにおいて表示されているアプリのアイコンをカラーから白黒の丸形に変更しました．
+<br><br>
 
-**ver07 : 2024-05-26 ブランチへのリンクは[こちら](https://github.com/MSTS-S/MyWebsite/tree/ver07-2024/05/26)**
-> PROGRAMINGにおけるプログラミング言語や開発環境のアイコンを一部変更しました．また，SNSLINK/CONTACTにGitHubのアイコンを追記し，色を白黒からカラーに変更するなどの一部改変を行いました．
+> **ver04 : 2024-02-28 ブランチへのリンクは[こちら](https://github.com/MSTS-S/MyWebsite/tree/ver04-2024/02/28)**
 
-**ver08 : 2024-08-31 ブランチへのリンクは[こちら](https://github.com/MSTS-S/MyWebsite/tree/ver08-2024/08/31)**
-> 今まではフロントエンド開発のフレームワークやライブラリ等を使用せず，HTMLとCSSをVS Codeにべた書きしていましたが，Reactを用いたWeb開発へと変更しました．それに伴ってWebサイトの機能やUIを大幅に変更いたしました．変更点は以下の通りです．
+WebサイトのfaviconをMicrosoft PowerPointで作成した新しいデザインに変更しました．かなり工夫を凝らしたデザインとなっていて，よりブランドのロゴのような印象を与えるものを作成しました．
+<br><br>
+
+> **ver05 : 2024-04-02 ブランチへのリンクは[こちら](https://github.com/MSTS-S/MyWebsite/tree/ver05-2024/04/02)**
+
+[東京都立大学院](https://www.tmu.ac.jp/academics/graduate.html)に進学したため，PROFILEに記載されている所属を変更し，名刺のデザイン変更を行いました．また，CAREER HISTORYに記載されている経歴の変更及び追記を行いました．CERTIFICATIONSに学士（情報科学）を追記しました．
+<br><br>
+
+> **ver06 : 2024-04-20 ブランチへのリンクは[こちら](https://github.com/MSTS-S/MyWebsite/tree/ver06-2024/04/20)**
+
+UNITY PROJECTにMovie Theaterを追加しました．Webブラウザ上での実行のため，UIに凝って作成しました．なお，こちらの映画館で上映される映像は映像生成AIの[Haiper](https://haiper.ai/)を利用しました．
+<br><br>
+
+> **ver07 : 2024-05-26 ブランチへのリンクは[こちら](https://github.com/MSTS-S/MyWebsite/tree/ver07-2024/05/26)**
+
+PROGRAMINGにおけるプログラミング言語や開発環境のアイコンを一部変更しました．また，SNSLINK/CONTACTにGitHubのアイコンを追記し，色を白黒からカラーに変更するなどの一部改変を行いました．
+<br><br>
+
+> **ver08 : 2024-08-31 ブランチへのリンクは[こちら](https://github.com/MSTS-S/MyWebsite/tree/ver08-2024/08/31)**
+
+今まではフロントエンド開発のフレームワークやライブラリ等を使用せず，HTMLとCSSをVS Codeにべた書きしていましたが，Reactを用いたWeb開発へと変更しました．それに伴ってWebサイトの機能やUIを大幅に変更いたしました．変更点は以下の通りです．
 <br>
-> - 名刺カードの表示方法
-<br>
-画面遷移によって表示していた名刺カードをポップアップウィンドウに切り替えました．
-> - 固定ヘッダーの追加
-<br>
-画面上部に固定されるヘッダーを追加し，Webサイトのタイトルが常に表示されるように変更しました．
-> - ナビゲーションメニューのUI変更
-<br>
-以前のナビゲーションから，レスポンシブ対応のドロワー兼ハンバーガーメニューに変更いたしました．画面幅が768px以下のデバイスではハンバーガーメニューが，それより大きい画面幅のデバイスではドロワーが適用され，モバイルとデスクトップの両方で使いやすいUIを実現しました．
-> - CAREER HISTORYにおけるタイムラインUIの変更
-<br>
-MUIのTimelineテンプレートを用いて，タイムラインにアイコンを表示することにより，内容が一目でわかりやすいように改変しました．
-> - ACADEMIC RESEARCHのUIの変更
-<br>
-MUIのAccordionを用いて，その他の研究活動のUIをシンプルなものに変更しました．
-> - PROGRAMINGの内容変更
-> <br>
-MATLABを削除し，代わりにHTML & CSS，Java Script, React, MUIを追加しました．
+- 名刺カードの表示方法
+    - 画面遷移によって表示していた名刺カードをポップアップウィンドウに切り替えました．
+
+- 固定ヘッダーの追加
+    - 画面上部に固定されるヘッダーを追加し，Webサイトのタイトルが常に表示されるように変更しました．
+
+- ナビゲーションメニューのUI変更
+    - 以前のナビゲーションから，レスポンシブ対応のドロワー兼ハンバーガーメニューに変更いたしました．
+    - 画面幅が768px以下のデバイスではハンバーガーメニューが，それより大きい画面幅のデバイスではドロワーが適用されます．
+    - モバイルデバイスとデスクトップの両方で使いやすいUIを実現しました．
+
+- CAREER HISTORYにおけるタイムラインUIの変更
+    - MUIのTimelineテンプレートを用いて，タイムラインにアイコンを表示することにより，内容が一目でわかりやすいように改変しました．
+
+- ACADEMIC RESEARCHのUIの変更
+    - MUIのAccordionを用いて，その他の研究活動のUIをシンプルなものに変更しました．
+
+- PROGRAMINGの内容変更
+    - MATLABを削除し，代わりにHTML & CSS, React, MUIを追加しました．
 
 <br><br>
 

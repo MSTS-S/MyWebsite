@@ -19,8 +19,7 @@ function BusinessCard() {
 
     return (
             <div style={{ paddingLeft: '5%', paddingRight: '5%', paddingBottom: '5%' }}>
-                <div className='sectionTitle'>Business Card</div>
-                <div className='sectionSubtitle'>ー名刺ー</div>
+                <div className='sectionTitle'>名刺</div>
                 <br />
                 <div className="Contents" >
                     <div className="BusinessCard">
