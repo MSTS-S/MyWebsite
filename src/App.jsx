@@ -13,6 +13,9 @@ import Section_Unity from './components/Section_Unity/Unity';
 import Section_LinkContact from './components/Section_LinkContact/LinkContact';
 import Section_Copyright from './components/Section_Copyright/Copyright';
 
+/* import functions */
+// import QRCode_Generator from './components/Functions/QRCode_Generator/QRCode_Generator';
+
 /* import img */
 import HeaderImage from './components/img/Header.png';
 
@@ -43,7 +46,6 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 
 // const drawerWidth = 300;
 
@@ -53,6 +55,22 @@ function App() {
   const drawerWidth = isMobile ? '100vw' : 300;
 
   const [open, setOpen] = React.useState(false);
+
+  // Drawerのスクロール制御
+  useEffect(() => {
+    if (open && isMobile) {
+      // モバイルの場合（画面幅768px以下）は全体のスクロールを無効化
+      document.body.style.overflow = 'hidden';
+    } else {
+      // それ以外の場合はスクロールを有効に戻す
+      document.body.style.overflow = 'auto';
+    }
+
+    // クリーンアップ関数で、Drawerが閉じられたときやコンポーネントがアンマウントされたときにスクロールを元に戻す
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [open, isMobile]);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -64,7 +82,7 @@ function App() {
 
   const handleLinkClick = (url) => {
     window.open(url, '_blank');
-};
+  };
 
   const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme }) => ({
@@ -141,6 +159,12 @@ function App() {
       component: <Section_LinkContact />,
       icon: <LinkIcon />,
     },
+    // {
+    //   id: 'qrcode',
+    //   title: 'QRCode',
+    //   component: <QRCode_Generator />,
+    //   icon: <LinkIcon />,
+    // },
   ];
 
   const ContactData = [
@@ -204,7 +228,7 @@ function App() {
                 }
                 style={{ padding: '5%' }}
               >
-               {component}
+                {component}
               </div>
             ))}
             {/* </>
@@ -237,6 +261,7 @@ function App() {
         variant="persistent"
         anchor="right"
         open={open}
+        className='drawer'
       >
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
