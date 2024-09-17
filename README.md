@@ -80,6 +80,11 @@ PROGRAMINGにおけるプログラミング言語や開発環境のアイコン�
 モバイルデバイス(画面幅 768px以下)でdrawerを表示後，スクロールを行うとメインコンテンツがスクロールしてしまう問題を修正しました．
 <br><br>
 
+> **ver10 : 2024-09-17 ブランチへのリンクは[こちら](https://github.com/MSTS-S/MyWebsite/tree/ver10-2024/09/17)**
+
+WebサイトにTabを追加しました．また，Academic Researchに学会参加のAccordionを追加しました．
+<br><br>
+
 ## 使用方法
 ここでは，master branchをローカルリポジトリにcloneするコマンドを記載します．ローカルでcloneしたいファイルに遷移後，以下のコマンドをたたいてください．
   ```
