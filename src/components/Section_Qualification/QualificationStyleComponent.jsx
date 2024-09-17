@@ -6,8 +6,8 @@ function QualificationTable({ data }) {
     <table className="date-text-table">
       <thead>
         <tr>
-        <th className="date-col">取得年月日</th>
-        <th className="text-col">資格</th>
+          <th className="date-col">取得年月日</th>
+          <th className="text-col">資格</th>
         </tr>
       </thead>
       <tbody>

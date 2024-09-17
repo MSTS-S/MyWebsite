@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useNavigate, useLocation } from 'react-router-dom';
 import './App.css';
 import useMediaQuery from '@mui/material/useMediaQuery';
+
+import PropTypes from 'prop-types';
+import AppBar from '@mui/material/AppBar';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Typography from '@mui/material/Typography';
+
 
 /* import contents */
 import Section_Profile from './components/Section_Profile/Profile';
@@ -12,6 +19,8 @@ import Section_Qualification from './components/Section_Qualification/Qualificat
 import Section_Unity from './components/Section_Unity/Unity';
 import Section_LinkContact from './components/Section_LinkContact/LinkContact';
 import Section_Copyright from './components/Section_Copyright/Copyright';
+
+
 
 /* import functions */
 // import QRCode_Generator from './components/Functions/QRCode_Generator/QRCode_Generator';
@@ -47,14 +56,117 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 
-// const drawerWidth = 300;
+const SectionComponentData = [
+  {
+    id: 'profile',
+    title: 'Profile',
+    component: <Section_Profile />,
+    icon: <AccountBoxIcon />,
+  },
+  {
+    id: 'history',
+    title: 'Career History',
+    component: <Section_History />,
+    icon: <HistoryEduIcon />,
+  },
+  {
+    id: 'academicresearch',
+    title: 'Academic Research',
+    component: <Section_AcademicResearch />,
+    icon: <SchoolIcon />,
+  },
+  {
+    id: 'programing',
+    title: 'Programing',
+    component: <Section_Programing />,
+    icon: <TerminalIcon />,
+  },
+  {
+    id: 'qualification',
+    title: 'Qulifications',
+    component: <Section_Qualification />,
+    icon: <CreditCardIcon />,
+  },
+  {
+    id: 'unity',
+    title: 'Unity App',
+    component: <Section_Unity />,
+    icon: <AppsIcon />,
+  },
+  {
+    id: 'linkcontact',
+    title: 'Link / Contact',
+    component: <Section_LinkContact />,
+    icon: <LinkIcon />,
+  },
+];
 
-function App() {
+const AnotherComponentData = [
+];
+
+const ContactData = [
+  {
+    name: 'X (Twitter)',
+    icon: <XIcon />,
+    link: 'https://msts-hp.com/'
+  },
+  {
+    name: 'Instagram',
+    icon: <InstagramIcon />,
+    link: 'https://www.instagram.com/m_seri_m/'
+  },
+  {
+    name: 'E-Mail',
+    icon: <MailIcon />,
+    link: 'mailto:serizawa-masatoshi@ed.tmu.ac.jp'
+  },
+];
+
+
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`full-width-tabpanel-${index}`}
+      aria-labelledby={`full-width-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ paddingTop: 0 }}>
+          <Typography component="div">{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `full-width-tab-${index}`,
+    'aria-controls': `full-width-tabpanel-${index}`,
+  };
+}
+/* Tab */
+
+function AppContents() {
   const theme = useTheme();
   const isMobile = useMediaQuery('(max-width:768px)');
   const drawerWidth = isMobile ? '100vw' : 300;
 
   const [open, setOpen] = React.useState(false);
+  const [value, setValue] = React.useState(0);
+
+  const navigate = useNavigate();  // 修正: useNavigate を取得
+  const location = useLocation();  // 修正: useLocation を取得
 
   // Drawerのスクロール制御
   useEffect(() => {
@@ -71,6 +183,25 @@ function App() {
       document.body.style.overflow = 'auto';
     };
   }, [open, isMobile]);
+
+  // URL に基づいて Tab の選択状態を決定
+  useEffect(() => {
+    if (location.pathname === '/portfolio') {
+      setValue(0);
+    } else if (location.pathname === '/another') {
+      setValue(1);
+    }
+  }, [location]);
+
+  // Tab が切り替わったときに URL を変更
+  const TabhandleChange = (event, newValue) => {
+    setValue(newValue);
+    if (newValue === 0) {
+      navigate('/portfolio');
+    } else if (newValue === 1) {
+      navigate('/another');
+    }
+  };
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -116,82 +247,12 @@ function App() {
     justifyContent: 'flex-start',
   }));
 
-  const SectionComponentData = [
-    {
-      id: 'profile',
-      title: 'Profile',
-      component: <Section_Profile />,
-      icon: <AccountBoxIcon />,
-    },
-    {
-      id: 'history',
-      title: 'Career History',
-      component: <Section_History />,
-      icon: <HistoryEduIcon />,
-    },
-    {
-      id: 'academicresearch',
-      title: 'Academic Research',
-      component: <Section_AcademicResearch />,
-      icon: <SchoolIcon />,
-    },
-    {
-      id: 'programing',
-      title: 'Programing',
-      component: <Section_Programing />,
-      icon: <TerminalIcon />,
-    },
-    {
-      id: 'qualification',
-      title: 'Qulifications',
-      component: <Section_Qualification />,
-      icon: <CreditCardIcon />,
-    },
-    {
-      id: 'unity',
-      title: 'Unity App',
-      component: <Section_Unity />,
-      icon: <AppsIcon />,
-    },
-    {
-      id: 'linkcontact',
-      title: 'Link / Contact',
-      component: <Section_LinkContact />,
-      icon: <LinkIcon />,
-    },
-    // {
-    //   id: 'qrcode',
-    //   title: 'QRCode',
-    //   component: <QRCode_Generator />,
-    //   icon: <LinkIcon />,
-    // },
-  ];
-
-  const ContactData = [
-    {
-      name: 'X (Twitter)',
-      icon: <XIcon />,
-      link: 'https://msts-hp.com/'
-    },
-    {
-      name: 'Instagram',
-      icon: <InstagramIcon />,
-      link: 'https://www.instagram.com/m_seri_m/'
-    },
-    {
-      name: 'E-Mail',
-      icon: <MailIcon />,
-      link: 'mailto:serizawa-masatoshi@ed.tmu.ac.jp'
-    },
-  ];
-
   return (
     <Box sx={{ display: 'flex' }} className="App">
       <CssBaseline />
       <Main open={open} sx={{ marginRight: open ? 0 : `-${drawerWidth}` }}>
         <DrawerHeader />
         {/* ----- Your Main Content ----- */}
-        {/* <Router> */}
         <div className="App">
 
           {/* HEADER */}
@@ -212,30 +273,47 @@ function App() {
             </div>
           </header>
 
+
+
           {/* BODY */}
+
           <div className="App-body">
-            {/* <Routes>
-                <Route path="/" element={
-                  <> */}
-            {SectionComponentData.map(({ id, component }, index) => (
-              <div
-                id={id.toLowerCase()}
-                key={index}
-                className={
-                  index === 0 ? 'backgroundColor-profile'
-                    : index % 2 === 0 ? 'backgroundColor-even'
-                      : 'backgroundColor-odd'
-                }
-                style={{ padding: '5%' }}
-              >
-                {component}
-              </div>
-            ))}
-            {/* </>
-                } />
-                <Route path="/BusinessCard" element={<Section_BusinessCard />} />
-              </Routes> */}
+            <Box className="Tab-container">
+              <AppBar position="static">
+                <Tabs className="Tab-contents"
+                  value={value}
+                  onChange={TabhandleChange}
+                  indicatorColor="secondary"
+                  textColor="inherit"
+                  variant="fullWidth"
+                  aria-label="full width tabs example"
+                >
+                  <Tab label="Portfolio" {...a11yProps(0)} sx={{ fontWeight: 'bold' }} />
+                  <Tab label="Another Contents" {...a11yProps(1)} sx={{ fontWeight: 'bold' }} />
+                </Tabs>
+              </AppBar>
+              <TabPanel value={value} index={0} dir={theme.direction}>
+                {SectionComponentData.map(({ id, component }, index) => (
+                  <div
+                    id={id.toLowerCase()}
+                    key={index}
+                    className={
+                      index === 0 ? 'backgroundColor-profile'
+                        : index % 2 === 0 ? 'backgroundColor-even'
+                          : 'backgroundColor-odd'
+                    }
+                    style={{ padding: '5%' }}
+                  >
+                    {component}
+                  </div>
+                ))}
+              </TabPanel>
+              <TabPanel value={value} index={1} dir={theme.direction}>
+                NONE
+              </TabPanel>
+            </Box>
           </div>
+
 
           {/* FOOTER */}
           <div className="App-footer">
@@ -244,7 +322,6 @@ function App() {
             </div>
           </div>
         </div >
-        {/* </Router> */}
         {/* ----- Your Main Content ----- */}
       </Main>
 
@@ -272,16 +349,33 @@ function App() {
         CONTENTS
         <Divider />
         <List>
-          {SectionComponentData.map(({ id, title, icon }, index) => (
-            <ListItem key={id} disablePadding>
-              <ListItemButton component="a" href={`#${id.toLowerCase()}`} onClick={isMobile ? handleDrawerClose : undefined}>
-                <ListItemIcon >
-                  {icon}
-                </ListItemIcon>
-                <ListItemText primary={title} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+          {value === 0 ? (
+            <>
+              {SectionComponentData.map(({ id, title, icon }, index) => (
+                <ListItem key={id} disablePadding>
+                  <ListItemButton component="a" href={`#${id.toLowerCase()}`} onClick={isMobile ? handleDrawerClose : undefined}>
+                    <ListItemIcon >
+                      {icon}
+                    </ListItemIcon>
+                    <ListItemText primary={title} />
+                  </ListItemButton>
+                </ListItem>
+              ))}
+            </>
+          ) : (
+            <>
+              {AnotherComponentData.map(({ id, title, icon }, index) => (
+                <ListItem key={id} disablePadding>
+                  <ListItemButton component="a" href={`#${id.toLowerCase()}`} onClick={isMobile ? handleDrawerClose : undefined}>
+                    <ListItemIcon >
+                      {icon}
+                    </ListItemIcon>
+                    <ListItemText primary={title} />
+                  </ListItemButton>
+                </ListItem>
+              ))}
+            </>
+          )}
         </List>
         <br />
         SNS / CONTACT
@@ -300,6 +394,18 @@ function App() {
         </List>
       </Drawer>
     </Box>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/portfolio" element={<AppContents />} />
+        <Route path="/another" element={<AppContents />} />
+        <Route path="/" element={<AppContents />} />
+      </Routes>
+    </Router>
   );
 }
 
