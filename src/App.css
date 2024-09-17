@@ -85,5 +85,21 @@
 .App-body {
   width: 100%;
   margin-top: 100px;
+  padding: 0% !important;
+  margin-left: 0% !important;
   /* ヘッダーの高さ分だけ余白を追加 */
+}
+
+.Tab-container {
+  width: 100%;
+}
+
+.Tab-contents{
+  color: white;
+  background-color: rgb(26, 5, 44);
+  height: 50px;
+}
+
+.MuiTabs-indicator {
+  background-color: #ffffff !important;
 }
