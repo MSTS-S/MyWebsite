@@ -36,6 +36,7 @@ import SchoolIcon from '@mui/icons-material/School';
 import TerminalIcon from '@mui/icons-material/Terminal';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 import AppsIcon from '@mui/icons-material/Apps';
+import FunctionsIcon from '@mui/icons-material/Functions';
 import LinkIcon from '@mui/icons-material/Link';
 import XIcon from '@mui/icons-material/X';
 import InstagramIcon from '@mui/icons-material/Instagram';
@@ -98,7 +99,7 @@ const SectionComponentData = [
     id: 'functions',
     title: 'React Functions',
     component: <Section_ReactFunctions />,
-    icon: <AppsIcon />,
+    icon: <FunctionsIcon />,
   },
   {
     id: 'linkcontact',
