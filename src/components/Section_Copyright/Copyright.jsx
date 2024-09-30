@@ -1,13 +1,17 @@
+import { Height } from '@mui/icons-material';
 import React from 'react';
 
 function Copyright() {
     const CopyrightStyle = {
-        display: 'flex',         // Flexboxを使用
-        justifyContent: 'center', // 水平方向に中央揃え
-        alignItems: 'center',    // 垂直方向に中央揃え
-        overflow: 'hidden',      // コンテンツがはみ出さないようにする
-        margin: '0',             // マージンをリセット
-        padding: '0',            // パディングをリセット
+        width: '100%',
+        height: '75px',
+        backgroundColor: '#ddd',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        overflow: 'hidden',
+        margin: '0',
+        padding: '0',
     };
 
     return (

@@ -1,3 +1,26 @@
+.QR-code-wrapper {
+    margin-top: 100px;
+    background-color: rgb(30, 30, 30);
+    padding-top: 100px;
+}
+
+.QR-code-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.url-input-field {
+    display: flex;
+    justify-content: center;
+}
+
+.QR-code-img {
+    display: flex;
+    justify-content: center;
+}
+
 .textfield {
     justify-content: center;
     width: 80%;
@@ -78,6 +101,77 @@
 
 
 
+.function-header {
+    width: 100%;
+    height: 100px;
+    background-color: #111;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    /* ヘッダーをページの一番上に固定 */
+    border-bottom: 2px solid rgb(255, 255, 255);
+    z-index: 100;
+    padding: 0 16px;
+    box-sizing: border-box;
+}
+
+.function-header-left {
+    display: flex;
+    justify-content: center;
+    margin-left: 2rem
+}
+
+
+.function-header-title {
+    font-size: 2.25rem;
+    font-weight: bold;
+    color: #fbffe4;
+}
+
+.function-header-right {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 2rem;
+    border-radius: 50%;
+    border: #fbffe4 0.125em solid;
+    cursor: pointer;
+}
+
+.function-header-right:hover {
+    opacity: 0.6;
+}
+
+.function-header-right svg {
+    color: #fbffe4;
+    width: 32px;
+    height: 32px;
+}
+
+@media (max-width: 768px) {
+    .function-header-left {
+        margin-left: 0.5rem;
+    }
+
+    .function-header-title {
+        font-size: 1.25rem;
+    }
+
+    .function-header-right {
+        width: 30px;
+        height: 30px;
+        margin-right: 1rem;
+    }
+
+    .function-header-right svg {
+        width: 28px;
+        height: 28px;
+    }
+}
 
 .code-container {
     width: 100%;
@@ -86,6 +180,7 @@
     justify-content: center;
     flex-direction: row;
     gap: 50px;
+    margin-bottom: 2rem;
 }
 
 .code-section {

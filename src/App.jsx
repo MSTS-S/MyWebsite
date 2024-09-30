@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { HashRouter as Router, Route, Routes, useNavigate, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useNavigate, useLocation } from 'react-router-dom';
 import './App.css';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { Link } from 'react-scroll';
@@ -18,6 +18,7 @@ import Section_AcademicResearch from './components/Section_AcademicResearch/Acad
 import Section_Programing from './components/Section_Programing/Programing';
 import Section_Qualification from './components/Section_Qualification/Qualification';
 import Section_Unity from './components/Section_Unity/Unity';
+import Section_ReactFunctions from './components/Section_ReactFunctions/ReactFunction';
 import Section_LinkContact from './components/Section_LinkContact/LinkContact';
 import Section_Copyright from './components/Section_Copyright/Copyright';
 
@@ -94,19 +95,16 @@ const SectionComponentData = [
     icon: <AppsIcon />,
   },
   {
+    id: 'functions',
+    title: 'React Functions',
+    component: <Section_ReactFunctions />,
+    icon: <AppsIcon />,
+  },
+  {
     id: 'linkcontact',
     title: 'Link / Contact',
     component: <Section_LinkContact />,
     icon: <LinkIcon />,
-  },
-];
-
-const AnotherComponentData = [
-  {
-    id: 'qrcodegenerator',
-    title: 'QRCodeGenerator',
-    component: <QRCodeGenerator />,
-    icon: <AccountBoxIcon />,
   },
 ];
 
@@ -128,51 +126,15 @@ const ContactData = [
   },
 ];
 
-
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`full-width-tabpanel-${index}`}
-      aria-labelledby={`full-width-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ paddingTop: 0 }}>
-          <Typography component="div">{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
-};
-
-function a11yProps(index) {
-  return {
-    id: `full-width-tab-${index}`,
-    'aria-controls': `full-width-tabpanel-${index}`,
-  };
-}
-/* Tab */
-
 function AppContents() {
   const theme = useTheme();
   const isMobile = useMediaQuery('(max-width:768px)');
   const drawerWidth = isMobile ? '100vw' : 300;
 
-  const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState(0);
-
   const navigate = useNavigate();  // 修正: useNavigate を取得
   const location = useLocation();  // 修正: useLocation を取得
+
+  const [open, setOpen] = React.useState(false);
 
   // Drawerのスクロール制御
   useEffect(() => {
@@ -189,25 +151,6 @@ function AppContents() {
       document.body.style.overflow = 'auto';
     };
   }, [open, isMobile]);
-
-  // URL に基づいて Tab の選択状態を決定
-  useEffect(() => {
-    if (location.pathname === '/portfolio') {
-      setValue(0);
-    } else if (location.pathname === '/another') {
-      setValue(1);
-    }
-  }, [location]);
-
-  // Tab が切り替わったときに URL を変更
-  const TabhandleChange = (event, newValue) => {
-    setValue(newValue);
-    if (newValue === 0) {
-      navigate('/portfolio');
-    } else if (newValue === 1) {
-      navigate('/another');
-    }
-  };
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -258,7 +201,6 @@ function AppContents() {
       <CssBaseline />
       <Main open={open} sx={{ marginRight: open ? 0 : `-${drawerWidth}` }}>
         <DrawerHeader />
-        {/* ----- Your Main Content ----- */}
         <div className="App">
 
           {/* HEADER */}
@@ -275,56 +217,23 @@ function AppContents() {
             </div>
           </header>
 
-
-
           {/* BODY */}
-
           <div className="App-body">
-            <Box className="Tab-container">
-              <AppBar position="static">
-                <Tabs className="Tab-contents"
-                  value={value}
-                  onChange={TabhandleChange}
-                  indicatorColor="secondary"
-                  textColor="inherit"
-                  variant="fullWidth"
-                  aria-label="full width tabs example"
-                >
-                  <Tab label="Portfolio" {...a11yProps(0)} sx={{ fontWeight: 'bold' }} />
-                  <Tab label="Another Contents" {...a11yProps(1)} sx={{ fontWeight: 'bold' }} />
-                </Tabs>
-              </AppBar>
-              <TabPanel value={value} index={0} dir={theme.direction}>
-                {SectionComponentData.map(({ id, component }, index) => (
-                  <div
-                    id={id.toLowerCase()}
-                    key={index}
-                    className={
-                      index === 0 ? 'backgroundColor-profile'
-                        : index % 2 === 0 ? 'backgroundColor-even'
-                          : 'backgroundColor-odd'
-                    }
-                    style={{ padding: '5%' }}
-                  >
-                    {component}
-                  </div>
-                ))}
-              </TabPanel>
-              <TabPanel value={value} index={1} dir={theme.direction}>
-              {AnotherComponentData.map(({ id, component }, index) => (
-                  <div
-                    id={id.toLowerCase()}
-                    key={index}
-                    className="backgroundColor-anotherContents"
-                    style={{ padding: '5%' }}
-                  >
-                    {component}
-                  </div>
-                ))}
-              </TabPanel>
-            </Box>
+            {SectionComponentData.map(({ id, component }, index) => (
+              <div
+                id={id.toLowerCase()}
+                key={index}
+                className={
+                  index === 0 ? 'backgroundColor-profile'
+                    : index % 2 === 0 ? 'backgroundColor-even'
+                      : 'backgroundColor-odd'
+                }
+                style={{ padding: '5%' }}
+              >
+                {component}
+              </div>
+            ))}
           </div>
-
 
           {/* FOOTER */}
           <div className="App-footer">
@@ -333,7 +242,6 @@ function AppContents() {
             </div>
           </div>
         </div >
-        {/* ----- Your Main Content ----- */}
       </Main>
 
       <Drawer
@@ -360,33 +268,16 @@ function AppContents() {
         CONTENTS
         <Divider />
         <List>
-          {value === 0 ? (
-            <>
-              {SectionComponentData.map(({ id, title, icon }, index) => (
-                <ListItem key={id} disablePadding>
-                  <ListItemButton component={Link} to={id.toLowerCase()} smooth={true} duration={500} onClick={isMobile ? handleDrawerClose : undefined}>
-                    <ListItemIcon >
-                      {icon}
-                    </ListItemIcon>
-                    <ListItemText primary={title} />
-                  </ListItemButton>
-                </ListItem>
-              ))}
-            </>
-          ) : (
-            <>
-              {AnotherComponentData.map(({ id, title, icon }, index) => (
-                <ListItem key={id} disablePadding>
-                  <ListItemButton component={Link} to={id.toLowerCase()} smooth={true} duration={500} onClick={isMobile ? handleDrawerClose : undefined}>
-                    <ListItemIcon >
-                      {icon}
-                    </ListItemIcon>
-                    <ListItemText primary={title} />
-                  </ListItemButton>
-                </ListItem>
-              ))}
-            </>
-          )}
+          {SectionComponentData.map(({ id, title, icon }, index) => (
+            <ListItem key={id} disablePadding>
+              <ListItemButton component="a" href={`#${id.toLowerCase()}`} onClick={isMobile ? handleDrawerClose : undefined}>
+                <ListItemIcon >
+                  {icon}
+                </ListItemIcon>
+                <ListItemText primary={title} />
+              </ListItemButton>
+            </ListItem>
+          ))}
         </List>
         <br />
         SNS / CONTACT
@@ -412,9 +303,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/portfolio" element={<AppContents />} />
-        <Route path="/another" element={<AppContents />} />
         <Route path="/" element={<AppContents />} />
+        <Route path="/qrcodegenerator" element={<QRCodeGenerator />} />
       </Routes>
     </Router>
   );

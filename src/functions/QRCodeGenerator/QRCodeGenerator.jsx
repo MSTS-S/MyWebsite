@@ -7,9 +7,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import Section_Copyright from '../../components/Section_Copyright/Copyright';
+import { useNavigate } from 'react-router-dom';
 
 import 'highlight.js/styles/github.css';
 import hljs from 'highlight.js';
+import { Navigate } from 'react-router-dom';
 
 const jsxCode =
     `import React, { useState, useEffect } from 'react';
@@ -219,28 +223,54 @@ function QRCodeGenerator() {
         hljs.highlightAll(); // ページロード時にhighlight.jsを使ってハイライト
     }, []);
 
+    /* ページ遷移設定 */
+    const navigate = useNavigate();
+    const handleBack = () => {
+        navigate(-1);
+    }
+
+    /* ページ遷移時にスクロール位置を初期化 */
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, [navigate]);
+
     return (
-        <div>
-            <input
-                className='textfield'
-                type="text" value={inputValue}
-                onChange={handleInputChange}
-                placeholder="enter URL..."
-            />
-            <br />
-            <QRCodeCanvas
-                className='QRCodeCanvas'
-                value={qrValue}
-                level="H"
-                marginSize={2.5}
-            />
-            <br />
-            <div className='downloadButton' onClick={handleDownload}>
-                <DownloadForOfflineIcon />
-            </div>
-            <br />
-            <div className='generateButton'>
-                <a className="neon" onClick={generateQR}>Generate</a>
+        <div className='QR-code-wrapper'>
+            {/* HEADER */}
+            <header className="function-header">
+                <div className="function-header-left">
+                    <div className="function-header-title">
+                        QR-Code Generator
+                    </div>
+                </div>
+                <div className="function-header-right"  onClick={handleBack}>
+                    <ArrowBackIcon />
+                </div>
+            </header>
+            <div className='QR-code-container'>
+                <div className='url-input-field'>
+                    <input
+                        className='textfield'
+                        type="text" value={inputValue}
+                        onChange={handleInputChange}
+                        placeholder="enter URL..."
+                    />
+                </div>
+                <div className='QR-code-img'>
+                    <QRCodeCanvas
+                        className='QRCodeCanvas'
+                        value={qrValue}
+                        level="H"
+                        marginSize={2.5}
+                    />
+                </div>
+                <div className='downloadButton' onClick={handleDownload}>
+                    <DownloadForOfflineIcon />
+                </div>
+                <br />
+                <div className='generateButton'>
+                    <a className="neon" onClick={generateQR}>Generate</a>
+                </div>
             </div>
             <br />
             <br />
@@ -263,7 +293,7 @@ function QRCodeGenerator() {
                 <div className='code-section'>
                     <div className='code-title-container'>
                         <div className='code-title'>CSS</div>
-                        <div className='copyIcon'  onClick={handleCopyCSS}>
+                        <div className='copyIcon' onClick={handleCopyCSS}>
                             {isCopiedCSS ? <CheckBoxIcon /> : <ContentCopyIcon />}
                         </div>
                     </div>
@@ -275,6 +305,9 @@ function QRCodeGenerator() {
                 </div>
             </div>
             <ToastContainer />
+            <div className='footer'>
+                <Section_Copyright />
+            </div>
         </div>
     );
 };
