@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, useNavigate, useLocation } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes, useNavigate, useLocation } from 'react-router-dom';
 import './App.css';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import { Link } from 'react-scroll';
 
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
@@ -363,7 +364,7 @@ function AppContents() {
             <>
               {SectionComponentData.map(({ id, title, icon }, index) => (
                 <ListItem key={id} disablePadding>
-                  <ListItemButton component="a" href={`#${id.toLowerCase()}`} onClick={isMobile ? handleDrawerClose : undefined}>
+                  <ListItemButton component={Link} to={id.toLowerCase()} smooth={true} duration={500} onClick={isMobile ? handleDrawerClose : undefined}>
                     <ListItemIcon >
                       {icon}
                     </ListItemIcon>
@@ -376,7 +377,7 @@ function AppContents() {
             <>
               {AnotherComponentData.map(({ id, title, icon }, index) => (
                 <ListItem key={id} disablePadding>
-                  <ListItemButton component="a" href={`#${id.toLowerCase()}`} onClick={isMobile ? handleDrawerClose : undefined}>
+                  <ListItemButton component={Link} to={id.toLowerCase()} smooth={true} duration={500} onClick={isMobile ? handleDrawerClose : undefined}>
                     <ListItemIcon >
                       {icon}
                     </ListItemIcon>
