@@ -70,14 +70,14 @@ function Programing() {
                         type="submit"
                         variant="contained"
                         sx={{
-                            width: '100%',
+                            width: '80%',
                             backgroundColor: 'black',
                             color: 'white',
                             '&:hover': { backgroundColor: '#333' }
                         }}
                         onClick={handlePopupOpen}
                     >
-                        名刺 (Business Card)
+                        名刺
                     </Button>
                 </Box>
             </div>
