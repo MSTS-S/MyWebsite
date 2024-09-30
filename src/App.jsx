@@ -21,9 +21,8 @@ import Section_LinkContact from './components/Section_LinkContact/LinkContact';
 import Section_Copyright from './components/Section_Copyright/Copyright';
 
 
-
 /* import functions */
-// import QRCode_Generator from './components/Functions/QRCode_Generator/QRCode_Generator';
+import QRCodeGenerator from './functions/QRCodeGenerator/QRCodeGenerator';
 
 /* import img */
 import HeaderImage from './components/img/Header.png';
@@ -102,6 +101,12 @@ const SectionComponentData = [
 ];
 
 const AnotherComponentData = [
+  {
+    id: 'qrcodegenerator',
+    title: 'QRCodeGenerator',
+    component: <QRCodeGenerator />,
+    icon: <AccountBoxIcon />,
+  },
 ];
 
 const ContactData = [
@@ -263,10 +268,6 @@ function AppContents() {
               </div>
             </div>
             <div className="header-right">
-              {/* 
-              aria-label="open drawer" : スクリーンリーダーなどのアクセシビリティのための属性
-              sx={[open && { display: 'none'}]} : openがtrueのとき，displayプロパティが'none'に設定され非表示になる
-              */}
               <IconButton color="inherit" aria-label="open drawer" onClick={handleDrawerOpen} sx={[open && { display: 'none' }]}>
                 <MenuIcon />
               </IconButton>
@@ -309,7 +310,16 @@ function AppContents() {
                 ))}
               </TabPanel>
               <TabPanel value={value} index={1} dir={theme.direction}>
-                NONE
+              {AnotherComponentData.map(({ id, component }, index) => (
+                  <div
+                    id={id.toLowerCase()}
+                    key={index}
+                    className="backgroundColor-anotherContents"
+                    style={{ padding: '5%' }}
+                  >
+                    {component}
+                  </div>
+                ))}
               </TabPanel>
             </Box>
           </div>

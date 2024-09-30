@@ -96,10 +96,14 @@
 
 .Tab-contents{
   color: white;
-  background-color: rgb(26, 5, 44);
+  background-color: rgb(30, 5, 45);
   height: 50px;
 }
 
 .MuiTabs-indicator {
   background-color: #ffffff !important;
+}
+
+.backgroundColor-anotherContents {
+  background-color: rgb(30, 30, 30);
 }
