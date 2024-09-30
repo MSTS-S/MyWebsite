@@ -1,15 +1,15 @@
 import React from 'react';
 import ProgramingCard from './ProgramingCard';
 /* import img */
-import Img_C from './img/Logo_c.png';
-import Img_Cpp from './img/Logo_cpp.png';
-import Img_Csharp from './img/Logo_cs.png';
-import Img_Python from './img/Logo_py.png';
-import Img_Matlab from './img/Logo_mat.png';
-import Img_Unity from './img/Logo_Unity.png';
-import Img_HTMLCSS from './img/HTML_CSS.png';
-import Img_React from './img/React.png';
-import Img_MUI from './img/MUI.png';
+import Img_C from './Img/Logo_c.png';
+import Img_Cpp from './Img/Logo_cpp.png';
+import Img_Csharp from './Img/Logo_cs.png';
+import Img_Python from './Img/Logo_py.png';
+import Img_Matlab from './Img/Logo_mat.png';
+import Img_Unity from './Img/Logo_Unity.png';
+import Img_HTMLCSS from './Img/HTML_CSS.png';
+import Img_React from './Img/React.png';
+import Img_MUI from './Img/MUI.png';
 /* CSS */
 import '../Section_Title.css';
 import '../Hyperlink.css';
