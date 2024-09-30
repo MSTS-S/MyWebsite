@@ -12,13 +12,21 @@ import 'highlight.js/styles/github.css';
 import hljs from 'highlight.js';
 
 const jsxCode =
-    `import React, { useState } from 'react';
+    `import React, { useState, useEffect } from 'react';
 import { QRCodeCanvas } from "qrcode.react";
+import { ToastContainer, Zoom, toast } from 'react-toastify';
 import './QRCodeGenerator.css'
-        
+import 'react-toastify/dist/ReactToastify.css';
+
+import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
+
+import 'highlight.js/styles/github.css';
+import hljs from 'highlight.js';
+
 function QRCodeGenerator() {
     const [inputValue, setInputValue] = useState('');
     const [qrValue, setQrValue] = useState('https://msts-hp.com/');
+
 
     const handleInputChange = (event) => {
         setInputValue(event.target.value);
@@ -26,7 +34,30 @@ function QRCodeGenerator() {
 
     const generateQR = () => {
         setQrValue(inputValue);
+        toast.success('Generated QRCode', {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            progress: undefined,
+            theme: "dark",
+            transition: Zoom
+        });
     };
+
+    const handleDownload = () => {
+        const canvas = document.querySelector('.QRCodeCanvas');
+        const link = document.createElement('a');
+        link.download = 'QR-code.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+    };
+
+    useEffect(() => {
+        hljs.highlightAll(); // ページロード時にhighlight.jsを使ってハイライト
+    }, []);
 
     return (
         <div>
@@ -44,9 +75,14 @@ function QRCodeGenerator() {
                 marginSize={2.5}
             />
             <br />
-            <div className='generateButton'>
-                <a className="neon" onClick={generateQR}>生成</a>
+            <div className='downloadButton' onClick={handleDownload}>
+                <DownloadForOfflineIcon />
             </div>
+            <br />
+            <div className='generateButton'>
+                <a className="neon" onClick={generateQR}>Generate</a>
+            </div>
+            <ToastContainer />
         </div>
     );
 };
@@ -56,16 +92,17 @@ export default QRCodeGenerator;
 
 const cssCode =
     `.textfield {
-    width: 50%;
+    justify-content: center;
+    width: 80%;
     height: 40px;
-    max-width: 500px;
+    max-width: 750px;
     font-size: 18px;
-    border-radius: 20px;
     padding: 0 20px;
-    border: 2px solid var(--clr-neon);
-    background-color: var(--clr-bg);
+    border: 2px solid #fff694;
+    border-radius: 20px;
+    background-color: #000;
     color: white;
-    transition: border-color 0.3s ease;
+    margin: 0, auto;
 }
 
 .textfield::placeholder {
@@ -78,83 +115,52 @@ const cssCode =
     border-color: white;
 }
 
-.generateButton {
-    margin-top: 20px;
-}
-
 .QRCodeCanvas {
-    width: 50% !important;
-    max-width: 250px !important;
-    height: auto !important;
+    width: 250px !important;
+    height: 250px !important;
     margin: 30px;
     margin-top: 40px;
 }
 
-:root {
-    --clr-neon: #fff694;
-    --clr-bg: #000000;
+.downloadButton {
+    background-color: #fff694;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+.downloadButton svg {
+    color: #000;
+    font-size: 50px;
+}
+
+.downloadButton:hover {
+    background-color: #f0f0f0;
+}
+
+.generateButton {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
 }
 
 .neon {
-    width: 150px;
+    width: 250px;
     height: 30px;
-    text-align: center;
-    vertical-align: middle;
-    color: var(--clr-neon);
-    display: inline-block;
-    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff694;
     cursor: pointer;
-    border: var(--clr-neon) 0.125em solid;
-    padding: 0.25em 1em;
-    border-radius: 0.25em;
-    text-shadow:
-        0 0 .20em #FFF7,
-        0 0 .30em var(--clr-neon);
-    box-shadow:
-        inset 0 0 .5em var(--clr-neon),
-        0 0 .5em var(--clr-neon);
+    border: #fff694 0.125rem solid;
+    border-radius: 0.25rem;
 }
 
-.neon::before {
-    content: "";
-    position: absolute;
-    top: 140%;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--clr-neon);
-    transform:
-        perspective(0.2em) rotateX(10deg) scale(1.3, 0.40);
-    filter: blur(1em);
-    opacity: 0.3;
-    transition: opacity 150ms linear;
-}
-
-.neon::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--clr-neon);
-    box-shadow: 0 0 2em var(--clr-neon);
-    z-index: -1;
-    opacity: 1;
-    transition: opacity 100ms linear;
-}
-
-.neon:hover::after {
-    opacity: 1;
-}
-
-.neon:hover,
-.neon:focus {
-    color: white;
-}
-
-.neon:hover::before {
-    opacity: 1;
+.neon:hover {
+    border: white 0.125rem solid;
+    color: white
 }
     `;
 
