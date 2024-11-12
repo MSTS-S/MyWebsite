@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { QRCodeCanvas } from "qrcode.react";
-import { Bounce, Slide, ToastContainer, Zoom, toast } from 'react-toastify';
+import { ToastContainer, Zoom, toast } from 'react-toastify';
+import "../ReactFunctionContentsStyle.css"
 import './QRCodeGenerator.css'
 import 'react-toastify/dist/ReactToastify.css';
 
