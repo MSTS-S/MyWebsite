@@ -1,0 +1,9 @@
+.hyperlink {
+    text-decoration: underline;
+    color: #1b94e0;
+    transition: color 0.3s ease;
+}
+
+.hyperlink:hover {
+    color: #1b94e085;
+}

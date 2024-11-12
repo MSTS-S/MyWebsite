@@ -1,0 +1,265 @@
+.QR-code-wrapper {
+    margin-top: 100px;
+    background-color: rgb(30, 30, 30);
+    padding-top: 100px;
+}
+
+.QR-code-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.url-input-field {
+    display: flex;
+    justify-content: center;
+}
+
+.QR-code-img {
+    display: flex;
+    justify-content: center;
+}
+
+.textfield {
+    justify-content: center;
+    width: 80%;
+    height: 40px;
+    max-width: 750px;
+    font-size: 18px;
+    padding: 0 20px;
+    border: 2px solid #fff694;
+    border-radius: 20px;
+    background-color: #000;
+    color: white;
+    margin: 0, auto;
+}
+
+.textfield::placeholder {
+    color: white;
+    opacity: 0.5;
+}
+
+.textfield:focus {
+    outline: none;
+    border-color: white;
+}
+
+.QRCodeCanvas {
+    width: 250px !important;
+    height: 250px !important;
+    margin: 30px;
+    margin-top: 40px;
+}
+
+.downloadButton {
+    background-color: #fff694;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+.downloadButton svg {
+    color: #000;
+    font-size: 50px;
+}
+
+.downloadButton:hover {
+    background-color: #f0f0f0;
+}
+
+.generateButton {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.neon {
+    width: 250px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff694;
+    cursor: pointer;
+    border: #fff694 0.125rem solid;
+    border-radius: 0.25rem;
+}
+
+.neon:hover {
+    border: white 0.125rem solid;
+    color: white
+}
+
+
+
+
+
+
+
+
+
+.function-header {
+    width: 100%;
+    height: 100px;
+    background-color: #111;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    /* ヘッダーをページの一番上に固定 */
+    border-bottom: 2px solid rgb(255, 255, 255);
+    z-index: 100;
+    padding: 0 16px;
+    box-sizing: border-box;
+}
+
+.function-header-left {
+    display: flex;
+    justify-content: center;
+    margin-left: 2rem
+}
+
+
+.function-header-title {
+    font-size: 2.25rem;
+    font-weight: bold;
+    color: #fbffe4;
+}
+
+.function-header-right {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 2rem;
+    border-radius: 50%;
+    border: #fbffe4 0.125em solid;
+    cursor: pointer;
+}
+
+.function-header-right:hover {
+    opacity: 0.6;
+}
+
+.function-header-right svg {
+    color: #fbffe4;
+    width: 32px;
+    height: 32px;
+}
+
+@media (max-width: 768px) {
+    .function-header-left {
+        margin-left: 0.5rem;
+    }
+
+    .function-header-title {
+        font-size: 1.25rem;
+    }
+
+    .function-header-right {
+        width: 30px;
+        height: 30px;
+        margin-right: 1rem;
+    }
+
+    .function-header-right svg {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+.code-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+    gap: 50px;
+    margin-bottom: 2rem;
+}
+
+.code-section {
+    box-sizing: border-box;
+    width: 45%;
+    min-width: 300px;
+}
+
+.code-title-container {
+    width: 100%;
+    font-size: 18px;
+    color: white;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    background-color: #333946;
+    border-radius: 20px;
+}
+
+.code-title {
+    margin-right: auto;
+    padding-left: 2rem;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.copyIcon {
+    margin-left: auto;
+    margin-right: 2rem;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.copyIcon:hover {
+    cursor: pointer;
+    color: rgb(175, 175, 175);
+}
+
+.code-content-container {
+    overflow-y: auto;
+    text-align: left;
+}
+
+.code-content {
+    max-height: 600px;
+}
+
+.code-content-inner {
+    padding: 10px 0;
+}
+
+.code-container pre {
+    /* background-color: #f5f5f5; */
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+.hljs {
+    background-color: #070707 !important;
+    color: #ffffff !important;
+    margin: 2.5px;
+    border-radius: 30px;
+}
+
+.hljs-string {
+    /* シングルクォート内の文字列色を変更 */
+    color: #ff79c6 !important;
+}
+
+/* preタグに対しても上書き */
+pre {
+    background-color: #333946 !important;
+    /* 背景色を上書き */
+    color: #d8dee9 !important;
+    /* フォント色も !important で強制 */
+    padding: 15px !important;
+    border-radius: 5px !important;
+}
