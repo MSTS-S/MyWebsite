@@ -161,30 +161,25 @@ const cssCode =
     font-size: x-large;
 }
 
-.loginForm-input-field {
+.loginForm-input-field{
     position: relative;
+    width: 100%;
+    padding-right: 40px; /* アイコンのスペースを確保 */
     display: flex;
+    justify-content: center;
+    vertical-align: middle;
     align-items: center;
 }
 
-.loginForm-input-field .loginForm-textfield {
-    width: 100%;
-    padding-right: 40px; /* アイコンのスペースを確保 */
-}
-
 .loginForm-textfield {
-    justify-content: center;
-    width: 80%;
+    width: 75%;
     height: 30px;
-    max-width: 750px;
-    font-size: 18px;
-    margin: 0 30px;
     padding: 0 15px;
     border: 2px solid #fff694;
     border-radius: 20px;
     background-color: #000;
     color: white;
-    margin: 0, auto;
+    font-size: 1rem;
 }
 
 .loginForm-textfield::placeholder {
@@ -200,9 +195,12 @@ const cssCode =
 }
 
 .loginForm-input-icon {
+    width: 80%;
     position: absolute;
-    right: 40px; /* 右端からの位置 */
+    right: 70px; /* 右端からの位置 */
     color: #ffffff; /* アイコンの色（必要に応じて変更） */
+    font-size: 1.45rem !important;
+    padding: 2.5px;
 }
 
 .loginForm-click-icon {
@@ -213,8 +211,9 @@ const cssCode =
     color: white;
     width: 150px;
     text-align: center;
-    margin-left: 25px;
+    margin-left: 15px;
     cursor: pointer;
+    font-size: 0.8rem;
 }
 
 .loginForm-forgot-password:hover {
@@ -364,6 +363,11 @@ function LoginForm() {
     const handleBack = () => {
         navigate(-1);
     };
+
+    /* ページ遷移時にスクロール位置を初期化 */
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, [navigate]);
 
     /* Code表示用 - Start Point */
     const TIME_TO_SHOW_CHECK_BOX_ICON = 1500;

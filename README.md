@@ -85,9 +85,19 @@ PROGRAMINGにおけるプログラミング言語や開発環境のアイコン�
 WebサイトにTabを追加しました．また，Academic Researchに学会参加のAccordionを追加しました．
 <br><br>
 
-> **ver11 : 2024-09-30 ブランチへのリンクは[こちら](https://github.com/MSTS-S/MyWebsite/tree/ver11-2024/09/30)**
+> **ver11 : 2024-09-30（脆弱性検出のため，branch削除済）**
 
 QRCodeGeneratorを追加しました．また，Node.jsプロジェクトで使用する依存パッケージがインストールされるディレクトリである，node_moduleに含まれる脆弱性を除去しました．
+<br><br>
+
+> **ver12 : 2024-10-01 （脆弱性検出のため，branch削除済）**
+
+細かなUIの修正を行いました．
+<br><br>
+
+> **ver13 : 2024-11-12 ブランチへのリンクは[こちら](https://github.com/MSTS-S/MyWebsite/tree/ver13-2024/11/12)**
+
+React Functionsに新しくLogin Formを追加しました．また，Career Historyの内容を一部更新しました．
 <br><br>
 
 
@@ -183,6 +193,14 @@ QRCodeGeneratorを追加しました．また，Node.jsプロジェクトで使�
 │   │   │   └── UnityCardComponent.jsx
 │   │   ├── Hyperlink.css
 │   │   ├── Section_Title.css
+│   ├── functions /
+│   │   ├── LoginForm /
+│   │   │   ├── LoginForm.css
+│   │   │   └── LoginForm.jsx
+│   │   ├── QRCodeGenerator /
+│   │   │   ├── QRCodeGenerator.css
+│   │   │   └── QRCodeGenerator.jsx
+│   │   └── ReactFunctionContentsStyle.css
 │   ├── App.css
 │   ├── App.jsx
 │   ├── App.test.js
@@ -190,6 +208,7 @@ QRCodeGeneratorを追加しました．また，Node.jsプロジェクトで使�
 │   ├── index.js
 │   ├── reportWebVitals.js
 │   └── setupTest.js
+├── .gitattributes
 ├── .gitignore
 ├── package-lock.json
 ├── package.json
