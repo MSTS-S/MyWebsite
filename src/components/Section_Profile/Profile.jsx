@@ -38,13 +38,6 @@ function Programing() {
             <div className='profileSubtitle'>ープロフィールー</div>
             <br />
             <br />
-            <div className="p-hamburger" onClick={toggleMenu}>
-                <label className={`p-hamburger ${isOpen ? 'active' : ''}`}>
-                    <span className={`p-hamburger-line ${isOpen ? 'line1' : ''}`}></span>
-                    <span className={`p-hamburger-line ${isOpen ? 'line2' : ''}`}></span>
-                    <span className={`p-hamburger-line ${isOpen ? 'line3' : ''}`}></span>
-                </label>
-            </div>
             <div className="ProfileContents">
                 <div className="ProfilePicture">
                     <img src={ProfileImage} alt="Logo" />
