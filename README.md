@@ -7,49 +7,49 @@ This is the package of my website. All previously released versions are managed 
 ## 概要
 こちらは，私自身が公開している[webサイト](https://msts-hp.com/)のパッケージに関するリリースノート及び使用方法となっています．branchの名前に含まれる日付が更新日と対応しており，過去の全ての公開バージョンがここから確認することができます．なお，本Webサイトではホスティングサービスとして[firebase](https://firebase.google.com/?hl=ja)を使用しています．バックエンド開発をサポートするプラットフォームであるfirebaseを用いてWebサイトのホスティングを行うと，SSLが自動的に提供されるため，その更新手続きが不必要であるという利点があります．
 > [!IMPORTANT]
-> masterブランチには，最新のリリースバージョンが含まれています．
+> mainブランチには，最新のリリースバージョンが含まれています(最終更新日：2025/02/03)．
 
 <br><br>
 
 
 
 ## リリースノート
-> **ver01 : 2023-10-16 ブランチへのリンクは[こちら](https://github.com/MSTS-S/MyWebsite/tree/ver01-2023/10/16)**
+> **date: 2023-10-16**
 
 webサイト初公開日です．WebサイトのTemplateが公開されている[サイト](https://html5up.net/)からダウンロード後，編集を加えました．PROFILE，CAREER HISTORY, ACADEMIC REASERCH, PROGRAMING, CERTIFICATIONS, UNITY PROJECT, SNSLINK/CONTACTから構成されています．
 <br><br>
 
-> **ver02 : 2024-02-17 ブランチへのリンクは[こちら](https://github.com/MSTS-S/MyWebsite/tree/ver02-2024/02/17)**
+> **date: 2024-02-17**
 
 ACADEMIC REASERCHに学部における研究 - Research in Bachelor's Degreeを追加しました．ただし，研究内容については新規性保持のため未公開です．また，UNITY PROJECTで公開されている自作のゲームの説明文を一部改変し，ゲーム画面におけるUIを変更しました．
 <br><br>
 
-> **ver03 : 2024-02-24 ブランチへのリンクは[こちら](https://github.com/MSTS-S/MyWebsite/tree/ver03-2024/02/24)**
+> **date: 2024-02-24**
 
 WebサイトのfaviconをMicrosoft PowerPointで作成した新しいデザインに変更しました．また，名刺カードのデザインを変更しました．さらにSNSLINK/Contactにおいて表示されているアプリのアイコンをカラーから白黒の丸形に変更しました．
 <br><br>
 
-> **ver04 : 2024-02-28 ブランチへのリンクは[こちら](https://github.com/MSTS-S/MyWebsite/tree/ver04-2024/02/28)**
+> **date: 2024-02-28**
 
 WebサイトのfaviconをMicrosoft PowerPointで作成した新しいデザインに変更しました．かなり工夫を凝らしたデザインとなっていて，よりブランドのロゴのような印象を与えるものを作成しました．
 <br><br>
 
-> **ver05 : 2024-04-02 ブランチへのリンクは[こちら](https://github.com/MSTS-S/MyWebsite/tree/ver05-2024/04/02)**
+> **date: 2024-04-02**
 
 [東京都立大学院](https://www.tmu.ac.jp/academics/graduate.html)に進学したため，PROFILEに記載されている所属を変更し，名刺のデザイン変更を行いました．また，CAREER HISTORYに記載されている経歴の変更及び追記を行いました．CERTIFICATIONSに学士（情報科学）を追記しました．
 <br><br>
 
-> **ver06 : 2024-04-20 ブランチへのリンクは[こちら](https://github.com/MSTS-S/MyWebsite/tree/ver06-2024/04/20)**
+> **date: 2024-04-20**
 
 UNITY PROJECTにMovie Theaterを追加しました．Webブラウザ上での実行のため，UIに凝って作成しました．なお，こちらの映画館で上映される映像は映像生成AIの[Haiper](https://haiper.ai/)を利用しました．
 <br><br>
 
-> **ver07 : 2024-05-26 ブランチへのリンクは[こちら](https://github.com/MSTS-S/MyWebsite/tree/ver07-2024/05/26)**
+> **date: 2024-05-26**
 
 PROGRAMINGにおけるプログラミング言語や開発環境のアイコンを一部変更しました．また，SNSLINK/CONTACTにGitHubのアイコンを追記し，色を白黒からカラーに変更するなどの一部改変を行いました．
 <br><br>
 
-> **ver08 : 2024-08-31（脆弱性検出のため，branch削除済）**
+> **date: 2024-08-31**
 
 今まではフロントエンド開発のフレームワークやライブラリ等を使用せず，HTMLとCSSをVS Codeにべた書きしていましたが，Reactを用いたWeb開発へと変更しました．それに伴ってWebサイトの機能やUIを大幅に変更いたしました．変更点は以下の通りです．
 <br>
@@ -75,29 +75,34 @@ PROGRAMINGにおけるプログラミング言語や開発環境のアイコン�
 
 <br><br>
 
-> **ver09 : 2024-09-16（脆弱性検出のため，branch削除済）**
+> **date: 2024-09-16**
 
 モバイルデバイス(画面幅 768px以下)でdrawerを表示後，スクロールを行うとメインコンテンツがスクロールしてしまう問題を修正しました．
 <br><br>
 
-> **ver10 : 2024-09-17（脆弱性検出のため，branch削除済）**
+> **date: 2024-09-17**
 
 WebサイトにTabを追加しました．また，Academic Researchに学会参加のAccordionを追加しました．
 <br><br>
 
-> **ver11 : 2024-09-30（脆弱性検出のため，branch削除済）**
+> **date: 2024-09-30**
 
 QRCodeGeneratorを追加しました．また，Node.jsプロジェクトで使用する依存パッケージがインストールされるディレクトリである，node_moduleに含まれる脆弱性を除去しました．
 <br><br>
 
-> **ver12 : 2024-10-01 （脆弱性検出のため，branch削除済）**
+> **date: 2024-10-01**
 
 細かなUIの修正を行いました．
 <br><br>
 
-> **ver13 : 2024-11-12 ブランチへのリンクは[こちら](https://github.com/MSTS-S/MyWebsite/tree/ver13-2024/11/12)**
+> **date: 2024-11-12**
 
 React Functionsに新しくLogin Formを追加しました．また，Career Historyの内容を一部更新しました．
+<br><br>
+
+> **date: 2025-02-03**
+
+研究活動の内容をアップデートしました．
 <br><br>
 
 
