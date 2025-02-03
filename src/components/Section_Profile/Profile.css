@@ -44,13 +44,61 @@
 }
 
 .closeButtonContainer {
-    justify-content: flex-end; /* 右端に配置 */
-    padding-top: 16px; /* 上部の余白を追加 */
-    padding-right: 16px; /* 右側の余白を追加 */
+    justify-content: flex-end;
+    /* 右端に配置 */
+    padding-top: 16px;
+    /* 上部の余白を追加 */
+    padding-right: 16px;
+    /* 右側の余白を追加 */
 }
 
 .closeButton {
     position: relative;
-    top: 20px; /* 必要に応じて調整 */
-    left: -10px; /* 必要に応じて調整 */
+    top: 20px;
+    /* 必要に応じて調整 */
+    left: -10px;
+    /* 必要に応じて調整 */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.p-hamburger {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.p-hamburger-line {
+    width: 30px;
+    height: 2px;
+    background-color: #ffffff;
+    margin: 3px 0;
+    transition: 0.25s;
+}
+
+/* アクティブ状態のスタイル */
+.p-hamburger.active .line1 {
+    transform: rotate(-135deg) translate(-5px, -6px);
+}
+
+.p-hamburger.active .line2 {
+    opacity: 0;
+}
+
+.p-hamburger.active .line3 {
+    transform: rotate(135deg) translate(-5px, 6px);
 }

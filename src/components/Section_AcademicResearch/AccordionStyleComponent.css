@@ -10,8 +10,9 @@ CSSの指定が正しく適用されていない可能性があります。い�
 */
 
 .accordion-background {
-    background-color: rgb(245, 245, 245) !important;
-    border: 1px solid #ccc;
+    background-color: rgb(245, 255, 255) !important;
+    border: 3px rgb(180, 180, 180);
+    border-style: outset;
 }
 
 .accordion-expanded .MuiAccordion-region {

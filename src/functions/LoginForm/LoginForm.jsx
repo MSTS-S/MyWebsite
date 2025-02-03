@@ -29,15 +29,15 @@ const presentation_styles = {
 
 
 const jsxCode =
-    `import React, { useState } from "react";
-import { ToastContainer, Zoom, toast } from 'react-toastify';
+    `import React, { useState, useEffect } from "react";
+import "../ReactFunctionContentsStyle.css"
 import "./LoginForm.css";
-import "react-toastify/dist/ReactToastify.css";
-/* import Icon */
+
 import PersonIcon from '@mui/icons-material/Person';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { useNavigate } from "react-router-dom";
 
 function LoginForm() {
     const [username, setUsername] = useState("");
@@ -59,30 +59,35 @@ function LoginForm() {
         setPasswordVisiblity(!_isPasswordVisible);
     };
 
-    // 常に[Authentication failed.]を返す
-    const handleLogin = (e) => {
-        e.preventDefault();
-        toast.error('Authentication failed.', {
-            position: "top-center",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: false,
-            draggable: false,
-            progress: undefined,
-            theme: "dark",
-            transition: Zoom
-        });
+    const navigate = useNavigate();
+    const handleBack = () => {
+        navigate(-1);
     };
+
+    /* ページ遷移時にスクロール位置を初期化 */
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [navigate]);
 
     return (
         <div className="LoginForm-wrapper">
+            {/* HEADER */}
+            <header className="function-header">
+                <div className="function-header-left">
+                    <div className="function-header-title">Login Form</div>
+                </div>
+                <div className="function-header-right" onClick={handleBack}>
+                    <ArrowBackIcon />
+                </div>
+            </header>
+
+            {/* BODY */}
             <div className="LoginForm-container">
                 <div className="loginForm-title">MSTS - S</div>
 
                 <br />
 
-                <div className="input-field">
+                <div className="loginForm-input-field">
                     <input
                         className="loginForm-textfield"
                         type="text"
@@ -90,12 +95,12 @@ function LoginForm() {
                         onChange={handleUsernameChange}
                         placeholder="username"
                     />
-                    <PersonIcon className="input-icon" />
+                    <PersonIcon className="loginForm-input-icon" />
                 </div>
 
                 <br />
 
-                <div className="input-field">
+                <div className="loginForm-input-field">
                     <input
                         className="loginForm-textfield"
                         type={_isPasswordVisible ? "text" : "password"}
@@ -104,9 +109,9 @@ function LoginForm() {
                         placeholder="password"
                     />
                     {_isPasswordVisible ? (
-                        <VisibilityIcon className="input-icon loginForm-click-icon"  onClick={togglePasswordVisibility} />
+                        <VisibilityIcon className="loginForm-input-icon loginForm-click-icon" onClick={togglePasswordVisibility} />
                     ) : (
-                        <VisibilityOffIcon className="input-icon loginForm-click-icon" onClick={togglePasswordVisibility} />
+                        <VisibilityOffIcon className="loginForm-input-icon loginForm-click-icon" onClick={togglePasswordVisibility} />
                     )}
                 </div>
                 <div className="loginForm-forgot-password">
@@ -124,9 +129,6 @@ function LoginForm() {
                     Not Registered? <span className="loginForm-create-account">Create an account</span>
                 </div>
             </div>
-            <br />
-            <br />
-            <ToastContainer />
         </div>
     );
 }
@@ -134,7 +136,7 @@ function LoginForm() {
 export default LoginForm;
 `;
 
-const cssCode = 
+const cssCode =
     `.LoginForm-wrapper {
     margin-top: 100px;
     background-color: rgb(30, 30, 30);
@@ -309,25 +311,11 @@ function LoginForm() {
         setPasswordVisiblity(!_isPasswordVisible);
     };
 
+    /* ANOVA用特別コード - Start Point*/
     const handleLogin = (e) => {
         e.preventDefault();
-        {/*
-        toast.error('Authentication failed.', {
-            position: "top-center",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: false,
-            draggable: false,
-            progress: undefined,
-            theme: "dark",
-            transition: Zoom
-        });
-        */}
 
-        /* ANOVA用コード*/
-        if (username === VALID_USERNAME && password === VALID_PASSWORD)
-        {
+        if (username === VALID_USERNAME && password === VALID_PASSWORD) {
             /* ログイン状態の変更 */
             setIsLoggedIn(true);
 
@@ -343,8 +331,7 @@ function LoginForm() {
                 transition: Zoom
             });
         }
-        else
-        {
+        else {
             toast.error('Authentication failed.', {
                 position: "top-center",
                 autoClose: 3000,
@@ -358,6 +345,7 @@ function LoginForm() {
             });
         }
     };
+    /* ANOVA用特別コード - End Point*/
 
     const navigate = useNavigate();
     const handleBack = () => {
@@ -367,7 +355,7 @@ function LoginForm() {
     /* ページ遷移時にスクロール位置を初期化 */
     useEffect(() => {
         window.scrollTo(0, 0);
-      }, [navigate]);
+    }, [navigate]);
 
     /* Code表示用 - Start Point */
     const TIME_TO_SHOW_CHECK_BOX_ICON = 1500;
@@ -437,7 +425,7 @@ function LoginForm() {
                             placeholder="password"
                         />
                         {_isPasswordVisible ? (
-                            <VisibilityIcon className="loginForm-input-icon loginForm-click-icon"  onClick={togglePasswordVisibility} />
+                            <VisibilityIcon className="loginForm-input-icon loginForm-click-icon" onClick={togglePasswordVisibility} />
                         ) : (
                             <VisibilityOffIcon className="loginForm-input-icon loginForm-click-icon" onClick={togglePasswordVisibility} />
                         )}
@@ -458,32 +446,32 @@ function LoginForm() {
                     </div>
                 </div>
             ) : (
-                    <div className="presentation-wrapper">
-                        <div className="presentation-title">
-                            統計解析「分散分析の基本概念と実践」
+                <div className="presentation-wrapper">
+                    <div className="presentation-title">
+                        統計解析「分散分析の基本概念と実践」
+                    </div>
+                    <iframe style={presentation_styles}
+                        title="統計解析「分散分析の基本概念と実践」のプレゼンテーション"
+                        frameborder="5px"
+                        src="https://1drv.ms/b/c/9e323e0c8636d01d/IQQJp3_5K1-UQoVIAORFisHkAQWZCIMjsMxBvBW7ReAxOCE"
+                    />
+
+                    <br />
+                    <br />
+
+                    <div className="loginForm-button2">
+                        <div className="excel-download-button-style" onClick={handleDownloadPDF}>
+                            講義資料 - PDF形式
+                            <br />
+                            ダウンロード
                         </div>
-                        <iframe style={presentation_styles}
-                            title="統計解析「分散分析の基本概念と実践」のプレゼンテーション"
-                            frameborder="5px"
-                            src="https://1drv.ms/b/c/9e323e0c8636d01d/IQQJp3_5K1-UQoVIAORFisHkAQWZCIMjsMxBvBW7ReAxOCE" 
-                        />
-
-                        <br />
-                        <br />
-
-                        <div className="loginForm-button2">
-                            <div className="excel-download-button-style" onClick={handleDownloadPDF}>
-                                講義資料 - PDF形式
-                                <br />
-                                ダウンロード
-                            </div>
-                            <div className="excel-download-button-style" onClick={handleDownloadExcel}>
-                                ダミーデータ - Excel
-                                <br />
-                                ダウンロード
-                            </div>
+                        <div className="excel-download-button-style" onClick={handleDownloadExcel}>
+                            ダミーデータ - Excel
+                            <br />
+                            ダウンロード
                         </div>
                     </div>
+                </div>
             )}
 
             {/* Code表示用 */}

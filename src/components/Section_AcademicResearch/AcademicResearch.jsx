@@ -35,7 +35,7 @@ function AcademicResearch() {
         {
             id: 'AD1'
             , ariaControls: 'content1'
-            , title: '研究補助 ー> メタバース内でのE-Commerceの実現に向けた信頼性の高いRealistic-Avatarの研究プロジェクト'
+            , title: '研究補助 -> メタバース内でのE-Commerceの実現に向けた信頼性の高いRealistic-Avatarの研究プロジェクト'
             , date: '2022年09月01日 ～ 2023年02月28日'
             , place: 'Tokyo, Japan'
             , description:
@@ -48,7 +48,7 @@ function AcademicResearch() {
         {
             id: 'AD2'
             , ariaControls: 'content2'
-            , title: '学会参加 ー> 日本人間工学会アーゴデザイン部会コンセプト事例発表会'
+            , title: '国内学会 -> 日本人間工学会アーゴデザイン部会コンセプト事例発表会'
             , date: '2023年08月21日'
             , place: 'Tokyo, Japan'
             , description:
@@ -67,14 +67,14 @@ function AcademicResearch() {
                 </>
         },
         {
-            id: 'AD3'
-            , ariaControls: 'content3'
-            , title: 'デモ展示 ー> URCF（超臨場感コミュニケーション産学官フォーラム）シンポジウム 2023'
+            id: '2023-URCF'
+            , ariaControls: 'con-23URC'
+            , title: '技術展示 -> 超臨場感コミュニケーション産学官フォーラム (URCF : Ultra-Realistic Communications Forum) シンポジウム 2023'
             , date: '2023年08月30日'
             , place: 'Tokyo, Japan'
             , description:
                 <>
-                    東京都立大学,筑波大学, 東京大学．"複数の実空間のVR歩行体験とマルチ視聴が可能なXRメタバース"と題して、
+                    東京都立大学, 筑波大学, 東京大学．"複数の実空間のVR歩行体験とマルチ視聴が可能なXRメタバース"と題して、
                     <a
                         className='hyperlink'
                         href="https://www.tmu.ac.jp/research/project-5g.html"
@@ -89,9 +89,9 @@ function AcademicResearch() {
                 </>
         },
         {
-            id: 'AD4'
-            , ariaControls: 'content4'
-            , title: 'デモ展示 ー> 第28回日本バーチャルリアリティ学会大会（VRSJ2023）'
+            id: '2023-VRSJ'
+            , ariaControls: 'con-23VRS'
+            , title: '技術展示 > 第28回日本バーチャルリアリティ学会大会（VRSJ2023）'
             , date: '2023年09月12日 ～ 2023年09月14日'
             , place: 'Tokyo, Japan'
             , description:
@@ -110,9 +110,31 @@ function AcademicResearch() {
                 </>
         },
         {
-            id: 'AD5'
-            , ariaControls: 'content5'
-            , title: '学会参加 ー> 第29回日本バーチャルリアリティ学会大会（VRSJ2024）'
+            id: '2024-URCF'
+            , ariaControls: 'con-24URC'
+            , title: '技術展示 > 超臨場感コミュニケーション産学官フォーラム (URCF : Ultra-Realistic Communications Forum) シンポジウム  2024'
+            , date: '2024年09月04日'
+            , place: 'Tokyo, Japan'
+            , description:
+                <>
+                    東京大学，東京都立大学. "XR遠隔対話システム"と題して、
+                    <a
+                        className='hyperlink'
+                        href="https://www.tmu.ac.jp/research/project-5g.html"
+                        target="_blank"
+                        rel="noopener noreferrer external"
+                    >
+                        東京都立大学 local-5G project
+                    </a>
+                    の一環として、アバターロボットの全方位立体視カメラの位置に、遠隔からHMDでロボットを利用しているユーザのCGアバターを
+                    HoloLensで表示して対話を行うことが可能なXRシステムについてのデモ展示に補佐として参加しました。
+                    その他にも各企業ブースのデモ展示を体験し、様々な振興技術に触れてきました。
+                </>
+        },
+        {
+            id: '2024-VRSJ'
+            , ariaControls: 'con-24VRS'
+            , title: '国内学会 -> 第29回日本バーチャルリアリティ学会大会（VRSJ2024）'
             , date: '2024年09月11日 ～ 2024年09月13日'
             , place: 'Nagoya, Japan'
             , description:
@@ -121,6 +143,49 @@ function AcademicResearch() {
                     "空間提示手法と指令入力手法の違いがVR空間での多重身体認知に及ぼす影響"と題して、口頭発表で参加しました。
                     発表した研究はB4の際に取り組んでいた研究内容でしたが、発表や議論を通して改めて振り返ると考慮できていなかった部分が浮き彫りになっていると実感しました。
                     M1、M2での研究に活かしていければと思っています。
+                </>
+        },
+        {
+            id: '2024-ICAT'
+            , ariaControls: 'con-24ICA'
+            , title: '国際学会 -> The 34th International Conference on Artificial Reality and Telexistence & The 29th Eurographics Symposium on Virtual Environments (ICAT-EGVE 2024)'
+            , date: '2024年12月01日 ～ 2024年12月03日'
+            , place: 'Tsukuba, Japan'
+            , description:
+                <>
+                    Masatoshi Serizawa, Yosuke Fukuchi, Vibol Yem, Yasushi Ikei, Nobuyuki Nishiuchi
+                    " Study on multiple-virtual body perception: Effects of differentspatial presentation and command input methods"
+                    と題して、ポスター発表で参加しました。私自身の研究について海外の研究者と議論を行うことができ、博士前期課程における研究テーマ策定に大きく役立ちました。
+                </>
+        },
+        {
+            id: '2024-SIG'
+            , ariaControls: '2024-SIG'
+            , title: '国際学会 -> SIGGRAPH Asia 2024 Tokyo'
+            , date: '2024年12月03日 ～ 2024年12月06日'
+            , place: 'Tokyo, Japan'
+            , description:
+                <>
+                    EXHIBITORとして技術展示「
+                    <a
+                        className='hyperlink'
+                        href="https://dl.acm.org/doi/10.1145/3681755.3688940"
+                        target="_blank"
+                        rel="noopener noreferrer external"
+                    >
+                        Go Mountain! VR: Virtual Poles and Physical Motions for Trekking and Skiing Experiences
+                    </a>
+                    」の補佐を行い、またEXHIBIT&EXPERIENCE ACCESSを購入し、現地で技術展示の体験を行いました。
+                    技術展示の体験では株式会社ソニー・インタラクティブエンタテインメント様が主催していた「
+                    <a
+                        className='hyperlink'
+                        href="https://asia.siggraph.org/2024/presentation/?id=emt_137&sess=sess188"
+                        target="_blank"
+                        rel="noopener noreferrer external"
+                    >
+                        Lighting-Based Assembly Guidance for Reconfigurable Controller
+                    </a>
+                    」が非常に面白く、興味深い技術で印象的でした。
                 </>
         },
     ];
@@ -137,7 +202,7 @@ function AcademicResearch() {
                 </div>
                 <br />
                 <div style={styles.contentText}>
-                    Coming Soon （新規性保持のため未掲載） ...
+                    特許関連事案のため，非公開
                     <br />
                     <br />
                 </div>
