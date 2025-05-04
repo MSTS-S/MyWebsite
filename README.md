@@ -103,6 +103,10 @@ React Functionsに新しくLogin Formを追加しました．また，Career His
 > **date: 2025-02-03**
 
 研究活動の内容をアップデートしました．
+
+> **date: 2025-05-04**
+
+Profileの変更、Drawerの挙動変更、Component管理の追加を行いました．
 <br><br>
 
 
