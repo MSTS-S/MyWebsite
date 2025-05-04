@@ -1,45 +1,57 @@
-.App {
-  margin: 0 auto;
-  width: 100%;
-  text-align: center;
+:root {
+  --PROFILE_IMG_SIZE: 150px;
+  --FONT_COLOR: white;
+  --HEADER_HEIGHT: 100px;
+  --FOOTER_BACKGROUND_COLOR: #ccc;
+  --HEADER_LOGO_SIZE: 450px;
 }
 
-.App-header {
-  width: 100%;
-  height: 100px;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: fixed;
-  top: 0;
-  /* ヘッダーをページの一番上に固定 */
-  border-bottom: 2px solid black;
-  z-index: 100;
-  padding: 0 16px;
-  box-sizing: border-box;
-}
-
-.App-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  /* 親要素の高さいっぱいに広げる */
-}
-
-.App-logo img {
-  max-height: 100px;
-  @media (max-width: 768px) {
-      width: 300px;
+@media (min-width: 768px) and (max-width: 1023px) {
+  :root {
+    --HEADER_HEIGHT: 80px;
+    --HEADER_LOGO_SIZE: 300px;
   }
 }
 
-.header-right {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+@media (max-width: 767px){
+  :root {
+    --HEADER_HEIGHT: 50px;
+    --HEADER_LOGO_SIZE: 250px;
+  }
 }
+
+
+.App__container {
+  width: 100%;
+} 
+
+.App__header {
+  width: 100%;
+  height: var(--HEADER_HEIGHT);
+  background-color: #e1e1e1;
+  color: var(--FONT_COLOR);
+  position: fixed; /* fixed header to screen */
+  top: 0; /* display header to top of the screen */
+  z-index: 1000;
+}
+
+.App__body {
+  width: 100%;
+  margin-top: var(--HEADER_HEIGHT);
+  padding: 0% !important;
+  margin-left: 0% !important;
+}
+
+.App__footer {
+  width: 100%;
+  height: 70px;
+  background-color: var(--FOOTER_BACKGROUND_COLOR);
+}
+
+
+
+
+
 
 
 
@@ -59,16 +71,6 @@
   box-sizing: border-box;
 }
 
-.App-footer {
-  width: 100%;
-  height: 75px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #ddd;
-  overflow: hidden;
-}
-
 .backgroundColor-copyright {
   background-color: #ddd;
   /* 背景色を統一 */
@@ -77,28 +79,252 @@
   padding: 0;
 }
 
-.App-body {
+/* contents of App__header */
+.header__container {
   width: 100%;
-  margin-top: 100px;
-  padding: 0% !important;
-  margin-left: 0% !important;
-  /* ヘッダーの高さ分だけ余白を追加 */
+  height: 100%;
+  display: flex;
+  flex-direction: row;
 }
 
-.Tab-container {
-  width: 100%;
-}
-
-.Tab-contents{
+.header__webSiteTitle {
+  width: 75%;
+  height: 100%;
+  display: flex;
+  margin-left: 20px;
+  align-items: center;
+  cursor: pointer;
   color: white;
-  background-color: rgb(30, 5, 45);
+}
+
+@media (max-width: 767px){
+  .header__webSiteTitle {
+    margin-left: 7.5px;
+    gap: 7.5px;
+  }
+}
+
+.header__logoTMU {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+.header__logoTMU img {
+  width: var(--HEADER_LOGO_SIZE);
+  max-height: var(--HEADER_HEIGHT);
+  object-fit: contain;
+  margin-right: auto;
+}
+
+/* contents of App__header: Tab menu */
+.header__tabMenu {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: flex-end;
+  margin: 0 1% 3px auto;
+}
+
+.header__tab {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: flex-end;
+  margin: 0 30px 0px auto;
+}
+
+.header__tab-item {
+  position: relative;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 10px;
+  color: var(--FONT_COLOR); /* 非アクティブタブの文字色を指定 */
+  text-decoration: none;
+}
+
+.header__tab-item:visited {
+  color: var(--FONT_COLOR); /* 既訪問リンクの色を非アクティブと同じに指定 */
+}
+
+.header__tab-item:hover {
+  background-color: rgb(255, 255, 255, 0.1);
+}
+
+.header__tab-item.active {
+  color: #1976d2; /* アクティブタブの文字色 */
+  color: #6aa5df;
+}
+
+.header__tab-item.active::after {
+  content: ''; /* 擬似要素の内容を空にする */
+  position: absolute; /* ボックスの相対位置に基づいて配置 */
+  bottom: 0; /* 要素の下部に配置 */
+  left: 0; /* 左端から始める */
+  width: 100%; /* 要素の幅に合わせる */
+  height: 3px; /* 下線の高さ */
+  background-color: #1976d2; /* 下線の色 */
+  border-radius: 2px; /* 下線の角を少し丸める（任意） */
+}
+
+/* contents of App__footer */ 
+.footer__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.footer__text {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+
+
+
+.header__hamburgerMenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 30px 0px auto;
+  z-index: 3000 !important;
+}
+
+.header__hamburgerMenuIcon {
+  width: 50px;
   height: 50px;
+  margin: 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 0 !important;
+  cursor: pointer;
+  z-index: 3005 !important;
 }
 
-.MuiTabs-indicator {
-  background-color: #ffffff !important;
+.hamburgerMenu__Line {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 3010 !important;
 }
 
-.backgroundColor-anotherContents {
-  background-color: rgb(30, 30, 30);
+.line {
+  display: block; /* ブロック要素にする */
+  width: 30px; /* 幅を指定 */
+  height: 3px; /* 高さを指定 */
+  background-color: #000000; /* バーの色 */
+  margin: 3px 0; /* 各バーの間隔を指定 */
+  transition: background-color 0.3s; /* 色の変更にアニメーションを追加 */
+}
+
+
+.header__hamburgerMenuIcon .hamburgerMenu__Line {
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.header__hamburgerMenuIcon.active .hamburgerMenu__Line {
+  transform: rotate(360deg);
+}
+
+
+.header__hamburgerMenuIcon .hamburgerMenu__Line .line {
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.header__hamburgerMenuIcon.active .hamburgerMenu__Line .line:nth-of-type(1) {
+  transform: translateY(9px) rotate(-45deg);
+}
+.header__hamburgerMenuIcon.active .hamburgerMenu__Line .line:nth-of-type(2) {
+  opacity: 0;
+}
+.header__hamburgerMenuIcon.active .hamburgerMenu__Line .line:nth-of-type(3) {
+  transform: translateY(-9px) rotate(45deg);
+}
+
+
+.header__hamburgerMenuIcon .hamburgerMenu__Line::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  content: '';
+  width: 30px;
+  height: 30px;
+  margin: -16px 0 0 -16px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all .1s;
+  opacity: 0;
+}
+
+.header__hamburgerMenuIcon.active .hamburgerMenu__Line::after {
+  animation: circle 0.5s;
+}
+@keyframes circle {
+  0% {
+    transform: scale(0.01);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 767px){
+  .header__hamburgerMenu {
+    margin: 0 10px 0px auto;
+  }
+  
+  .line {
+    width: 20px; 
+    height: 2px;
+    margin: 2px 0;
+    transition: background-color 0.3s;
+  }
+
+  .header__hamburgerMenuIcon.active .hamburgerMenu__Line .line:nth-of-type(1) {
+    transform: translateY(6px) rotate(-45deg);
+  }
+  .header__hamburgerMenuIcon.active .hamburgerMenu__Line .line:nth-of-type(2) {
+    opacity: 0;
+  }
+  .header__hamburgerMenuIcon.active .hamburgerMenu__Line .line:nth-of-type(3) {
+    transform: translateY(-6px) rotate(45deg);
+  }
+}
+
+
+
+
+.header__customDrawer {
+  transform: translateY(var(--HEADER_HEIGHT));
+  height: calc(100% - var(--HEADER_HEIGHT));
+  background-color: rgba(0, 0, 0, 0.01);
+}
+
+.hamburgerMenu__item {
+  width: 100%;
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+}
+
+.hamburgerMenu__item:hover {
+  background-color: rgb(0, 0, 0, 0.1);
+}
+
+.header__categoryName {
+  font-size: 1.2rem;
+  margin-left: 1rem;
 }

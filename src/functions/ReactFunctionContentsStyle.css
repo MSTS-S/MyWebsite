@@ -12,7 +12,7 @@
     top: 0;
     /* ヘッダーをページの一番上に固定 */
     border-bottom: 2px solid rgb(255, 255, 255);
-    z-index: 100;
+    z-index: 10001;
     padding: 0 16px;
     box-sizing: border-box;
 }
@@ -90,7 +90,7 @@
     justify-content: center;
     flex-direction: row;
     gap: 50px;
-    margin-bottom: 2rem;
+    padding-bottom: 1rem;
 }
 
 .code-section {
