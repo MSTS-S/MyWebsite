@@ -9,7 +9,6 @@ import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import Section_Copyright from '../../components/Section_Copyright/Copyright';
 import { useNavigate } from 'react-router-dom';
 
 import 'highlight.js/styles/github.css';
@@ -305,9 +304,6 @@ function QRCodeGenerator() {
                 </div>
             </div>
             <ToastContainer />
-            <div className='footer'>
-                <Section_Copyright />
-            </div>
         </div>
     );
 };

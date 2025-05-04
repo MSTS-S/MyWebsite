@@ -1,0 +1,55 @@
+.programingCard__wrapper {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .programingCard__container {
+    width: 300px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #c0c0c0;
+    box-shadow: 10px 10px 7.5px rgb(50, 50, 50);
+    background-color: #fff;
+    color: #000;
+    box-sizing: border-box;
+    border-radius: 12px;
+  }
+  
+  .programingCard__image {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    margin: 0 auto;
+  }
+  
+  .programingCard__title {
+    margin-left: 1rem;
+    font-weight: bold;
+    align-self: flex-start;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    width: fit-content;
+    padding-bottom: 2px;
+  }
+
+  .programingCard__underline {
+    width: 100%;
+    height: 2px;
+    background-color: #000000;
+    margin-bottom: 0.5rem;
+  }
+  
+  .programingCard__content {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    word-wrap: break-word;
+    text-align: left;
+  }
+  
