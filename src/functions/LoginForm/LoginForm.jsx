@@ -15,18 +15,6 @@ import { useNavigate } from "react-router-dom";
 import 'highlight.js/styles/github.css';
 import hljs from 'highlight.js';
 
-/* ANOVA */
-import EXCEL_FILE from './ANOVA-dummyData.xlsx';
-import PDF_FILE from './LectureMaterial.pdf'
-const presentation_styles = {
-    width: '100%',
-    maxWidth: '1000px',
-    aspectRatio: '16 / 9',
-    overflow: 'hidden',
-    border: 'none'
-};
-
-
 const jsxCode =
     `import React, { useState, useEffect } from "react";
 import "../ReactFunctionContentsStyle.css"
@@ -261,36 +249,6 @@ const cssCode =
 `;
 
 function LoginForm() {
-    /* ANOVA用特別コード - Start Point*/
-    const VALID_USERNAME = "N-Lab";
-    const VALID_PASSWORD = "ANOVA-2024";
-    const [_isLoggedIn, setIsLoggedIn] = useState(false); // ログイン状態を管理
-
-    const handleDownloadPDF = (e) => {
-        e.preventDefault();
-        const link = document.createElement('a');
-        link.href = PDF_FILE;
-        /* download時のファイル名指定*/
-        link.download = '統計解析 – 分散分析の基本概念と実践 –';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    }
-
-    const handleDownloadExcel = (e) => {
-        e.preventDefault();
-        const link = document.createElement('a');
-        link.href = EXCEL_FILE;
-        /* download時のファイル名指定*/
-        link.download = 'ANOVA-dummyData.xlsx';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    }
-    /* ANOVA用特別コード - End Point*/
-
-
-
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [_isPasswordVisible, setPasswordVisiblity] = useState(false);
@@ -309,42 +267,6 @@ function LoginForm() {
     const togglePasswordVisibility = () => {
         setPasswordVisiblity(!_isPasswordVisible);
     };
-
-    /* ANOVA用特別コード - Start Point*/
-    const handleLogin = (e) => {
-        e.preventDefault();
-
-        if (username === VALID_USERNAME && password === VALID_PASSWORD) {
-            /* ログイン状態の変更 */
-            setIsLoggedIn(true);
-
-            toast.success('Login successful.', {
-                position: "top-center",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: false,
-                draggable: false,
-                progress: undefined,
-                theme: "dark",
-                transition: Zoom
-            });
-        }
-        else {
-            toast.error('Authentication failed.', {
-                position: "top-center",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: false,
-                draggable: false,
-                progress: undefined,
-                theme: "dark",
-                transition: Zoom
-            });
-        }
-    };
-    /* ANOVA用特別コード - End Point*/
 
     const navigate = useNavigate();
     const handleBack = () => {
@@ -396,7 +318,7 @@ function LoginForm() {
             </header>
 
             {/* BODY */}
-            {!_isLoggedIn ? (
+            {
                 <div className="LoginForm-container">
                     <div className="loginForm-title">MSTS - S</div>
 
@@ -436,7 +358,7 @@ function LoginForm() {
                     <br />
 
                     <div className="loginForm-button">
-                        <div className="login-button-style" onClick={handleLogin}>
+                        <div className="login-button-style">
                             Login
                         </div>
                     </div>
@@ -444,34 +366,7 @@ function LoginForm() {
                         Not Registered? <span className="loginForm-create-account">Create an account</span>
                     </div>
                 </div>
-            ) : (
-                <div className="presentation-wrapper">
-                    <div className="presentation-title">
-                        統計解析「分散分析の基本概念と実践」
-                    </div>
-                    <iframe style={presentation_styles}
-                        title="統計解析「分散分析の基本概念と実践」のプレゼンテーション"
-                        frameborder="5px"
-                        src="https://1drv.ms/b/c/9e323e0c8636d01d/IQQJp3_5K1-UQoVIAORFisHkAQWZCIMjsMxBvBW7ReAxOCE"
-                    />
-
-                    <br />
-                    <br />
-
-                    <div className="loginForm-button2">
-                        <div className="excel-download-button-style" onClick={handleDownloadPDF}>
-                            講義資料 - PDF形式
-                            <br />
-                            ダウンロード
-                        </div>
-                        <div className="excel-download-button-style" onClick={handleDownloadExcel}>
-                            ダミーデータ - Excel
-                            <br />
-                            ダウンロード
-                        </div>
-                    </div>
-                </div>
-            )}
+            }
 
             {/* Code表示用 */}
             <br />
