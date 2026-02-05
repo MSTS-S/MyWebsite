@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link, useNavigate, useLocation } from 'react-router-dom';
 import './App.css';
-import useMediaQuery from '@mui/material/useMediaQuery';
 
 /* import contents */
 import Section_Profile from './components/Section_Profile/Profile';
@@ -35,7 +34,6 @@ import MAIL_ICON from '@mui/icons-material/Mail';
 
 /* https://mui.com/material-ui/react-drawer/#persistent-drawer */
 /* MUI Drawer */
-import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
@@ -138,6 +136,12 @@ function Header() {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
+
+    // unfocus
+    if (document.activeElement) {
+      document.activeElement.blur();
+    }
+
     /* update bool of _isMenuOpen */
     setIsMenuOpen(!_isMenuOpen);
   };
@@ -190,22 +194,35 @@ function Header() {
 
   return (
     <div className='header__container'>
-      <a
-        className='header__webSiteTitle'
-        onClick={() => handleTitleClick()}
-        href={'/'}
-      >
-        <div className='header__logoTMU'>
+      <a className='header__webSiteTitle'>
+        <div className='header__logoTMU'
+         onClick={() => handleTitleClick()}
+         href={'/'}
+         >
           <img src={HEADER_IMAGE} alt='header image' />
         </div>
       </a>
 
       {/* Display hamburger menu */}
       <div className='header__hamburgerMenu'>
-        <div className={`header__hamburgerMenuIcon ${_isMenuOpen ? 'active' : ''}`}>
+        <div className={`header__hamburgerMenuIcon ${_isMenuOpen ? 'active' : ''}`} onClick={toggleDrawer()}>
           <React.Fragment>
             {/* Drawer Trigger */}
-            <Button onClick={toggleDrawer()}><HamburgerMenu /></Button>
+            <Button
+              disableRipple
+              disableElevation
+              sx={{
+                backgroundColor: 'transparent',
+                boxShadow: 'none',
+                '&:hover': {
+                  backgroundColor: 'transparent'
+                },
+                minWidth: 0,
+                padding: 0
+              }}
+            >
+              <HamburgerMenu />
+            </Button>
             <Drawer
               className='header__customDrawer'
               anchor={DRAWER_POSITION}
@@ -235,17 +252,7 @@ function HamburgerMenu() {
   );
 }
 
-
 function Body() {
-  const theme = useTheme();
-  const isMobile = useMediaQuery('(max-width:768px)');
-  const drawerWidth = isMobile ? '100vw' : 300;
-
-  const navigate = useNavigate();  // 修正: useNavigate を取得
-  const location = useLocation();  // 修正: useLocation を取得
-
-  const [open, setOpen] = React.useState(false);
-
   return (
     <div className="body__container">
       {SectionComponentData.map(({ id, component }, index) => (
