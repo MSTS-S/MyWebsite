@@ -5,24 +5,24 @@ import './FunctionCardStyle.css';
 function FunctionCard({ data }) {
   const msg = "Check Function →"
   const navigate = useNavigate();
-  
+
   const handleCardClick = (url) => {
     navigate(url);
   };
 
   return (
-    <div className='card-wrapper'>
+    <div className='reactFunctions__container'>
       {data.map((item, index) => (
         <div key={index}>
-          <div className="card-container" onClick={() => handleCardClick(item.url)}>
-            <div className='function-thumbnail'>
+          <div className="reactFunctions__cardContainer" onClick={() => handleCardClick(item.url)}>
+            <div className='reactFunctions__thumbnail'>
               <img src={item.img} alt={item.img_alt} />
             </div>
-            <div className='function-text'>
-              <div className='function-title'>
+            <div className='reactFunctions__text'>
+              <div className='reactFunctions__title'>
                 {item.title}
               </div>
-              <div className='function-msg'>
+              <div className='reactFunctions__msg'>
                 {msg}
               </div>
             </div>

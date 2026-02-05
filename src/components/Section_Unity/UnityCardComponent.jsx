@@ -8,52 +8,51 @@ const UnityCardComponent = ({ data }) => {
     };
 
     return (
-        <div className='ProjectList'>
+        <div className='unity__container'>
             {data.map((item, index) => (
-                <div className="gameCard card-radius_02" key={index}>
-                    <article className="card_02Game">
-                        <div className="cardContent">
-                            <div className="card__Gameimage">
-                                <img src={item.img} alt="Card" />
-                            </div>
+                <div className="unity__cardContainer" key={index}>
+                    {/* Left: Project Representative Image */}
+                    <div className="unity__projectRepresentativeImage">
+                        <img src={item.img} alt="Card" />
+                    </div>
 
-                            <div className="card__body_game">
-                                <div className="card__gameTitle">
-                                    <p>{item.title}</p>
-                                </div>
-
-                                <div className="card__gameDiscription">
-                                    <div className="gameCard_Small card-radius_02game">
-                                        <div className="card_02Game">{item.j1}</div>
-                                    </div>
-                                    <div className="gameCard_Small card-radius_02game">
-                                        <div className="card_02Game">{item.j2}</div>
-                                    </div>
-                                    <div className="gameCard_Small card-radius_02game">
-                                        <div className="card_02Game">{item.j3}</div>
-                                    </div>
-                                </div>
-
-                                <div className="card__gameDiscription">
-                                    <p>{item.description}</p>
-                                    <p>{item.manipulation}</p>
-                                </div>
-                                <div className="NameCardDisplay">
-                                    <Button
-                                        variant="contained"
-                                        sx={{
-                                            background: "black",
-                                            color: "white",
-                                            ":hover": { background: "black" },
-                                        }}
-                                        onClick={() => openNewTab(item.path)}
-                                    >
-                                        Click to Play
-                                    </Button>
-                                </div>
-                            </div>
+                    {/* Right: Project Description */}
+                    <div className="unity__projectDescriptionContainer">
+                        <div className="unity__projectTitle">
+                            <div>{item.title}</div>
                         </div>
-                    </article>
+
+                        <div className="unity__underline"></div>
+
+                        <div className="unity__categoryContainer">
+                            <div className="unity__categoryName"> {item.j1} </div>
+                            <div className="unity__categoryName"> {item.j2} </div>
+                            <div className="unity__categoryName"> {item.j3} </div>
+                        </div>
+
+                        <div className="unity__projectExplanation">
+                            <p>{item.description}</p>
+                            <p>{item.manipulation}</p>
+                        </div>
+                        <div className='unity__playButton' onClick={() => openNewTab(item.path)}>
+                            <Button
+                                disableRipple
+                                disableElevation
+                                sx={{
+                                    color: '#fff',
+                                    fontWeight: 'bold',             
+                                    backgroundColor: 'transparent',
+                                    '&:hover': {
+                                        backgroundColor: 'transparent'
+                                    },
+                                    minWidth: 0,
+                                    padding: 0
+                                }}
+                            >
+                                Click to Play
+                            </Button>
+                        </div>
+                    </div>
                 </div>
             ))}
         </div>

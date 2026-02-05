@@ -103,10 +103,16 @@ React Functionsに新しくLogin Formを追加しました．また，Career His
 > **date: 2025-02-03**
 
 研究活動の内容をアップデートしました．
+<br><br>
 
 > **date: 2025-05-04**
 
 Profileの変更、Drawerの挙動変更、Component管理の追加を行いました．
+<br><br>
+
+> **date: 2026-02-05**
+
+Academic Researchにコンテンツを追加し、スタイルの変更を行いました．
 <br><br>
 
 
@@ -173,8 +179,6 @@ Profileの変更、Drawerの挙動変更、Component管理の追加を行いま�
 │   │   │   ├── BusinessCard.css
 │   │   │   ├── BusinessCard.jsx
 │   │   │   └── MSTS_BusinessCard.png
-│   │   ├── Section_Copyright /
-│   │   │   └──  Copyright.jsx
 │   │   ├── Section_History /
 │   │   │   ├── History.jsx
 │   │   │   ├── HistoryStyleComponent.css
@@ -190,7 +194,8 @@ Profileの変更、Drawerの挙動変更、Component管理の追加を行いま�
 │   │   ├── Section_Programing /
 │   │   │   ├── img /...
 │   │   │   ├── Priograming.jsx
-│   │   │   └── ProgramingCard.jsx
+│   │   │   ├── ProgramingCardStyle.css
+│   │   │   └── ProgramingCardStyle.jsx
 │   │   ├── Section_Qualification /
 │   │   │   ├── Qualification.jsx
 │   │   │   ├── QualificationStyleComponent.css

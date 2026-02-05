@@ -48,6 +48,21 @@
   background-color: var(--FOOTER_BACKGROUND_COLOR);
 }
 
+/* contents of App__footer */ 
+.footer__container {
+  background-color: #a3a3a3;
+  width: 100%;
+  height: 100%;
+}
+
+.footer__text {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
 
 
 
@@ -93,7 +108,6 @@
   display: flex;
   margin-left: 20px;
   align-items: center;
-  cursor: pointer;
   color: white;
 }
 
@@ -108,6 +122,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  cursor: pointer;
   height: 100%;
 }
 
@@ -168,21 +183,6 @@
   border-radius: 2px; /* 下線の角を少し丸める（任意） */
 }
 
-/* contents of App__footer */ 
-.footer__container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-.footer__text {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
 
 
 
@@ -205,6 +205,10 @@
   padding: 0 !important;
   cursor: pointer;
   z-index: 3005 !important;
+}
+
+.header__hamburgerMenuIcon:hover {
+  background-color: #ffffff;
 }
 
 .hamburgerMenu__Line {
@@ -311,17 +315,6 @@
   transform: translateY(var(--HEADER_HEIGHT));
   height: calc(100% - var(--HEADER_HEIGHT));
   background-color: rgba(0, 0, 0, 0.01);
-}
-
-.hamburgerMenu__item {
-  width: 100%;
-  cursor: pointer;
-  color: black;
-  text-decoration: none;
-}
-
-.hamburgerMenu__item:hover {
-  background-color: rgb(0, 0, 0, 0.1);
 }
 
 .header__categoryName {
