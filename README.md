@@ -6,113 +6,13 @@ This is the package of my website. All previously released versions are managed 
 
 ## 概要
 こちらは，私自身が公開している[webサイト](https://msts-hp.com/)のパッケージに関するリリースノート及び使用方法となっています．branchの名前に含まれる日付が更新日と対応しており，過去の全ての公開バージョンがここから確認することができます．なお，本Webサイトではホスティングサービスとして[firebase](https://firebase.google.com/?hl=ja)を使用しています．バックエンド開発をサポートするプラットフォームであるfirebaseを用いてWebサイトのホスティングを行うと，SSLが自動的に提供されるため，その更新手続きが不必要であるという利点があります．
+
+<br><br>
+
+公開しているWebサイトは2023年10月16日に初めてデプロイしました．なお，開発当初はWebサイトのTemplateが公開されている[サイト](https://html5up.net/)からTemplateをダウンロード後，編集を加え，公開していました．
 > [!IMPORTANT]
 > mainブランチには，最新のリリースバージョンが含まれています(最終更新日：2025/02/03)．
 
-<br><br>
-
-
-
-## リリースノート
-> **date: 2023-10-16**
-
-webサイト初公開日です．WebサイトのTemplateが公開されている[サイト](https://html5up.net/)からダウンロード後，編集を加えました．PROFILE，CAREER HISTORY, ACADEMIC REASERCH, PROGRAMING, CERTIFICATIONS, UNITY PROJECT, SNSLINK/CONTACTから構成されています．
-<br><br>
-
-> **date: 2024-02-17**
-
-ACADEMIC REASERCHに学部における研究 - Research in Bachelor's Degreeを追加しました．ただし，研究内容については新規性保持のため未公開です．また，UNITY PROJECTで公開されている自作のゲームの説明文を一部改変し，ゲーム画面におけるUIを変更しました．
-<br><br>
-
-> **date: 2024-02-24**
-
-WebサイトのfaviconをMicrosoft PowerPointで作成した新しいデザインに変更しました．また，名刺カードのデザインを変更しました．さらにSNSLINK/Contactにおいて表示されているアプリのアイコンをカラーから白黒の丸形に変更しました．
-<br><br>
-
-> **date: 2024-02-28**
-
-WebサイトのfaviconをMicrosoft PowerPointで作成した新しいデザインに変更しました．かなり工夫を凝らしたデザインとなっていて，よりブランドのロゴのような印象を与えるものを作成しました．
-<br><br>
-
-> **date: 2024-04-02**
-
-[東京都立大学院](https://www.tmu.ac.jp/academics/graduate.html)に進学したため，PROFILEに記載されている所属を変更し，名刺のデザイン変更を行いました．また，CAREER HISTORYに記載されている経歴の変更及び追記を行いました．CERTIFICATIONSに学士（情報科学）を追記しました．
-<br><br>
-
-> **date: 2024-04-20**
-
-UNITY PROJECTにMovie Theaterを追加しました．Webブラウザ上での実行のため，UIに凝って作成しました．なお，こちらの映画館で上映される映像は映像生成AIの[Haiper](https://haiper.ai/)を利用しました．
-<br><br>
-
-> **date: 2024-05-26**
-
-PROGRAMINGにおけるプログラミング言語や開発環境のアイコンを一部変更しました．また，SNSLINK/CONTACTにGitHubのアイコンを追記し，色を白黒からカラーに変更するなどの一部改変を行いました．
-<br><br>
-
-> **date: 2024-08-31**
-
-今まではフロントエンド開発のフレームワークやライブラリ等を使用せず，HTMLとCSSをVS Codeにべた書きしていましたが，Reactを用いたWeb開発へと変更しました．それに伴ってWebサイトの機能やUIを大幅に変更いたしました．変更点は以下の通りです．
-<br>
-- 名刺カードの表示方法
-    - 画面遷移によって表示していた名刺カードをポップアップウィンドウに切り替えました．
-
-- 固定ヘッダーの追加
-    - 画面上部に固定されるヘッダーを追加し，Webサイトのタイトルが常に表示されるように変更しました．
-
-- ナビゲーションメニューのUI変更
-    - 以前のナビゲーションから，レスポンシブ対応のドロワー兼ハンバーガーメニューに変更いたしました．
-    - 画面幅が768px以下のデバイスではハンバーガーメニューが，それより大きい画面幅のデバイスではドロワーが適用されます．
-    - モバイルデバイスとデスクトップの両方で使いやすいUIを実現しました．
-
-- CAREER HISTORYにおけるタイムラインUIの変更
-    - MUIのTimelineテンプレートを用いて，タイムラインにアイコンを表示することにより，内容が一目でわかりやすいように改変しました．
-
-- ACADEMIC RESEARCHのUIの変更
-    - MUIのAccordionを用いて，その他の研究活動のUIをシンプルなものに変更しました．
-
-- PROGRAMINGの内容変更
-    - MATLABを削除し，代わりにHTML & CSS, React, MUIを追加しました．
-
-<br><br>
-
-> **date: 2024-09-16**
-
-モバイルデバイス(画面幅 768px以下)でdrawerを表示後，スクロールを行うとメインコンテンツがスクロールしてしまう問題を修正しました．
-<br><br>
-
-> **date: 2024-09-17**
-
-WebサイトにTabを追加しました．また，Academic Researchに学会参加のAccordionを追加しました．
-<br><br>
-
-> **date: 2024-09-30**
-
-QRCodeGeneratorを追加しました．また，Node.jsプロジェクトで使用する依存パッケージがインストールされるディレクトリである，node_moduleに含まれる脆弱性を除去しました．
-<br><br>
-
-> **date: 2024-10-01**
-
-細かなUIの修正を行いました．
-<br><br>
-
-> **date: 2024-11-12**
-
-React Functionsに新しくLogin Formを追加しました．また，Career Historyの内容を一部更新しました．
-<br><br>
-
-> **date: 2025-02-03**
-
-研究活動の内容をアップデートしました．
-<br><br>
-
-> **date: 2025-05-04**
-
-Profileの変更、Drawerの挙動変更、Component管理の追加を行いました．
-<br><br>
-
-> **date: 2026-02-05**
-
-Academic Researchにコンテンツを追加し、スタイルの変更を行いました．
 <br><br>
 
 
@@ -175,10 +75,6 @@ Academic Researchにコンテンツを追加し、スタイルの変更を行い
 │   │   │   ├── AcademicResearch.jsx
 │   │   │   ├── AccordionStyleComponent.css
 │   │   │   └──  AccordionStyleComponent.jsx
-│   │   ├── Section_BusinessCard /
-│   │   │   ├── BusinessCard.css
-│   │   │   ├── BusinessCard.jsx
-│   │   │   └── MSTS_BusinessCard.png
 │   │   ├── Section_History /
 │   │   │   ├── History.jsx
 │   │   │   ├── HistoryStyleComponent.css
