@@ -4,93 +4,69 @@
 export const journal = [
   {
     id: "Serizawa2026TVCG",
-    entryType: "article",
-    author: [
-      "Masatoshi Serizawa",
-      "Peerawat Pannattee",
-      "Yosuke Fukuchi",
-      "Vibol Yem",
-      "Yasushi Ikei",
-      "Nobuyuki Nishiuchi"
-    ],
+    author: ["Masatoshi Serizawa", "Peerawat Pannattee", "Yosuke Fukuchi", "Vibol Yem", "Yasushi Ikei", "Nobuyuki Nishiuchi"],
     title: "Dual Body Sensation: Effects of Visio-Tactile Presentation Methods in Parallel Agent Control",
     journal: "IEEE Transactions on Visualization and Computer Graphics (IEEE TVCG)",
     year: 2026,
     volume: null,
     number: null,
     pages: null,
-    doi: null,
-    note: "Accepted for publication (to appear)",
-    links: {
-      doi: null,
-      pdf: null,
-      project: null,
-    },
+    doi: "10.1109/TVCG.2026.3679124",
   },
 ];
 
 
 export const proceedings = [
   {
+    id: "KST2026",
+    author: ["Nattamon Srithammee", "Peerawat Pannattee", "Masatoshi Serizawa", "Yosuke Fukuchi", "Nobuyuki Nishiuchi"],
+    title: "Quantifying Audio Motion Coupling in Virtual Reality through Gaze and Head Dynamics",
+    booktitle: "2026 18th International Conference on Knowledge and Smart Technology (KST)",
+    year: 2026,
+    pages: "200-206",
+    doi: "10.1109/KST67832.2026.11432382",
+    url: null
+  },
+  {
     id: "WHC2025",
-    entryType: "inproceedings",
-    author: [
-      "Masatoshi Serizawa",
-      "Yosuke Fukuchi",
-      "Vibol Yem",
-      "Yasushi Ikei",
-      "Nobuyuki Nishiuchi"
-    ],
+    author: ["Masatoshi Serizawa", "Yosuke Fukuchi", "Vibol Yem", "Yasushi Ikei", "Nobuyuki Nishiuchi"],
     title: "Sensation of Dual Body through Visual-Haptic Stimulation by Two Remote Spaces",
-    venue: "IEEE World Haptics Conference 2025 (WHC2025)",
+    booktitle: "IEEE World Haptics Conference 2025 (WHC2025)",
     year: 2025,
+    pages: null,
+    doi: null,
+    url: null
   },
   {
     id: "ICAT2024",
-    entryType: "inproceedings",
-    author: [
-      "Masatoshi Serizawa",
-      "Yosuke Fukuchi",
-      "Vibol Yem",
-      "Yasushi Ikei",
-      "Nobuyuki Nishiuchi",
-    ],
+    author: ["Masatoshi Serizawa", "Yosuke Fukuchi", "Vibol Yem", "Yasushi Ikei", "Nobuyuki Nishiuchi"],
     title: "Study on multiple-virtual body perception: Effects of different spatial presentation and command input methods",
-    booktitle: "The 34th International Conference on Artificial Reality and Telexistence & The 29th Eurographics Symposium on Virtual Environments (ICAT-EGVE 2024)",
-    editor: ["Takeshi Tanabe", "Vibol Yem"],
+    booktitle: "The Joint 34th International Conference on Artificial Reality and Telexistence & The 29th Eurographics Symposium on Virtual Environments (ICAT-EGVE 2024)",
     year: 2024,
-    publisher: "The Eurographics Association",
-    issn: "1727-530X",
-    isbn: "978-3-03868-246-2",
+    pages: null,
     doi: "10.2312/egve.20241400",
+    url: null
   },
   {
     id: "VRSJ2024",
-    entryType: "inproceedings",
-    author: [
-      "芹澤 尚舜",
-      "福地 庸介",
-      "ヤェム ヴィボル",
-      "池井 寧",
-      "西内 信之",
-    ],
+    author: ["芹澤 尚舜", "福地 庸介", "ヤェム ヴィボル", "池井 寧", "西内 信之"],
     title: "空間提示手法と指令入力手法の違いがVR空間での多重身体認知に及ぼす影響",
     booktitle: "第29回日本バーチャルリアリティ学会大会 (VRSJ 2024)",
     year: 2024,
+    pages: null,
+    doi: null,
     url: "https://conference.vrsj.org/ac2024/program/doc/3D2-04.pdf",
   },
   {
     id: "ErgoDesignConcept2023",
     entryType: "inproceedings",
-    author: [
-      "芹澤 尚舜",
-      "ヤェム ヴィボル",
-      "池井 寧",
-      "西内 信之",
-    ],
+    author: ["芹澤 尚舜", "ヤェム ヴィボル", "池井 寧", "西内 信之"],
     title: "複数空間融合手法とアバタ入力インタフェースの違いによるVR空間での二重身体認知評価の提案",
     booktitle: "日本人間工学会 アーゴデザイン部会 コンセプト事例発表会 2023",
     year: 2023,
+    pages: null,
+    doi: null,
+    url: null
   },
 ];
 
@@ -159,10 +135,8 @@ export const demo = [
 export const others = [
   {
     id: "RA2022MetaverseAvatar",
-    entryType: "research_assistant",
-    author: ["メタバース内E-Commerceに向けた信頼性の高いRealistic-Avatar研究プロジェクト"],
-    venue: "東京都立大学",
-    year: 2022,
+    title: "メタバース内でのE-Commerceの実現に向けた信頼性の高い Realistic Avatar の研究",
+    year: "2022 ~ 2023",
     note: "Research Assistant",
   },
 ];
