@@ -6,12 +6,9 @@ This is the package of my website. All previously released versions are managed 
 
 ## 概要
 こちらは，私自身が公開している[webサイト](https://msts-hp.com/)のパッケージに関するリリースノート及び使用方法となっています．branchの名前に含まれる日付が更新日と対応しており，過去の全ての公開バージョンがここから確認することができます．なお，本Webサイトではホスティングサービスとして[firebase](https://firebase.google.com/?hl=ja)を使用しています．バックエンド開発をサポートするプラットフォームであるfirebaseを用いてWebサイトのホスティングを行うと，SSLが自動的に提供されるため，その更新手続きが不必要であるという利点があります．
-
-<br><br>
+<br>
 
 公開しているWebサイトは2023年10月16日に初めてデプロイしました．なお，開発当初はWebサイトのTemplateが公開されている[サイト](https://html5up.net/)からTemplateをダウンロード後，編集を加え，公開していました．
-> [!IMPORTANT]
-> mainブランチには，最新のリリースバージョンが含まれています(最終更新日：2025/02/03)．
 
 <br><br>
 
