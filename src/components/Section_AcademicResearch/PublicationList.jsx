@@ -1,130 +1,167 @@
-// src/components/PublicationList.jsx
-import React, { useMemo } from "react";
+import React from "react";
+import { publicationGroups } from "./PublicationData";
 
-function sortByYearDesc(items = []) {
-    return [...items].sort((a, b) => (b.year ?? 0) - (a.year ?? 0));
-}
+// ===============================
+// ユーティリティ
+// ===============================
 
-function containsJapanese(text = "") {
-    return /[ぁ-んァ-ン一-龥]/.test(text);
+function isContainJapanese(text = "") {
+    let result = false
+
+    if (/[ぁ-んァ-ン一-龥]/.test(text))
+    {
+        result = true
+    }
+  
+    return result;
 }
 
 function formatAuthors(authors = []) {
-    if (authors.length === 0) return "";
-
-    const joined = authors.join(" ");
-    const isJapanese = containsJapanese(joined);
-
-    if (isJapanese) {
-        // 日本語：読点で並べる（最後も「、」のままが自然）
+    // 日本語の場合
+    if (isContainJapanese(authors.join(""))) 
+    {
         return authors.join("，");
     }
 
-    // 英語：and形式
-    if (authors.length === 1) return authors[0];
-    if (authors.length === 2) return `${authors[0]} and ${authors[1]}`;
-    return `${authors.slice(0, -1).join(", ")}, and ${authors[authors.length - 1]}`;
+    // 英語の場合
+    else if (authors.length === 1)
+    {
+        return authors[0];
+    }
+    else if (authors.length === 2)
+    {
+        return `${authors[0]} and ${authors[1]}`;
+    }
+    else
+    {
+        return `${authors.slice(0, -1).join(", ")}, and ${authors[authors.length - 1]}`;
+    }
 }
 
-function PublicationItem({ item }) {
-    const authorsText = formatAuthors(item.author || item.authors || []);
+// ===============================
+// 共通パーツ
+// ===============================
 
-    const venueText =
-        item.journal || item.booktitle || item.venue || "";
-
-    const volumeText = item.volume ? `, ${item.volume}` : "";
-    const numberText = item.number ? `(${item.number})` : "";
-    const pagesText = item.pages ? `:${item.pages}` : "";
-    const yearText = item.year ? `, ${item.year}` : "";
-
-    const doiText = item.doi ? item.doi : null;
-    const doiLink = doiText ? `https://doi.org/${doiText}` : null;
-
-    const urlText = item.url || null;
-
-    return (
-        <li style={{ padding: "10px 0", borderBottom: "1px solid #eee" }}>
-            <div style={{ fontSize: 15, lineHeight: 1.7 }}>
-                {/* Authors */}
-                <span style={{ fontStyle: "normal" }}>{authorsText}.</span>{" "}
-
-                {/* Title */}
-                <span style={{ fontStyle: "normal" }}>"{item.title},"</span>{" "}
-
-                {/* Journal / Proceedings */}
-                <span style={{ fontStyle: "italic" }}>{venueText}</span>
-
-                {/* volume(number):pages, year */}
-                <span>
-                    {volumeText}
-                    {numberText}
-                    {pagesText}
-                    {yearText}.
-                </span>
-
-                {/* note */}
-                {item.note ? (
-                    <span style={{ marginLeft: 6 }}>
-                        {item.note}.
-                    </span>
-                ) : null}
-
-                {/* DOI */}
-                {doiText ? (
-                    <span style={{ marginLeft: 6 }}>
-                        doi:{" "}
-                        <a href={doiLink} target="_blank" rel="noopener noreferrer">
-                            {doiText}
-                        </a>
-                    </span>
-                ) : null}
-
-                {urlText ? (
-                    <span style={{ marginLeft: 6 }}>
-                        URL:{" "}
-                        <a href={urlText} target="_blank" rel="noopener noreferrer">
-                            {urlText}
-                        </a>
-                    </span>
-                ) : null}
-            </div>
-        </li>
-    );
+function DoiLink({ doi }) {
+  if (!doi) return null;
+  return (
+      <> doi: <a href={`https://doi.org/${doi}`} target="_blank" rel="noopener noreferrer">{doi}</a></>
+  );
 }
 
-
-function PublicationSection({ title, items }) {
-    if (!items || items.length === 0) return null;
-
-    return (
-        <section style={{ margin: "18px 0 26px" }}>
-            <h3 style={{ margin: "0 0 10px", fontSize: 24 }}>{title}</h3>
-            <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
-                {items.map((it) => (
-                    <PublicationItem key={it.id} item={it} />
-                ))}
-            </ul>
-        </section>
-    );
+function UrlLink({ url }) {
+  if (!url) return null;
+  return (
+      <> URL: <a href={url} target="_blank" rel="noopener noreferrer">{url}</a></>
+  );
 }
+
+// ===============================
+// カテゴリ別アイテムコンポーネント
+// ===============================
+
+function JournalItem({ item }) {
+  const authors = formatAuthors(item.author);
+  const volume = item.volume ? `, vol. ${item.volume}` : "";
+  const number = item.number ? `(${item.number})` : "";
+  const pages = item.pages ? `, pp. ${item.pages}` : "";
+
+  return (
+    <li style={{ padding: "10px 0", borderBottom: "1px solid #eee" }}>
+      <div style={{ fontSize: 15, lineHeight: 1.7 }}>
+        {authors}.{" "}
+        <>"{item.title}," {" "}</>
+        <em>{item.journal}</em>
+        {volume}{number}{pages}, {item.year}.
+        <DoiLink doi={item.doi} />
+      </div>
+    </li>
+  );
+}
+
+function ProceedingsItem({ item }) {
+  const authors = formatAuthors(item.author);
+  const pages = item.pages ? `, pp. ${item.pages}` : "";
+
+  return (
+    <li style={{ padding: "10px 0", borderBottom: "1px solid #eee" }}>
+      <div style={{ fontSize: 15, lineHeight: 1.7 }}>
+        {authors}.{" "}
+        "{item.title}," {" "}
+        <em>{item.booktitle}</em>
+        {pages}, {item.year}.
+        <DoiLink doi={item.doi} />
+        <UrlLink url={item.url} />
+      </div>
+    </li>
+  );
+}
+
+function DemoItem({ item }) {
+  const authors = formatAuthors(item.author);
+
+  return (
+    <li style={{ padding: "10px 0", borderBottom: "1px solid #eee" }}>
+      <div style={{ fontSize: 15, lineHeight: 1.7 }}>
+        {authors}.{" "}
+        "{item.title}," {" "}
+        <em>{item.venue}</em>
+        , {item.year}.
+        <DoiLink doi={item.doi} />
+        <UrlLink url={item.url} />
+      </div>
+    </li>
+  );
+}
+
+function OthersItem({ item }) {
+  return (
+    <li style={{ padding: "10px 0", borderBottom: "1px solid #eee" }}>
+      <div style={{ fontSize: 15, lineHeight: 1.7 }}>
+        {item.title}.{" "}
+        {item.year}.{" "}
+        {item.note}
+      </div>
+    </li>
+  );
+}
+
+// ===============================
+// セクション
+// ===============================
+
+function PublicationSection({ title, items, Component }) {
+  if (!items || items.length === 0) return null;
+
+  return (
+    <section style={{ margin: "18px 0 26px" }}>
+      <h3 style={{ margin: "0 0 10px", fontSize: 24 }}>{title}</h3>
+      <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
+        {items.map((it) => (
+          <Component key={it.id} item={it} />
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+// ===============================
+// メイン
+// ===============================
 
 export default function PublicationList({ groups }) {
-    // groups = { journal:[], proceedings:[], demo:[], others:[] }
-    const sorted = useMemo(() => {
-        return {
-            journal: sortByYearDesc(groups?.journal ?? []),
-            proceedings: sortByYearDesc(groups?.proceedings ?? []),
-            demo: sortByYearDesc(groups?.demo ?? []),
-            others: sortByYearDesc(groups?.others ?? []),
-        };
-    }, [groups]);
+  const SECTIONS = [
+    { title: "論文誌（Journal）",          items: groups.journal,     Component: JournalItem },
+    { title: "学会論文集（Proceedings）",   items: groups.proceedings, Component: ProceedingsItem },
+    { title: "デモ展示（Exhibition）",      items: groups.demo,        Component: DemoItem },
+    { title: "その他（Others）",            items: groups.others,      Component: OthersItem },
+  ];
 
-    return (
-        <div>
-            <PublicationSection title="論文誌（Journal）" items={sorted.journal} />
-            <PublicationSection title="学会論文集（Proceedings）" items={sorted.proceedings} />
-            <PublicationSection title="デモ展示（Exhibition）" items={sorted.demo} />
-            <PublicationSection title="その他（Others）" items={sorted.others} />
-        </div>
-    );
+  return (
+    <div>
+      {SECTIONS.map(({ title, items, Component }) => (
+        <PublicationSection key={title} title={title} items={items} Component={Component} />
+      ))}
+    </div>
+  );
 }

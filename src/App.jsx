@@ -104,12 +104,12 @@ const ContactData = [
   {
     name: 'Instagram',
     icon: <INSTAGRAM_ICON />,
-    link: 'https://www.instagram.com/m_seri_m/'
+    link: 'https://www.instagram.com/rn._sts/'
   },
   {
     name: 'E-Mail',
     icon: <MAIL_ICON />,
-    link: 'mailto:serizawa-masatoshi@ed.tmu.ac.jp'
+    link: 'https://msts-hp.com/'
   },
 ];
 
