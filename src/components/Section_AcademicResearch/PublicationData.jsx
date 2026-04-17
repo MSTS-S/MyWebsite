@@ -141,9 +141,11 @@ export const others = [
   },
 ];
 
+// ハイライト対象の著者名
+export const HIGHLIGHT_AUTHORS = ["Masatoshi Serizawa", "芹澤 尚舜"];
 
-// 必要ならまとめて渡せる形も用意（任意）
-export const publicationGroups = {
+// 必要ならまとめて渡せる形も用意
+export const publicationData = {
   journal,
   proceedings,
   demo,

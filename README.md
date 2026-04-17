@@ -52,7 +52,7 @@ This is the package of my website. All previously released versions are managed 
 <br><br>
 
 ## ファイル構成
-ここでは，最新バージョンのファイル構成を記載しています．なお，現在の最新バージョンは**ver11 : 2024-09-30**です．
+ここでは，本Projectのファイルツリーを記載しています．
 
 <br>
 
@@ -70,8 +70,8 @@ This is the package of my website. All previously released versions are managed 
 │   │   ├── img /       # Header image
 │   │   ├── Section_AcademicResearch /
 │   │   │   ├── AcademicResearch.jsx
-│   │   │   ├── AccordionStyleComponent.css
-│   │   │   └──  AccordionStyleComponent.jsx
+│   │   │   ├── PublicationData.jsx
+│   │   │   └── PublicationList.jsx
 │   │   ├── Section_History /
 │   │   │   ├── History.jsx
 │   │   │   ├── HistoryStyleComponent.css
@@ -115,11 +115,14 @@ This is the package of my website. All previously released versions are managed 
 │   ├── index.js
 │   ├── reportWebVitals.js
 │   └── setupTest.js
+├── .firebaserc
 ├── .gitattributes
 ├── .gitignore
-├── package-lock.json
+├── .firebase.json
+├── LICENSE.txt
 ├── package.json
-└── README.md
+├── README.md
+└── yarn.lock
 </pre>
 
 <br><br>
