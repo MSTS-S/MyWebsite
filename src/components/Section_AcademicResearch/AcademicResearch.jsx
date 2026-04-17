@@ -1,8 +1,7 @@
 import React from 'react';
-import AccordionStyleComponent from './AccordionStyleComponent';
-//import { publications } from "./PuclicationData.jsx";
 import PublicationList from "./PublicationList";
-import { publicationGroups } from "./PublicationData";
+import { publicationData } from "./PublicationData";
+
 /* CSS */
 import '../Section_Title.css';
 import '../Hyperlink.css';
@@ -40,7 +39,7 @@ function AcademicResearch() {
             <div className='sectionSubtitle'>ー研究活動ー</div>
             <div className="Contents" >
                 <div style={styles.contentText}>
-                    <PublicationList groups={publicationGroups} />
+                    <PublicationList items={publicationData} />
                 </div>
             </div>
         </div>

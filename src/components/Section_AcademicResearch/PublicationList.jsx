@@ -1,41 +1,55 @@
 import React from "react";
-import { publicationGroups } from "./PublicationData";
+import { publicationData, HIGHLIGHT_AUTHORS } from "./PublicationData";
 
 // ===============================
 // ユーティリティ
 // ===============================
 
-function isContainJapanese(text = "") {
-    let result = false
-
-    if (/[ぁ-んァ-ン一-龥]/.test(text))
-    {
-        result = true
-    }
-  
-    return result;
+function renderAuthor(name) {
+  if (HIGHLIGHT_AUTHORS.includes(name)) {
+    return <span style={{ textDecoration: "underline" }}>{name}</span>;
+  }
+  return name;
 }
 
 function formatAuthors(authors = []) {
-    // 日本語の場合
-    if (isContainJapanese(authors.join(""))) 
-    {
-        return authors.join("，");
-    }
+  const isJapanese = /[ぁ-んァ-ン一-龥]/.test(authors.join(""))
 
-    // 英語の場合
-    else if (authors.length === 1)
-    {
-        return authors[0];
-    }
-    else if (authors.length === 2)
-    {
-        return `${authors[0]} and ${authors[1]}`;
-    }
-    else
-    {
-        return `${authors.slice(0, -1).join(", ")}, and ${authors[authors.length - 1]}`;
-    }
+  // 日本語の場合
+  if (isJapanese) {
+    return authors.map((a, i) => (
+      <React.Fragment key={i}>
+        {renderAuthor(a)}
+        {i < authors.length - 1 ? "，" : ""}
+      </React.Fragment>
+    ));
+  }
+
+
+
+  // 英語の場合
+  if (authors.length === 1) {
+    return renderAuthor(authors[0]);
+  }
+
+  if (authors.length === 2) {
+    return (
+      <>
+        {renderAuthor(authors[0])} and {renderAuthor(authors[1])}
+      </>
+    );
+  }
+  
+  return (
+    <>
+      {authors.slice(0, -1).map((a, i) => (
+        <React.Fragment key={i}>
+          {renderAuthor(a)}{", "}
+        </React.Fragment>
+      ))}
+      {"and "}{renderAuthor(authors[authors.length - 1])}
+    </>
+  );
 }
 
 // ===============================
@@ -149,12 +163,12 @@ function PublicationSection({ title, items, Component }) {
 // メイン
 // ===============================
 
-export default function PublicationList({ groups }) {
+export default function PublicationList({ items }) {
   const SECTIONS = [
-    { title: "論文誌（Journal）",          items: groups.journal,     Component: JournalItem },
-    { title: "学会論文集（Proceedings）",   items: groups.proceedings, Component: ProceedingsItem },
-    { title: "デモ展示（Exhibition）",      items: groups.demo,        Component: DemoItem },
-    { title: "その他（Others）",            items: groups.others,      Component: OthersItem },
+    { title: "論文誌（Journal）",          items: items.journal,     Component: JournalItem },
+    { title: "学会論文集（Proceedings）",   items: items.proceedings, Component: ProceedingsItem },
+    { title: "デモ展示（Exhibition）",      items: items.demo,        Component: DemoItem },
+    { title: "その他（Others）",            items: items.others,      Component: OthersItem },
   ];
 
   return (
