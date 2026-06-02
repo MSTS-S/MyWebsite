@@ -8,9 +8,9 @@ export const journal = [
     title: "Dual Body Sensation: Effects of Visio-Tactile Presentation Methods in Parallel Agent Control",
     journal: "IEEE Transactions on Visualization and Computer Graphics (IEEE TVCG)",
     year: 2026,
-    volume: null,
-    number: null,
-    pages: null,
+    volume: 32,
+    number: "05",
+    pages: "3914-3923",
     doi: "10.1109/TVCG.2026.3679124",
   },
 ];
