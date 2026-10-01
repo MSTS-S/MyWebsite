@@ -108,7 +108,7 @@ const programing_card_data = [
         title: 'Material UI',
         content:
             <>
-                Career HitoryセクションのTimelineやAcademic ResearchセクションのAccordion、ナビゲーションのドロワーの開発などに用いました。
+                Career HitoryセクションのTimelineyやナビゲーションのドロワーの開発などに用いました。
                 シンプルで綺麗なUIの実装ができます。
             </>,
     }

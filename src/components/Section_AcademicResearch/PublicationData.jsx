@@ -3,7 +3,18 @@
 
 export const journal = [
   {
-    id: "Serizawa2026TVCG",
+    id: "2026Access",
+    author: ["Nattamon Srithammee", "Masatoshi Serizawa", "Yosuke Fukuchi", "Nobuyuki Nishiuchi"],
+    title: "Time-Resolved Analysis of the Influence of Sound Design Effects on Behavioral Kinematics in Virtual Reality",
+    journal: "IEEE Access",
+    year: 2026,
+    volume: 14,
+    number: null,
+    pages: "143914-143938",
+    doi: "10.1109/ACCESS.2026.3733386",
+  },
+  {
+    id: "2026TVCG",
     author: ["Masatoshi Serizawa", "Peerawat Pannattee", "Yosuke Fukuchi", "Vibol Yem", "Yasushi Ikei", "Nobuyuki Nishiuchi"],
     title: "Dual Body Sensation: Effects of Visio-Tactile Presentation Methods in Parallel Agent Control",
     journal: "IEEE Transactions on Visualization and Computer Graphics (IEEE TVCG)",

@@ -259,14 +259,16 @@ function Body() {
         <div
           id={id.toLowerCase()}
           key={index}
-          className={
+          className={`section__outer ${
             index === 0 ? 'backgroundColor-profile'
               : index % 2 === 0 ? 'backgroundColor-even'
                 : 'backgroundColor-odd'
-          }
-          style={{ padding: '5%' }}
+          }`}
         >
-          {component}
+          {/* 背景は画面幅いっぱい、中身は最大幅で中央寄せ */}
+          <div className='section__inner'>
+            {component}
+          </div>
         </div>
       ))}
     </div>);
