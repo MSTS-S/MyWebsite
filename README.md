@@ -31,7 +31,7 @@ This is the package of my website. All previously released versions are managed 
   - root dirctoryに遷移してください．本projectの場合，MyWebsiteがroot directoryです．
   - 遷移後，Node.jsプロジェクトで使用する依存パッケージのinstallを以下のコマンドで行ってください．
   ```
-  yarn install
+  npm install
   ```
 
 **3. Visual Studioの起動**
@@ -47,7 +47,7 @@ This is the package of my website. All previously released versions are managed 
   ```
   - terminalを開いた後，以下のコマンドをたたきlocal serverを立ち上げてください．
   ```
-  yarn start
+  npm start
   ```
 <br><br>
 
@@ -120,9 +120,9 @@ This is the package of my website. All previously released versions are managed 
 ├── .gitignore
 ├── .firebase.json
 ├── LICENSE.txt
+├── package-lock.json
 ├── package.json
-├── README.md
-└── yarn.lock
+└── README.md
 </pre>
 
 <br><br>
@@ -159,15 +159,17 @@ node_modules/@svgr/plugin-svgo/node_modules/nth-check
           node_modules/react-scripts
 ```
 
-この脆弱性に対処するため，resolutionsフィールドをpackage.jsonに追加し，特定のバージョンを強制的に使用するようにする必要があります．しかし，これはJavaScriptのPackage Managerのうち，npmではなくyarnでしかサポートされていないため，yarnに切り替える必要があります
+この脆弱性に対処するため，package.jsonで依存パッケージの特定のバージョンを強制的に使用するようにする必要があります．以前はyarnのresolutionsフィールドで対応していましたが，npm（v8.3以降）ではoverridesフィールドで同じことができるため，現在はnpmに移行しています．
 
 ```
-"resolutions": {
+"overrides": {
     "nth-check": "^2.1.1",
   },
 ```
 
-そこで，このresolutionsフィールドをpackage.jsonに追加し，yarn installを再び行えば脆弱性は消去されます．
+そこで，このoverridesフィールドをpackage.jsonに追加し，npm installを再び行えば脆弱性は消去されます．
+
+なお，react-scripts 5が対応するTypeScriptは4系までです．npmは関連パッケージ（peer dependency）を自動でinstallするため，何も指定しないと最新のTypeScriptが入り，ESLintの設定読み込みでbuildが失敗します．そのため，devDependenciesでtypescriptを^4.9.5に固定しています．
 
 
 > **※余談ですが・・・**
@@ -187,10 +189,10 @@ node_modules/@svgr/plugin-svgo/node_modules/nth-check
 
 ```
 /* 脆弱性の診断．どのパッケージに脆弱性が発見されているのか判別可能． */
-yarn audit
+npm audit
 
 /* パッケージの依存関係の確認が可能．使用する際は[]は消す */
-yarn list [the name of the package]
+npm ls [the name of the package]
 ```
 <br><br>
 
@@ -205,7 +207,7 @@ yarn list [the name of the package]
   ```
   - [ ] 上記コマンドでVS Codeを立ち上げた後，ショートカットキー[CTRL] + [@]を用いてTERMINALを開き，以下のコマンドのいずれか一方をたたく．
   ```
-  yarn star
+  npm start
   ```
   <br>
 
