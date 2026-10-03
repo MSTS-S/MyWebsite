@@ -27,3 +27,9 @@ PowerPoint.pptx
 # Firebase（デプロイ時に自動で作られるキャッシュとログ）
 .firebase/
 firebase-debug.log
+
+# Vite移行前のバックアップ（動作確認後に削除予定）
+/_backup_before_vite/
+
+# Officeの一時ファイル（PowerPointなどを開いている間にできる）
+~$*

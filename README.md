@@ -61,7 +61,6 @@ This is the package of my website. All previously released versions are managed 
 ├── public /
 │   ├── Unity /...      #Unity Projectで用いられるアプリファイル
 │   ├── favicon.ico     
-│   ├── index.html      # メインのHTMLファイル
 │   ├── Logo.png
 │   ├── manifest.json
 │   └── robots.txt
@@ -110,19 +109,18 @@ This is the package of my website. All previously released versions are managed 
 │   │   └── ReactFunctionContentsStyle.css
 │   ├── App.css
 │   ├── App.jsx
-│   ├── App.test.js
 │   ├── index.css
-│   ├── index.js
-│   ├── reportWebVitals.js
-│   └── setupTest.js
+│   └── index.jsx       # エントリーポイント
 ├── .firebaserc
 ├── .gitattributes
 ├── .gitignore
 ├── .firebase.json
+├── index.html          # メインのHTMLファイル（Viteではroot directoryに置く）
 ├── LICENSE.txt
 ├── package-lock.json
 ├── package.json
-└── README.md
+├── README.md
+└── vite.config.js      # Viteの設定ファイル
 </pre>
 
 <br><br>
@@ -169,7 +167,7 @@ node_modules/@svgr/plugin-svgo/node_modules/nth-check
 
 そこで，このoverridesフィールドをpackage.jsonに追加し，npm installを再び行えば脆弱性は消去されます．
 
-なお，react-scripts 5が対応するTypeScriptは4系までです．npmは関連パッケージ（peer dependency）を自動でinstallするため，何も指定しないと最新のTypeScriptが入り，ESLintの設定読み込みでbuildが失敗します．そのため，devDependenciesでtypescriptを^4.9.5に固定しています．
+ただし，react-scripts（Create React App）は2025年2月に非推奨となり更新が止まったため，react-scriptsが内部で古いバージョンに固定しているパッケージ（webpack-dev-server等）の脆弱性はoverridesでは解消できなくなりました．そこで，2026年10月にビルドツールをreact-scriptsからViteへ移行しました．これによりreact-scripts由来の脆弱性は全て解消され（npm auditで0件），overridesフィールドやtypescriptの固定も不要になっています．
 
 
 > **※余談ですが・・・**
