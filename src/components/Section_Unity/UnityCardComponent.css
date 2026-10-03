@@ -1,95 +1,347 @@
-.unity__container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 3rem;
-    margin-top: 2rem;
-}
+/* ===== Unity Project（選択中のゲームを大きく表示＋ゲーム一覧） =====
+   色は変数にまとめてあるので、将来ライト／ダークを切り替えるときは
+   この変数の値だけを入れ替えればよい */
 
-.unity__cardContainer {
-  width: 80%;
-  background-color: #fafafa;
-  border-radius: 2rem;
-  display: flex;
-  padding: 2rem;
-  gap: 1rem;
-  box-shadow: 10px 10px 7px rgb(50, 50, 50);
-  border: 1px solid #e3e3e3;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.unity__projectRepresentativeImage {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.unity__projectRepresentativeImage img {
-  width: 300px;
-  height: auto;
-  border-radius: 1rem;
-}
-
-.unity__projectDescriptionContainer {
+.unityShowcase {
+  --u-card-bg: var(--c-card);
+  --u-card-bg-strong: var(--c-panel);
+  --u-border: var(--c-border);
+  --u-border-strong: var(--c-border-strong);
+  --u-text: var(--c-text-strong);
+  --u-text-sub: var(--c-text-sub);
+  --u-text-muted: var(--c-text-muted);
+  --u-accent: var(--c-accent);
+  --u-gradient: linear-gradient(90deg, #5B4DFF 0%, #FF16E8 100%);
+  --u-mono: ui-monospace, SFMono-Regular, Consolas, 'Courier New', monospace;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  flex: 1 1 400px;
+  gap: 28px;
+  text-align: left;
+  color: var(--u-text-sub);
 }
 
-.unity__projectTitle {
+/* ---------- スマホ非対応のお知らせ ---------- */
+
+.unityShowcase__notice {
   display: flex;
-  justify-content: center;
-  font-size: 2rem;
-  font-weight: bold;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border: 1px solid var(--u-border-strong);
+  border-radius: 8px;
+  background-color: var(--u-card-bg-strong);
+  font-size: 0.9rem;
+  line-height: 1.6;
 }
 
-.unity__underline {
-  margin-top: 4px;
+.unityShowcase__notice strong {
+  color: var(--u-text);
+}
+
+.unityShowcase__noticeIcon {
+  flex-shrink: 0;
+  color: var(--c-link);
+}
+
+.unityShowcase__noticeLink {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-size: 0.85rem;
+}
+
+/* ---------- 選択中のゲーム ---------- */
+
+.unityShowcase__feature {
+  display: grid;
+  grid-template-columns: minmax(0, 480px) minmax(0, 1fr);
+  gap: 48px;
+  align-items: center;
+}
+
+.unityShowcase__stage {
+  position: relative;
+  display: block;
   width: 100%;
-  height: 3px;
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
   background-color: #000;
 }
 
-.unity__categoryContainer {
-	display: flex;
-	justify-content: center;
-  align-items: center;
-	flex-wrap: wrap;
-  gap: 2rem;
-  margin: 1rem;
+.unityShowcase__stage img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.unity__categoryName {
-  background-color: #ffffff;
-  width: 150px;
-  height: 1.5rem;
-  border-radius: 10rem;
+.unityShowcase__detail {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.unityShowcase__count {
+  font-family: var(--u-mono);
+  font-size: 0.85rem;
+  color: var(--u-accent);
+}
+
+.unityShowcase__title {
+  margin: 0;
+  font-size: 2.25rem;
+  line-height: 1.2;
+  color: var(--u-text);
+}
+
+.unityShowcase__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.unityShowcase__tag {
+  padding: 4px 11px;
+  border: 1px solid var(--c-tag-border);
+  border-radius: 999px;
+  font-family: var(--u-mono);
+  font-size: 0.75rem;
+  color: var(--c-text-tag);
+}
+
+.unityShowcase__desc {
+  margin: 0;
+  font-size: 0.97rem;
+  line-height: 1.9;
+  min-height: calc(1.9em * 4);   /* 説明文の高さを4行分で固定し、ゲームを切り替えてもタイトルやボタンの位置がずれないようにする */
+}
+
+.unityShowcase__keys {
+  display: flex;
   align-items: center;
-  box-shadow: 0 4px 15px rgba(0,0,0, 0.25);
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--u-text-muted);
+}
+
+.unityShowcase__keys kbd {
+  padding: 3px 8px;
+  border: 1px solid var(--u-border-strong);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  background-color: var(--u-card-bg-strong);
+  font-family: var(--u-mono);
+  font-size: 0.75rem;
+  color: var(--c-text-soft);
+}
+
+.unityShowcase__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 6px;
+}
+
+/* Click to Play ボタン */
+.unityShowcase__play {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 56px;
+  padding: 0 34px;
+  border: none;
+  border-radius: 999px;
+  /* 青→ピンク→青を横に2倍の幅で敷き、ふだんは左半分（青→ピンク）を表示 */
+  background: linear-gradient(90deg, #5B4DFF 0%, #FF16E8 50%, #5B4DFF 100%);
+  background-size: 200% 100%;
+  background-position: 0% 0;
+  color: #FFFFFF;
+  font-family: inherit;
+  font-size: 1.05rem;
   font-weight: bold;
-  font-size: 1rem;
-}
-
-.unity__projectExplanation {
-  font-size: 1rem;
-}
-
-.unity__playButton {
-  width: 250px;
-  height: 2rem;
-  background-color: #000 !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.5rem;
   cursor: pointer;
-  color: #ffffff !important;
-  box-shadow: 0.5rem 0.5rem 0.75rem rgba(0,0,0, 0.5);
+  transition: transform 0.2s ease, box-shadow 0.25s ease, background-position 0.6s ease;
+}
+
+.unityShowcase__play svg {
+  transition: transform 0.2s ease;
+}
+
+/* ホバー：色が横に流れて（ピンク→青に入れ替わる）、ボタンが少し浮き、再生アイコンが右へ動く */
+.unityShowcase__play:hover {
+  background-position: 100% 0;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(91, 77, 255, 0.35);
+}
+
+.unityShowcase__play:hover svg {
+  transform: translateX(3px);
+}
+
+.unityShowcase__play:focus-visible {
+  outline: 2px solid var(--u-accent);
+  outline-offset: 3px;
+}
+
+.unityShowcase__play:active {
+  transform: scale(0.97);
+}
+
+/* 押した直後：下端に読み込みバーが伸びる */
+.unityShowcase__playBar {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 4px;
+  background-color: #FFFFFF;
+}
+
+.unityShowcase__play.is-opening .unityShowcase__playBar {
+  animation: unityShowcaseLoad 0.6s ease forwards;
+}
+
+@keyframes unityShowcaseLoad {
+  to { width: 100%; }
+}
+
+/* 開いた後：緑で「開きました」 */
+.unityShowcase__play.is-opened {
+  background: #1F3B2E;
+  color: #9EF0C2;
+  box-shadow: none;
+}
+
+/* ---------- ゲーム一覧 ---------- */
+
+.unityShowcase__all {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.unityShowcase__allLabel {
+  font-family: var(--u-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  color: var(--u-text-muted);
+}
+
+.unityShowcase__list {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));   /* ゲームが増えたら列数を調整 */
+  gap: 16px;
+}
+
+.unityShowcase__mini {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  border: 1px solid var(--u-border);
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: var(--u-card-bg);
+  color: inherit;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.unityShowcase__mini img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.unityShowcase__miniBody {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 12px 12px;
+}
+
+.unityShowcase__miniTitle {
+  font-size: 0.85rem;
+  font-weight: bold;
+  line-height: 1.35;
+  color: var(--u-text-sub);
+}
+
+.unityShowcase__miniMeta {
+  font-family: var(--u-mono);
+  font-size: 0.7rem;
+  color: var(--u-text-muted);
+}
+
+.unityShowcase__mini:hover {
+  border-color: var(--c-border-hover);
+  transform: translateY(-3px);
+}
+
+.unityShowcase__mini:hover img {
+  opacity: 0.9;
+}
+
+/* 選択中：ピンクの枠で囲む */
+.unityShowcase__mini.is-active {
+  border-color: var(--u-accent);
+  box-shadow: 0 0 0 1px var(--u-accent);
+}
+
+.unityShowcase__mini.is-active img {
+  opacity: 1;
+}
+
+.unityShowcase__mini.is-active .unityShowcase__miniTitle {
+  color: var(--u-text);
+}
+
+/* ---------- スマホ ---------- */
+
+@media (max-width: 767px) {
+  .unityShowcase__notice {
+    flex-wrap: wrap;
+  }
+
+  .unityShowcase__feature {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .unityShowcase__title {
+    font-size: 1.75rem;
+  }
+
+  .unityShowcase__desc {
+    min-height: 0;
+  }
+
+  .unityShowcase__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .unityShowcase__play,
+  .unityShowcase__play svg,
+  .unityShowcase__mini,
+  .unityShowcase__mini img {
+    transition: none;
+  }
+
+  .unityShowcase__play.is-opening .unityShowcase__playBar {
+    animation: none;
+    width: 100%;
+  }
 }

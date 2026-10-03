@@ -1,9 +1,21 @@
+/* サイト共通のリンク色（青系で統一） */
+
+/* 白・水色の背景：読みやすさのため少し濃い青 */
 .hyperlink {
     text-decoration: underline;
-    color: #1b94e0;
+    color: #0B6FB8;
     transition: color 0.3s ease;
 }
 
 .hyperlink:hover {
-    color: #1b94e085;
+    color: #1B94E0;
+}
+
+/* 濃紺の背景（Programming・Qualifications）：明るい水色 */
+.backgroundColor-dark .hyperlink {
+    color: var(--c-link);
+}
+
+.backgroundColor-dark .hyperlink:hover {
+    color: var(--c-link-hover);
 }

@@ -23,3 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 PowerPoint.pptx
+
+# Firebase（デプロイ時に自動で作られるキャッシュとログ）
+.firebase/
+firebase-debug.log

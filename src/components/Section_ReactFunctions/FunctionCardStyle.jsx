@@ -1,31 +1,33 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './FunctionCardStyle.css';
 
-function FunctionCard({ data }) {
-  const msg = "Check Function →"
-  const navigate = useNavigate();
-
-  const handleCardClick = (url) => {
-    navigate(url);
-  };
-
+function FunctionCard({ data = [] }) {
   return (
-    <div className='reactFunctions__container'>
-      {data.map((item, index) => (
-        <div key={index}>
-          <div className="reactFunctions__cardContainer" onClick={() => handleCardClick(item.url)}>
-            <div className='reactFunctions__thumbnail'>
-              <img src={item.img} alt={item.img_alt} />
+    <div className='reactFunctions__grid'>
+      {data.map((item) => (
+        <div className='reactFunctions__card' key={item.url}>
+          {/* ターミナル風のヘッダー */}
+          <div className='reactFunctions__bar'>
+            <span className='reactFunctions__dot reactFunctions__dot--red' aria-hidden='true'></span>
+            <span className='reactFunctions__dot reactFunctions__dot--yellow' aria-hidden='true'></span>
+            <span className='reactFunctions__dot reactFunctions__dot--green' aria-hidden='true'></span>
+            <span className='reactFunctions__component'>{item.component}</span>
+          </div>
+
+          <img className='reactFunctions__thumbnail' src={item.img} alt={item.img_alt} />
+
+          <div className='reactFunctions__body'>
+            <span className='reactFunctions__title'>{item.title}</span>
+            <span className='reactFunctions__desc'>{item.desc}</span>
+            <div className='reactFunctions__tags'>
+              {item.tags.map((tag) => (
+                <span className='reactFunctions__tag' key={tag}>{tag}</span>
+              ))}
             </div>
-            <div className='reactFunctions__text'>
-              <div className='reactFunctions__title'>
-                {item.title}
-              </div>
-              <div className='reactFunctions__msg'>
-                {msg}
-              </div>
-            </div>
+            <Link className='reactFunctions__button' to={item.url}>
+              デモとコードを見る <span className='reactFunctions__arrow' aria-hidden='true'>→</span>
+            </Link>
           </div>
         </div>
       ))}

@@ -1,4 +1,5 @@
 import React from "react";
+import "./AcademicResearch.css";
 import { publicationData, HIGHLIGHT_AUTHORS } from "./PublicationData";
 
 // ===============================
@@ -7,7 +8,7 @@ import { publicationData, HIGHLIGHT_AUTHORS } from "./PublicationData";
 
 function renderAuthor(name) {
   if (HIGHLIGHT_AUTHORS.includes(name)) {
-    return <span style={{ textDecoration: "underline" }}>{name}</span>;
+    return <strong>{name}</strong>; // 自分の名前は太字で強調
   }
   return name;
 }
@@ -59,14 +60,14 @@ function formatAuthors(authors = []) {
 function DoiLink({ doi }) {
   if (!doi) return null;
   return (
-      <> doi: <a href={`https://doi.org/${doi}`} target="_blank" rel="noopener noreferrer">{doi}</a></>
+      <> doi: <a className='hyperlink' href={`https://doi.org/${doi}`} target="_blank" rel="noopener noreferrer">{doi}</a></>
   );
 }
 
 function UrlLink({ url }) {
   if (!url) return null;
   return (
-      <> URL: <a href={url} target="_blank" rel="noopener noreferrer">{url}</a></>
+      <> URL: <a className='hyperlink' href={url} target="_blank" rel="noopener noreferrer">{url}</a></>
   );
 }
 
@@ -81,11 +82,11 @@ function JournalItem({ item }) {
   const pages = item.pages ? `, pp. ${item.pages}` : "";
 
   return (
-    <li style={{ padding: "10px 0", borderBottom: "1px solid #eee" }}>
-      <div style={{ fontSize: 15, lineHeight: 1.7 }}>
+    <li className="pubItem">
+      <div>
         {authors}.{" "}
-        <>"{item.title}," {" "}</>
-        <em>{item.journal}</em>
+        <span className="pubItem__title">"{item.title},"</span>{" "}
+        <em className="pubItem__venue">{item.journal}</em>
         {volume}{number}{pages}, {item.year}.
         <DoiLink doi={item.doi} />
       </div>
@@ -98,11 +99,11 @@ function ProceedingsItem({ item }) {
   const pages = item.pages ? `, pp. ${item.pages}` : "";
 
   return (
-    <li style={{ padding: "10px 0", borderBottom: "1px solid #eee" }}>
-      <div style={{ fontSize: 15, lineHeight: 1.7 }}>
+    <li className="pubItem">
+      <div>
         {authors}.{" "}
-        "{item.title}," {" "}
-        <em>{item.booktitle}</em>
+        <span className="pubItem__title">"{item.title},"</span>{" "}
+        <em className="pubItem__venue">{item.booktitle}</em>
         {pages}, {item.year}.
         <DoiLink doi={item.doi} />
         <UrlLink url={item.url} />
@@ -115,11 +116,11 @@ function DemoItem({ item }) {
   const authors = formatAuthors(item.author);
 
   return (
-    <li style={{ padding: "10px 0", borderBottom: "1px solid #eee" }}>
-      <div style={{ fontSize: 15, lineHeight: 1.7 }}>
+    <li className="pubItem">
+      <div>
         {authors}.{" "}
-        "{item.title}," {" "}
-        <em>{item.venue}</em>
+        <span className="pubItem__title">"{item.title},"</span>{" "}
+        <em className="pubItem__venue">{item.venue}</em>
         , {item.year}.
         <DoiLink doi={item.doi} />
         <UrlLink url={item.url} />
@@ -130,9 +131,9 @@ function DemoItem({ item }) {
 
 function OthersItem({ item }) {
   return (
-    <li style={{ padding: "10px 0", borderBottom: "1px solid #eee" }}>
-      <div style={{ fontSize: 15, lineHeight: 1.7 }}>
-        {item.title}.{" "}
+    <li className="pubItem">
+      <div>
+        <span className="pubItem__title">{item.title}.</span>{" "}
         {item.year}.{" "}
         {item.note}
       </div>
@@ -148,9 +149,9 @@ function PublicationSection({ title, items, Component }) {
   if (!items || items.length === 0) return null;
 
   return (
-    <section style={{ margin: "18px 0 26px" }}>
-      <h3 style={{ margin: "0 0 10px", fontSize: 24 }}>{title}</h3>
-      <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
+    <section className="pubSection">
+      <h3 className="pubSection__title">{title}</h3>
+      <ul className="pubSection__list">
         {items.map((it) => (
           <Component key={it.id} item={it} />
         ))}
@@ -172,7 +173,7 @@ export default function PublicationList({ items }) {
   ];
 
   return (
-    <div>
+    <div className="pubList">
       {SECTIONS.map(({ title, items, Component }) => (
         <PublicationSection key={title} title={title} items={items} Component={Component} />
       ))}

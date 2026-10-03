@@ -1,50 +1,42 @@
 import React from 'react';
 /* import MUI ICON */
-import XIcon from '@mui/icons-material/X';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import GitHubIcon from '@mui/icons-material/GitHub';
 import MailIcon from '@mui/icons-material/Mail';
-import { Box, IconButton } from '@mui/material';
-/* import img */
-import DiscordIcon from './Discord.png';
 /* CSS */
 import '../Section_Title.css';
 import '../Hyperlink.css';
+import './LinkContact.css';
+/* 連絡先・外部リンクのデータ（ヘッダーのメニューと共通） */
+import { MAIL, LINKS, linkProps } from './ContactData';
 
 function LinkContact() {
-    const _iconSize = '50px';
-
-    const iconStyle = {
-        width: _iconSize,
-        height: _iconSize,
-    };
-
-    const handleLinkClick = (url) => {
-        window.open(url, '_blank');
-    };
-
     return (
         <div>
             <div className='sectionTitle'>Link / Contact</div>
-            <div className='sectionSubtitle'>ー外部リンク・連絡先ー</div>
-            <br />
-            <Box display="flex" flexWrap="wrap" justifyContent="center" alignItems="center" gap={5} >
-                <IconButton onClick={() => handleLinkClick('https://msts-hp.com/')}>
-                    <XIcon style={iconStyle} />
-                </IconButton>
-                <IconButton onClick={() => handleLinkClick('https://www.instagram.com/rn._sts/')}>
-                    <InstagramIcon style={iconStyle} />
-                </IconButton>
-                <IconButton onClick={() => handleLinkClick('https://github.com/MSTS-S')}>
-                    <GitHubIcon style={iconStyle} />
-                </IconButton>
-                <IconButton onClick={() => handleLinkClick('https://discord.com/users/719479967397838898')}>
-                    <img src={DiscordIcon} style={iconStyle} />
-                </IconButton>
-                <IconButton onClick={() => handleLinkClick('https://msts-hp.com/')}>
-                    <MailIcon style={iconStyle} />
-                </IconButton>
-            </Box>
+            <div className='sectionSubtitle'>外部リンク・連絡先</div>
+
+            <div className='contact'>
+                <p className='contact__lead'>お気軽にご連絡ください</p>
+                <p className='contact__sub'>お仕事のご相談やご質問は、メールで受け付けています。</p>
+
+                <a className='contact__mail' {...linkProps(MAIL.url)}>
+                    <MailIcon />
+                    <span>メールを送る</span>
+                </a>
+                {MAIL.address && <span className='contact__address'>{MAIL.address}</span>}
+
+                <ul className='contact__links'>
+                    {LINKS.map((link) => (
+                        <li key={link.name}>
+                            <a className='contact__link' {...linkProps(link.url)} aria-label={link.name}>
+                                <span className='contact__icon'>
+                                    {link.img ? <img src={link.img} alt='' /> : link.icon}
+                                </span>
+                                <span className='contact__name'>{link.name}</span>
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </div>
     );
 };
