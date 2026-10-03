@@ -1,4 +1,4 @@
-// src/components/PublicationData.jsx
+// src/components/Section_AcademicResearch/PublicationData.js
 // ここは「データ定義だけ」。UI/スタイルは一切書かない。
 
 export const journal = [
@@ -92,7 +92,7 @@ export const demo = [
       "Vibol Yem", 
       "Yasushi Ikei",
     ],
-    title: "SIGGRAPH Asia 2024 Tokyo",
+    title: "Go Mountain! VR: Virtual Poles and Physical Motions for Trekking and Skiing Experiences",
     venue: "SIGGRAPH Asia 2024 Tokyo",
     year: 2024,
     doi: "10.1145/3681755.3688940",

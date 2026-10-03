@@ -1,59 +1,37 @@
 import React from 'react';
-import Timeline from '@mui/lab/Timeline';
-import TimelineItem from '@mui/lab/TimelineItem';
-import TimelineSeparator from '@mui/lab/TimelineSeparator';
-import TimelineConnector from '@mui/lab/TimelineConnector';
-import TimelineContent from '@mui/lab/TimelineContent';
-import TimelineDot from '@mui/lab/TimelineDot';
-import { TimelineOppositeContent } from '@mui/lab';
-import { timelineOppositeContentClasses } from '@mui/lab/TimelineOppositeContent';
-/* import img */
-/* CSS */
-import '../Section_Title.css';
-import '../Hyperlink.css';
 import './HistoryStyleComponent.css';
 
-function HistoryStyleComponents({ data }) {
+function HistoryStyleComponents({ data = [] }) {
     return (
-        <div className="HistoryContents">
+        <ol className='history__list'>
             {data.map((item, index) => (
-                <Timeline
+                <li
+                    className={item.now ? 'history__item history__item--now' : 'history__item'}
                     key={index}
-                    position="alternate"
-                    sx={{
-                        [`& .${timelineOppositeContentClasses.root}`]: {
-                            flex: 0.2,
-                        },
-                    }}
                 >
-                    <TimelineItem>
-                        <TimelineOppositeContent color="text.secondary">
-                            <div className='date'>{item.date}</div>
-                        </TimelineOppositeContent>
-                        <TimelineSeparator>
-                            <TimelineDot>
-                                <item.icon />
-                            </TimelineDot>
-                            <TimelineConnector />
-                        </TimelineSeparator>
-                        <TimelineContent>
-                            <>
-                                <div className='title'>{item.title}</div>
-                                <br />
-                                {item.text.split('\n').map((line, i) => (
-                                    <React.Fragment key={i}>
-                                        <div className='content'>
-                                            {line}
-                                        </div>
-                                        <br />
-                                    </React.Fragment>
-                                ))}
-                            </>
-                        </TimelineContent>
-                    </TimelineItem>
-                </Timeline>
+                    {/* 年月 */}
+                    <div className='history__date'>{item.date}</div>
+
+                    {/* 縦線の上のアイコン（MUI） */}
+                    <div className='history__rail' aria-hidden='true'>
+                        <span className='history__icon'>
+                            <item.icon />
+                        </span>
+                    </div>
+
+                    {/* 内容 */}
+                    <div className='history__body'>
+                        <div className='history__head'>
+                            <span className='history__title'>{item.title}</span>
+                            {item.now && <span className='history__now'>NOW</span>}
+                        </div>
+                        {item.text && item.text.split('\n').map((line, i) => (
+                            <p className='history__text' key={i}>{line}</p>
+                        ))}
+                    </div>
+                </li>
             ))}
-        </div>
+        </ol>
     );
 };
 

@@ -1,44 +1,126 @@
 :root {
   --PROFILE_IMG_SIZE: 150px;
   --FONT_COLOR: white;
-  --HEADER_HEIGHT: 100px;
-  --FOOTER_BACKGROUND_COLOR: #ccc;
-  --HEADER_LOGO_SIZE: 450px;
-  --CONTENT_MAX_WIDTH: 1200px; /* サイト本文・ヘッダー中身の最大横幅 */
+  --FOOTER_BACKGROUND_COLOR: var(--c-bg); /* セクションの背景に合わせる */
+  --CONTENT_MAX_WIDTH: 1200px; /* サイト本文の最大横幅 */
+  /* ヘッダー：画面の上から浮かせたカプセル */
+  --HEADER_GAP: 16px;          /* 画面の上端とカプセルのすき間 */
+  --HEADER_PILL_HEIGHT: 68px;  /* カプセルの高さ */
+  --HEADER_SPACE: calc(var(--HEADER_GAP) * 2 + var(--HEADER_PILL_HEIGHT)); /* ヘッダーが使う縦の範囲 */
+  /* QRコードなど別ページの上の余白（各ページに専用のヘッダーがあるので、今までの値のまま） */
+  --PAGE_OFFSET: 100px;
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
   :root {
-    --HEADER_HEIGHT: 80px;
-    --HEADER_LOGO_SIZE: 300px;
+    --PAGE_OFFSET: 80px;
   }
 }
 
 @media (max-width: 767px){
   :root {
-    --HEADER_HEIGHT: 50px;
-    --HEADER_LOGO_SIZE: 250px;
+    --HEADER_GAP: 10px;
+    --HEADER_PILL_HEIGHT: 56px;
+    --PAGE_OFFSET: 50px;
   }
+}
+
+/* ===== 配色（ダーク／ライト） =====
+   サイト全体の色はここで決める。各セクションのCSSは var(--c-…) でこの値を使う。
+   <html data-theme="light"> のときだけ、下の「ライト」の値に入れ替わる（初期値はダーク） */
+:root {
+  color-scheme: dark;
+  --c-bg: #0F0C24;               /* 背景 */
+  --c-bg-clear: rgba(15, 12, 36, 0); /* 背景色の透明版（Profileのグラデを溶かすのに使う） */
+  --c-card: #1A1734;             /* カード */
+  --c-panel: #141130;            /* カードより一段濃い面 */
+  --c-border: #2E2A55;           /* 線 */
+  --c-border-strong: #3D3870;    /* 少し強い線 */
+  --c-border-hover: #4A4380;     /* ホバー時の線 */
+  --c-border-dashed: #433D75;    /* 資格カードの点線 */
+  --c-tag-border: #3A3566;       /* タグの枠 */
+  --c-text-strong: #FFFFFF;      /* 見出し・強調 */
+  --c-text-title: #F2F0FA;       /* 論文タイトルなど */
+  --c-text: #E7E7EC;             /* 本文 */
+  --c-text-soft: #D6D3E6;
+  --c-text-tag: #C8C8D2;         /* タグの文字 */
+  --c-text-sub: #B9B6CC;         /* 補足 */
+  --c-text-dim: #A9A9B4;         /* カードの説明文 */
+  --c-text-muted: #8E8AA8;       /* 控えめな文字 */
+  --c-text-faint: #8E8E9A;
+  --c-subtitle: rgba(255, 255, 255, 0.6); /* セクション名の下の日本語 */
+  --c-accent: #FF6BF0;           /* 文字用の差し色（ピンク） */
+  --c-accent-strong: #FF16E8;
+  --c-accent-blue: #8C84FF;
+  --c-link: #5CC8FF;
+  --c-link-hover: #A6E3FF;
+  --c-stroke: rgba(255, 255, 255, 0.16); /* 背景の大きなアウトライン文字 */
+  --c-shadow: rgba(0, 0, 0, 0.25);
+  --c-shadow-md: rgba(0, 0, 0, 0.35);
+  --c-shadow-lg: rgba(0, 0, 0, 0.45);
+  --c-img-to-text: brightness(0) invert(1); /* 灰色の画像アイコン（Discord）を文字色にそろえる */
+  /* Programming カード右下の大きなロゴ */
+  --c-icon-opacity: 0.2;
+  --c-icon-filter: grayscale(1) brightness(2.2);
+  --c-icon-filter-dark-logo: grayscale(1) invert(1) brightness(1.4); /* 黒いロゴ（Unity）用 */
+  --c-icon-hover-dark-logo: invert(1);
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --c-bg: #F5F4FA;
+  --c-bg-clear: rgba(245, 244, 250, 0);
+  --c-card: #FFFFFF;
+  --c-panel: #EFEDF7;
+  --c-border: #E3E0EF;
+  --c-border-strong: #D3CFE6;
+  --c-border-hover: #B7B0DA;
+  --c-border-dashed: #CFCAE6;
+  --c-tag-border: #DCD8EC;
+  --c-text-strong: #15122B;
+  --c-text-title: #1A1734;
+  --c-text: #2B2842;
+  --c-text-soft: #3E3A58;
+  --c-text-tag: #4D4966;
+  --c-text-sub: #57536F;
+  --c-text-dim: #5E5A76;
+  --c-text-muted: #6B6785;       /* 背景とのコントラスト 4.9:1（読みやすさの目安 4.5:1 以上） */
+  --c-text-faint: #6B6785;
+  --c-subtitle: rgba(21, 18, 43, 0.55);
+  --c-accent: #C4169F;
+  --c-accent-strong: #D0109F;
+  --c-accent-blue: #4A3DE8;
+  --c-link: #0B6FB8;
+  --c-link-hover: #1B94E0;
+  --c-stroke: rgba(21, 18, 43, 0.12);
+  --c-shadow: rgba(30, 20, 80, 0.12);
+  --c-shadow-md: rgba(30, 20, 80, 0.15);
+  --c-shadow-lg: rgba(30, 20, 80, 0.18);
+  --c-img-to-text: brightness(0) invert(0.1);
+  --c-icon-opacity: 0.14;
+  --c-icon-filter: grayscale(1) brightness(0.55);
+  --c-icon-filter-dark-logo: grayscale(1) invert(0) brightness(1);
+  --c-icon-hover-dark-logo: invert(0);
 }
 
 
 .App__container {
   width: 100%;
-} 
+  background-color: var(--c-bg); /* ヘッダーの下に見える部分もセクションと同じ色にする */
+}
 
 .App__header {
   width: 100%;
-  height: var(--HEADER_HEIGHT);
-  background-color: #e1e1e1;
-  color: var(--FONT_COLOR);
+  height: 0; /* カプセルとメニューは absolute で浮かせるので、帯としての高さは持たない */
   position: fixed; /* fixed header to screen */
   top: 0; /* display header to top of the screen */
   z-index: 1000;
+  pointer-events: none; /* カプセルの外側（すき間）はクリックを下に通す */
 }
 
 .App__body {
   width: 100%;
-  margin-top: var(--HEADER_HEIGHT);
+  margin-top: var(--PAGE_OFFSET); /* ほかのページ（QRコードなど）の上の余白 */
   padding: 0% !important;
   margin-left: 0% !important;
 }
@@ -51,7 +133,10 @@
 
 /* contents of App__footer */ 
 .footer__container {
-  background-color: #a3a3a3;
+  background-color: var(--c-bg);
+  border-top: 1px solid var(--c-border);
+  color: var(--c-text-muted);
+  font-size: 0.8rem;
   width: 100%;
   height: 100%;
 }
@@ -85,8 +170,16 @@
   margin: 0 auto;
 }
 
+/* トップページは、Profile のグラデをヘッダーの裏まで伸ばす */
+.body__container {
+  margin-top: calc(-1 * var(--PAGE_OFFSET));
+}
+
 .backgroundColor-profile {
-  background: linear-gradient(-20deg, #ff16e8 0%, #3223ff 100%);
+  padding-top: calc(clamp(24px, 5vw, 80px) + var(--HEADER_SPACE));
+  /* 下端320pxで背景色（backgroundColor-dark）へ溶かして、経歴セクションへ自然につなげる
+     （中間点を下寄りにして、最初はゆっくり・最後にしっかり変わるようにしている） */
+  background: linear-gradient(180deg, var(--c-bg-clear) calc(100% - 320px), calc(100% - 120px), var(--c-bg) 100%), linear-gradient(-20deg, #ff16e8 0%, #3223ff 100%);
   box-sizing: border-box;
 }
 
@@ -100,6 +193,20 @@
   box-sizing: border-box;
 }
 
+/* Programming・Qualifications 用の暗い背景（ブランドの青を少し混ぜた濃紺） */
+.backgroundColor-dark {
+  background-color: var(--c-bg); /* ライトモードでは明るい色になる */
+  box-sizing: border-box;
+}
+
+.backgroundColor-dark .sectionTitle {
+  color: var(--c-text-strong);
+}
+
+.backgroundColor-dark .sectionSubtitle {
+  color: var(--c-subtitle);
+}
+
 .backgroundColor-copyright {
   background-color: #ddd;
   /* 背景色を統一 */
@@ -108,232 +215,448 @@
   padding: 0;
 }
 
-/* contents of App__header */
-.header__container {
-  width: 100%;
-  max-width: var(--CONTENT_MAX_WIDTH); /* ヘッダー帯は全幅、ロゴとメニューは最大幅内に収める */
-  margin: 0 auto;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
+/* ===== ヘッダー（浮いているカプセル＋下に開くメニュー） =====
+   色は変数にまとめてあり、ライトモードでは下の :root[data-theme='light'] .App__header の値に入れ替わる */
+.App__header {
+  --hd-bg: rgba(20, 17, 48, 0.78);
+  --hd-menu-bg: rgba(20, 17, 48, 0.95);
+  --hd-border: #3D3870;
+  --hd-divider: #2E2A55;
+  --hd-text: #E7E7EC;
+  --hd-text-strong: #FFFFFF;
+  --hd-icon: #8E8AA8;
+  --hd-caption: #8E8AA8;
+  --hd-hover: rgba(255, 255, 255, 0.05);
+  --hd-accent: #FF6BF0;
+  --hd-sns-bg: #0F0C24;
+  --hd-shade: rgba(5, 4, 15, 0.35);
+  --hd-gradient: linear-gradient(90deg, #5B4DFF 0%, #FF16E8 100%);
+  --hd-gradient-v: linear-gradient(180deg, #5B4DFF 0%, #FF16E8 100%);
+  --hd-shadow: rgba(0, 0, 0, 0.25);
+  --hd-menu-shadow: rgba(0, 0, 0, 0.45);
+  --hd-pill-width: min(1000px, calc(100% - 32px));
 }
 
-.header__webSiteTitle {
-  width: 75%;
-  height: 100%;
+:root[data-theme='light'] .App__header {
+  --hd-bg: rgba(255, 255, 255, 0.82);
+  --hd-menu-bg: rgba(255, 255, 255, 0.97);
+  --hd-border: #DEDAEC;
+  --hd-divider: #E8E5F2;
+  --hd-text: #2B2842;
+  --hd-text-strong: #15122B;
+  --hd-icon: #8C88A6;
+  --hd-caption: #6B6785;
+  --hd-hover: rgba(20, 17, 48, 0.05);
+  --hd-accent: #C4169F;
+  --hd-sns-bg: #FFFFFF;
+  --hd-shade: rgba(20, 17, 48, 0.18);
+  --hd-shadow: rgba(30, 20, 80, 0.12);
+  --hd-menu-shadow: rgba(30, 20, 80, 0.18);
+}
+
+/* カプセル本体 */
+.header__bar {
+  position: absolute;
+  top: var(--HEADER_GAP);
+  left: 50%;
+  transform: translateX(-50%);
+  width: var(--hd-pill-width);
+  height: var(--HEADER_PILL_HEIGHT);
+  box-sizing: border-box;
   display: flex;
-  margin-left: 20px;
   align-items: center;
-  color: white;
+  justify-content: space-between;
+  padding: 0 14px 0 20px;
+  border: 1px solid var(--hd-border);
+  border-radius: 999px;
+  background-color: var(--hd-bg);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px var(--hd-shadow);
+  pointer-events: auto;
 }
 
-@media (max-width: 767px){
-  .header__webSiteTitle {
-    margin-left: 7.5px;
-    gap: 7.5px;
-  }
-}
-
-.header__logoTMU {
+/* ロゴ（画像の上下に透明な余白があるので、カプセルより高く指定して
+   はみ出した分は負のマージンで打ち消す → 見える部分がカプセルいっぱいに近くなる） */
+.header__logo {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  cursor: pointer;
   height: 100%;
+  border-radius: 8px;
 }
 
-.header__logoTMU img {
-  width: var(--HEADER_LOGO_SIZE);
-  max-height: var(--HEADER_HEIGHT);
-  object-fit: contain;
-  margin-right: auto;
+.header__logoImg {
+  display: block;
+  height: 80px;
+  width: auto;
+  margin: -6px 0;
 }
 
-/* contents of App__header: Tab menu */
-.header__tabMenu {
+.header__logoImg--light {
+  display: none;
+}
+
+/* 将来ライトモードにしたとき用：<html data-theme="light"> でロゴを入れ替える */
+:root[data-theme='light'] .header__logoImg--dark {
+  display: none;
+}
+
+:root[data-theme='light'] .header__logoImg--light {
+  display: block;
+}
+
+.header__logo:focus-visible {
+  outline: 2px solid var(--hd-accent);
+  outline-offset: 2px;
+}
+
+/* 右側のボタンのまとまり（ライト／ダーク切り替え＋MENU） */
+.header__actions {
   display: flex;
-  gap: 20px;
-  justify-content: center;
-  align-items: flex-end;
-  margin: 0 1% 3px auto;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
 }
 
-.header__tab {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  align-items: flex-end;
-  margin: 0 30px 0px auto;
-}
-
-.header__tab-item {
+/* ライト／ダークの切り替えスイッチ（左：ライト、右：ダーク。つまみが今のモードのアイコンに重なる） */
+.header__theme {
   position: relative;
-  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 74px;
+  height: 40px;
+  padding: 0 4px;
+  box-sizing: border-box;
+  border: 1px solid var(--hd-border);
+  border-radius: 999px;
+  background-color: transparent;
   cursor: pointer;
-  border-radius: 10px;
-  color: var(--FONT_COLOR); /* 非アクティブタブの文字色を指定 */
+  transition: border-color 0.2s ease;
+}
+
+.header__theme:hover {
+  border-color: var(--hd-accent);
+}
+
+.header__theme:focus-visible {
+  outline: 2px solid var(--hd-accent);
+  outline-offset: 2px;
+}
+
+.header__themeKnob {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--hd-gradient);
+  transition: transform 0.25s ease;
+}
+
+.header__theme:not(.is-light) .header__themeKnob {
+  transform: translateX(34px);
+}
+
+.header__themeIcon {
+  position: relative; /* つまみより上に表示 */
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--hd-icon);
+  transition: color 0.25s ease;
+}
+
+.header__themeIcon .MuiSvgIcon-root {
+  font-size: 18px;
+}
+
+/* つまみが重なっている方のアイコンは白 */
+.header__theme:not(.is-light) .header__themeIcon--dark,
+.header__theme.is-light .header__themeIcon--light {
+  color: #FFFFFF;
+}
+
+/* MENU ボタン */
+.header__menuButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  height: 42px;
+  padding: 0 18px 0 14px;
+  border: none;
+  border-radius: 999px;
+  background: var(--hd-gradient);
+  color: #FFFFFF;
+  font-family: ui-monospace, SFMono-Regular, Consolas, 'Courier New', monospace;
+  font-size: 0.82rem;
+  font-weight: bold;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: box-shadow 0.25s ease;
+}
+
+.header__menuButton .MuiSvgIcon-root {
+  font-size: 20px;
+}
+
+.header__menuButton:hover {
+  box-shadow: 0 0 0 4px rgba(255, 22, 232, 0.25);
+}
+
+.header__menuButton:focus-visible {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 2px;
+}
+
+/* メニューを開いているあいだの薄い影 */
+.header__shade {
+  position: fixed;
+  inset: 0;
+  background-color: var(--hd-shade);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s;
+  pointer-events: auto;
+}
+
+.header__shade.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* カプセルの下に開くメニュー */
+.header__menu {
+  position: absolute;
+  top: calc(var(--HEADER_GAP) + var(--HEADER_PILL_HEIGHT) + 10px);
+  right: calc((100% - var(--hd-pill-width)) / 2);
+  width: 320px;
+  max-height: calc(100vh - var(--HEADER_SPACE) - 20px);
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 14px 0 18px;
+  border: 1px solid var(--hd-border);
+  border-radius: 18px;
+  background-color: var(--hd-menu-bg);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 50px var(--hd-menu-shadow);
+  text-align: left;
+  pointer-events: auto;
+  /* 閉じているときは見えず、Tab キーでも移動しない */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+
+.header__menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.header__menuCaption {
+  padding: 2px 20px 6px;
+  font-family: ui-monospace, SFMono-Regular, Consolas, 'Courier New', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--hd-caption);
+}
+
+.header__menuList,
+.header__sns {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.header__menuItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 20px;
+  color: var(--hd-text);
+  font-size: 0.95rem;
   text-decoration: none;
 }
 
-.header__tab-item:visited {
-  color: var(--FONT_COLOR); /* 既訪問リンクの色を非アクティブと同じに指定 */
+.header__menuItem .MuiSvgIcon-root {
+  font-size: 20px;
+  color: var(--hd-icon);
+  transition: color 0.2s ease;
 }
 
-.header__tab-item:hover {
-  background-color: rgb(255, 255, 255, 0.1);
+.header__menuItem:hover {
+  background-color: var(--hd-hover);
 }
 
-.header__tab-item.active {
-  color: #1976d2; /* アクティブタブの文字色 */
-  color: #6aa5df;
+.header__menuItem:hover .MuiSvgIcon-root {
+  color: var(--hd-text-strong);
 }
 
-.header__tab-item.active::after {
-  content: ''; /* 擬似要素の内容を空にする */
-  position: absolute; /* ボックスの相対位置に基づいて配置 */
-  bottom: 0; /* 要素の下部に配置 */
-  left: 0; /* 左端から始める */
-  width: 100%; /* 要素の幅に合わせる */
-  height: 3px; /* 下線の高さ */
-  background-color: #1976d2; /* 下線の色 */
-  border-radius: 2px; /* 下線の角を少し丸める（任意） */
+.header__menuItem:focus-visible {
+  outline: 2px solid var(--hd-accent);
+  outline-offset: -2px;
 }
 
-
-
-
-
-.header__hamburgerMenu {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 30px 0px auto;
-  z-index: 3000 !important;
+/* 今いるセクション：ピンクのアイコン＋左に縦のグラデ線 */
+.header__menuItem.is-active {
+  background-color: var(--hd-hover);
+  color: var(--hd-text-strong);
+  font-weight: bold;
 }
 
-.header__hamburgerMenuIcon {
-  width: 50px;
-  height: 50px;
-  margin: 0 !important;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  padding: 0 !important;
-  cursor: pointer;
-  z-index: 3005 !important;
+.header__menuItem.is-active .MuiSvgIcon-root {
+  color: var(--hd-accent);
 }
 
-.header__hamburgerMenuIcon:hover {
-  background-color: #ffffff;
-}
-
-.hamburgerMenu__Line {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  z-index: 3010 !important;
-}
-
-.line {
-  display: block; /* ブロック要素にする */
-  width: 30px; /* 幅を指定 */
-  height: 3px; /* 高さを指定 */
-  background-color: #000000; /* バーの色 */
-  margin: 3px 0; /* 各バーの間隔を指定 */
-  transition: background-color 0.3s; /* 色の変更にアニメーションを追加 */
-}
-
-
-.header__hamburgerMenuIcon .hamburgerMenu__Line {
-  transition: transform 0.5s ease, opacity 0.5s ease;
-}
-
-.header__hamburgerMenuIcon.active .hamburgerMenu__Line {
-  transform: rotate(360deg);
-}
-
-
-.header__hamburgerMenuIcon .hamburgerMenu__Line .line {
-  transition: transform 0.5s ease, opacity 0.5s ease;
-}
-
-.header__hamburgerMenuIcon.active .hamburgerMenu__Line .line:nth-of-type(1) {
-  transform: translateY(9px) rotate(-45deg);
-}
-.header__hamburgerMenuIcon.active .hamburgerMenu__Line .line:nth-of-type(2) {
-  opacity: 0;
-}
-.header__hamburgerMenuIcon.active .hamburgerMenu__Line .line:nth-of-type(3) {
-  transform: translateY(-9px) rotate(45deg);
-}
-
-
-.header__hamburgerMenuIcon .hamburgerMenu__Line::after {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  display: block;
+.header__menuItem.is-active::before {
   content: '';
-  width: 30px;
-  height: 30px;
-  margin: -16px 0 0 -16px;
+  position: absolute;
+  left: 0;
+  top: 7px;
+  bottom: 7px;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: var(--hd-gradient-v);
+}
+
+.header__menuDivider {
+  height: 1px;
+  margin: 12px 20px 14px;
+  background-color: var(--hd-divider);
+}
+
+/* SNS・メール */
+.header__sns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0 20px;
+}
+
+.header__snsLink {
+  width: 38px;
+  height: 38px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--hd-border);
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  transition: all .1s;
-  opacity: 0;
+  background-color: var(--hd-sns-bg);
+  color: var(--hd-text-strong);
+  transition: border-color 0.2s ease;
 }
 
-.header__hamburgerMenuIcon.active .hamburgerMenu__Line::after {
-  animation: circle 0.5s;
-}
-@keyframes circle {
-  0% {
-    transform: scale(0.01);
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: scale(2);
-    opacity: 0;
-  }
+.header__snsLink .MuiSvgIcon-root {
+  font-size: 18px;
 }
 
-@media (max-width: 767px){
-  .header__hamburgerMenu {
-    margin: 0 10px 0px auto;
-  }
-  
-  .line {
-    width: 20px; 
-    height: 2px;
-    margin: 2px 0;
-    transition: background-color 0.3s;
+/* Discord は灰色の画像なので、白く表示する */
+.header__snsLink img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  filter: var(--c-img-to-text);
+}
+
+.header__snsLink:hover {
+  border-color: var(--hd-accent);
+}
+
+.header__snsLink:focus-visible {
+  outline: 2px solid var(--hd-accent);
+  outline-offset: 2px;
+}
+
+/* スマホ：カプセルを左右いっぱいに、MENU は丸いボタンだけ、メニューも左右いっぱい */
+@media (max-width: 767px) {
+  .App__header {
+    --hd-pill-width: calc(100% - 20px);
   }
 
-  .header__hamburgerMenuIcon.active .hamburgerMenu__Line .line:nth-of-type(1) {
-    transform: translateY(6px) rotate(-45deg);
+  .header__bar {
+    padding: 0 6px 0 14px;
   }
-  .header__hamburgerMenuIcon.active .hamburgerMenu__Line .line:nth-of-type(2) {
-    opacity: 0;
+
+  /* スマホ：ロゴは残りの幅に合わせて縮む（最大 210px） */
+  .header__logo {
+    flex: 1 1 auto;
+    min-width: 0;
+    margin-right: 8px;
   }
-  .header__hamburgerMenuIcon.active .hamburgerMenu__Line .line:nth-of-type(3) {
-    transform: translateY(-6px) rotate(45deg);
+
+  .header__logoImg {
+    width: 100%;
+    max-width: 210px;
+    height: auto;
+    margin: -4px 0;
+  }
+
+  .header__theme {
+    width: 62px;
+    height: 36px;
+  }
+
+  .header__themeKnob {
+    width: 26px;
+    height: 26px;
+  }
+
+  .header__theme:not(.is-light) .header__themeKnob {
+    transform: translateX(26px);
+  }
+
+  .header__themeIcon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .header__themeIcon .MuiSvgIcon-root {
+    font-size: 16px;
+  }
+
+  .header__menuButton {
+    width: 40px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .header__menuLabel {
+    display: none;
+  }
+
+  .header__actions {
+    gap: 8px;
+  }
+
+  .header__menu {
+    left: 10px;
+    right: 10px;
+    width: auto;
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .header__themeKnob,
+  .header__themeIcon,
+  .header__theme,
+  .header__shade,
+  .header__menu,
+  .header__menuButton,
+  .header__menuItem .MuiSvgIcon-root,
+  .header__snsLink {
+    transition: none;
+  }
 
-
-
-.header__customDrawer {
-  transform: translateY(var(--HEADER_HEIGHT));
-  height: calc(100% - var(--HEADER_HEIGHT));
-  background-color: rgba(0, 0, 0, 0.01);
-}
-
-.header__categoryName {
-  font-size: 1.2rem;
-  margin-left: 1rem;
+  .header__menu {
+    transform: none;
+  }
 }

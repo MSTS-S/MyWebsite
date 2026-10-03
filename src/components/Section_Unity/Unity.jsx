@@ -12,13 +12,10 @@ import '../Hyperlink.css';
 
 const UnityData = [
     {
-        img: AvoidTheAttack, title: 'Avoid the Attack', j1: '2D', j2: 'アクション', j3: '回避系'
+        img: AvoidTheAttack, title: 'Avoid the Attack', j1: '2D', j2: 'アクション', j3: '弾よけ'
         , description:
             <>
-                Unityの教科書を読み終えた後に、その知識を活かして1から自分で作成したゲームがこのゲームです。
-                プレイヤーはオバケになって不気味な森の中で右側から飛んでくる攻撃をできるだけ多くかわすゲームです。ライフは5つあり、
-                1度攻撃に当たるとライフは1つ減り、0になるとゲーム終了です。このゲームではレベルデザインも行っており、攻撃は10秒ごとに速度が上がっていきます。
-                操作が単純であるため誰でも楽しめると思います！ぜひプレイしてみてください！
+                「Unityの教科書」を読み終えた後、初めて1から自作したゲームです。オバケを操作して、右から飛んでくる攻撃をかわし続けます。ライフは5つで、攻撃は10秒ごとに速くなるようにレベルデザインしました。
             </>
         , manipulation: '操作：上下カーソルキー'
         , path: './Unity/N1_AvoidTheAttack/index.html'
@@ -27,10 +24,7 @@ const UnityData = [
         img: HitAndBlow, title: 'HIT & BLOW', j1: '2D', j2: '対戦', j3: '推論'
         , description:
             <>
-                6色のボール中から、コンピュータによってランダムに選出された重複しない4つのボールの色と位置を推測するゲームです。
-                色と位置が一致しているとHit、色は一致しているが位置が違うとBlowとなります。
-                4つのボールを選択後、そのボール配置でのHitとBlowの数がヒントとして与えられるので、それをヒントに推測してください。
-                理論的には5回の選択でコンピュータが選出したボールの色と順番を当てることができます！対戦ゲームですが、1人でプレイしても十分に楽しめるゲームです！
+                コンピュータが選んだ重複なしの4色の並びを、HitとBlowのヒントを頼りに推理するゲームです。理論上は5回で正解にたどり着けます。1人でも対戦でも遊べます。
             </>
         , manipulation: '操作：マウス，キーボード'
         , path: './Unity/N2_HITandBLOW/index.html'
@@ -39,10 +33,7 @@ const UnityData = [
         img: EscapeFromAncientRoom, title: 'Escape from Ancient Room', j1: 'VR', j2: '脱出', j3: '古代遺跡'
         , description:
             <>
-                AppLabのThe Great Escape: Dragon's Dungeonという脱出ゲームの中のとあるギミックを体験し、
-                この箇所なら自分でも作れると考えUnityを使って初めて作成したVRゲームがこの脱出ゲームです。
-                VRゲームのため物体を掴むなどのインタラクション操作をPC上で行うことはできませんが、キーボード操作でゲーム空間内を移動できるようにプログラムを変更しました。
-                ...をすると...。VR空間での仕掛けがwebブラウザ上でも楽しめるかもしれません！
+                「The Great Escape: Dragon's Dungeon」のギミックに着想を得て、初めて作ったVRゲームです。PC版では、VRでのインタラクションの代わりに、キーボード操作で空間内を移動できるようにしました。
             </>
         , manipulation: '操作：カーソルキー，マウス'
         , path: './Unity/N3_BallLabyrinth/index.html'
@@ -59,10 +50,7 @@ const UnityData = [
                 >
                     Escape from Ancient Room
                 </a>
-                を作成したのち、より本格的なVR脱出ゲームを作成したいと思い、作り上げたのがこの Escape from Office です。
-                上のゲームと同様にPCでも少し空間を味わえるようにプログラムを改変しました。
-                やや難易度の高い脱出ゲームとなっていて、タイトルシーンからゲームシーンへの遷移演出もこだわりました。
-                この演出はwebブラウザ上でも楽しめるため、ぜひ体験してみてください。なお、脱出のキーとなるobjectは非表示となっております。予めご了承ください。
+                に続いて制作した、より本格的なVR脱出ゲームです。タイトルからゲームへの遷移演出にこだわりました。PC版では、脱出の鍵となるオブジェクトを非表示にしています。
             </>
         , manipulation: '操作：カーソルキー，マウス，キーボード'
         , path: './Unity/N4_EscapeFromOffice/index.html'
@@ -71,7 +59,6 @@ const UnityData = [
         img: MovieTheater, title: 'Movie Theater', j1: 'VR', j2: '映画館', j3: '生成AI'
         , description:
             <>
-                Meta Quest公式ストアの
                 <a
                     className='hyperlink'
                     href="https://www.meta.com/ja-jp/experiences/2274617532624269/?item_id=2274617532624269&r=1"
@@ -80,9 +67,7 @@ const UnityData = [
                 >
                     Prime Video VR
                 </a>
-                でVR映画館を体験し、その後に自らVR映画館を作成したのがこのMovie Theaterです。
-                VRでの体験を前提としていましたが、PCでも映画を視聴できるようプログラムを改変し、UIにもこだわりました。
-                なお本映画館で上映される映像は、動画生成AIの
+                での体験をもとに制作したVR映画館です。上映映像は動画生成AIの
                 <a
                     className='hyperlink'
                     href="https://haiper.ai/"
@@ -91,17 +76,7 @@ const UnityData = [
                 >
                     Haiper
                 </a>
-                を用いて作成しました。2024年04月17日時点ではBETA版が公開されており、最長4秒の高クオリティ動画が無料で生成可能です。
-                OpenAIの
-                <a
-                    className='hyperlink'
-                    href="https://openai.com/sora"
-                    target="_blank"
-                    rel="noopener noreferrer external"
-                >
-                    Sora
-                </a>
-                が一般公開された際はSoraを使用した動画生成も試そうと考えています。
+                で作成しました。PCでも視聴できるようにUIを作り込みました。
             </>
         , manipulation: '操作：カーソルキー，マウス'
         , path: './Unity/N5_MovieTheater/index.html'
@@ -112,31 +87,8 @@ function Unity() {
     return (
         <div>
             <div className='sectionTitle'>Unity Project</div>
-            <div className='sectionSubtitle'>ー自作アプリー</div>
-            <div style={{ textAlign: 'justify', fontSize: '1.1rem'}}>
-                <>
-                    <br />
-                    ※注意
-                    <br />
-                    Unityで作成した自作のゲーム及びプロジェクトを、WebGLをBuildTargetにしてBuildしました。
-                    WebGLでBuildしたものはブラウザで実行されるため、スマホ （ハイエンドデバイスに限る）でも動作可能です。
-                    しかし、
-                    <a
-                        className='hyperlink'
-                        href="https://docs.unity3d.com/ja/2023.2/Manual/webgl-browsercompatibility.html"
-                        target="_blank"
-                        rel="noopener noreferrer external"
-                    >
-                        2023年2月のUnity公式ドキュメント
-                    </a>
-                    はWebGLコンテンツをサポートするのに十分なメモリが無い場合があるとして、
-                    スマホ等のモバイルデバイスに対するWebGLをサポートしていません。私としましても全てのモバイルデバイスで問題なく実行できることをお約束することができないため、
-                    <b style={{ color: 'black' }}><u>モバイルデバイスによる操作は原則非対応</u></b>としました。大変申し訳ありませんが、PCからの実行をお願いします。
-                </>
-            </div>
-            <div className="QulificationContents">
-                <UnityCardComponent data={UnityData} />
-            </div>
+            <div className='sectionSubtitle'>自作アプリ</div>
+            <UnityCardComponent data={UnityData} />
         </div>
     );
 };

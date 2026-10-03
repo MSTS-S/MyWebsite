@@ -1,0 +1,132 @@
+/* ===== Link / Contact（メールを主役にした締めくくり） =====
+   色は変数にまとめてあるので、将来ライト／ダークを切り替えるときは
+   この変数の値だけを入れ替えればよい */
+
+.contact {
+  --lc-text: var(--c-text-strong);
+  --lc-text-sub: var(--c-text-sub);
+  --lc-text-muted: var(--c-text-muted);
+  --lc-border: var(--c-border-strong);
+  --lc-icon-bg: var(--c-panel);
+  --lc-accent: var(--c-accent);
+  --lc-gradient: linear-gradient(90deg, #5B4DFF 0%, #FF16E8 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 24px 0 8px;
+  text-align: center;
+}
+
+.contact__lead {
+  margin: 0;
+  font-size: 1.85rem;
+  font-weight: bold;
+  color: var(--lc-text);
+}
+
+.contact__sub {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--lc-text-sub);
+}
+
+/* メールボタン */
+.contact__mail {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 60px;
+  margin-top: 6px;
+  padding: 0 36px;
+  border-radius: 999px;
+  background: var(--lc-gradient);
+  color: #FFFFFF;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: box-shadow 0.25s ease, transform 0.12s ease;
+}
+
+.contact__mail:hover {
+  box-shadow: 0 0 0 4px rgba(255, 22, 232, 0.25), 0 10px 30px rgba(255, 22, 232, 0.35);
+}
+
+.contact__mail:active {
+  transform: scale(0.97);
+}
+
+.contact__address {
+  font-family: ui-monospace, SFMono-Regular, Consolas, 'Courier New', monospace;
+  font-size: 0.85rem;
+  color: var(--lc-text-muted);
+}
+
+/* 各サービスへのリンク */
+.contact__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 36px;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contact__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--lc-text-sub);
+  font-size: 0.78rem;
+  text-decoration: none;
+}
+
+.contact__icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--lc-border);
+  border-radius: 50%;
+  background-color: var(--lc-icon-bg);
+  color: var(--lc-text);
+  transition: border-color 0.2s ease;
+}
+
+.contact__icon .MuiSvgIcon-root {
+  font-size: 26px;
+}
+
+/* Discord は灰色の画像なので、白く表示する */
+.contact__icon img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  filter: var(--c-img-to-text);
+}
+
+.contact__link:hover .contact__icon {
+  border-color: var(--lc-accent);
+}
+
+.contact__link:hover .contact__name {
+  color: var(--lc-text);
+}
+
+.contact__link:focus-visible .contact__icon {
+  outline: 2px solid var(--lc-accent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 767px) {
+  .contact__lead {
+    font-size: 1.5rem;
+  }
+
+  .contact__links {
+    gap: 24px;
+  }
+}

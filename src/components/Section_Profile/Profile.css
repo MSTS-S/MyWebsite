@@ -1,61 +1,103 @@
-.ProfileContents {
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    /* align-items: center; */
+/* 名前（漢字）用の明朝体。text= で名前の4文字だけを読み込むので軽量（名前を変えたらここも変える） */
+@import url('https://fonts.googleapis.com/css2?family=BIZ+UDPMincho:wght@700&text=%E8%8A%B9%E6%BE%A4%E5%B0%9A%E8%88%9C&display=swap');
+
+/* ===== Profile（中央寄せ＋区切り線＋ラベル形式） ===== */
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+  color: #FFFFFF;
+  padding: 16px 0 220px;          /* 下の余白：背景色へのグラデーション（下端320px）とのあいだに余裕を持たせる */
 }
 
-.ProfileContents .ProfilePicture {
-    text-align: center;
-    vertical-align: middle;
+.profile__photo {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid rgba(255, 255, 255, 0.9);
+  margin-bottom: 10px;
 }
 
-.ProfilePicture img {
-    border-radius: 125px;
-    width: 300px;
-    height: auto;
-
-    /* margin-right: 40px;
-    margin-left: 40px;
-    margin-top: 50px;
-    margin-bottom: 75px; */
-
-    border: 5px solid #ffffff;
+.profile__name {
+  margin: 0;
+  font-family: 'BIZ UDPMincho', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho ProN', 'Noto Serif JP', 'Noto Serif CJK JP', serif;
+  font-size: 2.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
 }
 
-.ProfileDiscription {
-    display: flex;
-    box-sizing: border-box;
-    flex-direction: column;
-    justify-content: space-evenly;
-    text-align: left;
-    margin-right: 40px;
-    margin-left: 40px;
-    margin-top: 75px;
-    margin-bottom: 50px;
-    transform: translate(0%, 0%);
-    font-size: 20px;
+.profile__nameEn {
+  font-size: 1.25rem;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.85);
 }
 
-.ProfileDiscription p {
-    color: white;
-    font-size: larger;
-    margin: 0.5rem 0;
+.profile__divider {
+  width: 320px;
+  max-width: 80%;
+  height: 1px;
+  margin: 10px 0 6px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.35);
 }
 
-.closeButtonContainer {
-    justify-content: flex-end;
-    /* 右端に配置 */
-    padding-top: 16px;
-    /* 上部の余白を追加 */
-    padding-right: 16px;
-    /* 右側の余白を追加 */
+/* ラベル：内容 の2列。ブロックごと中央に置き、中は左揃え */
+.profile__facts {
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 20px;
+  row-gap: 10px;
+  margin: 0;
+  text-align: left;
+  font-size: 1.2rem;
 }
 
-.closeButton {
-    position: relative;
-    top: 20px;
-    /* 必要に応じて調整 */
-    left: -10px;
-    /* 必要に応じて調整 */
+.profile__facts dt {
+  padding-top: 4px;
+  font-family: ui-monospace, SFMono-Regular, Consolas, 'Courier New', monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.profile__facts dd {
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  .profile {
+    gap: 10px;
+    padding-bottom: 170px;
+  }
+
+  .profile__photo {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 8px;
+  }
+
+  .profile__name {
+    font-size: 2rem;
+  }
+
+  .profile__nameEn {
+    font-size: 1rem;
+    letter-spacing: 0.18em;
+  }
+
+  .profile__facts {
+    column-gap: 14px;
+    row-gap: 8px;
+    font-size: 1rem;
+  }
+
+  .profile__facts dt {
+    padding-top: 3px;
+    font-size: 0.72rem;
+  }
 }

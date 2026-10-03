@@ -1,0 +1,75 @@
+/* ===== Academic Research（参考文献形式のリスト） ===== */
+
+/* 横幅はページ全体の最大幅（--CONTENT_MAX_WIDTH）に合わせる */
+.pubList {
+  text-align: left;
+}
+
+.pubSection {
+  margin: 18px 0 36px;
+}
+
+/* カテゴリ見出し：左に青→ピンクの短い線（Programming・Qualificationsと共通） */
+.pubSection__title {
+  margin: 0 0 12px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pubSection__title::before {
+  content: "";
+  flex-shrink: 0;
+  width: 28px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #5B4DFF 0%, #FF16E8 100%);
+}
+
+.pubSection__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pubItem {
+  padding: 14px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+.pubItem__venue {
+  font-style: italic;
+}
+
+/* ---------- 濃紺の背景のとき ---------- */
+
+.backgroundColor-dark .pubSection__title {
+  color: var(--c-text-strong);
+}
+
+.backgroundColor-dark .pubItem {
+  border-bottom-color: var(--c-border-strong);   /* 区切り線：控えめだが見える明るさ */
+  color: var(--c-text-sub);              /* 著者名など：控えめ */
+}
+
+.backgroundColor-dark .pubItem strong {
+  color: var(--c-text-strong);              /* 自分の名前 */
+}
+
+.backgroundColor-dark .pubItem__title {
+  color: var(--c-text-title);              /* 論文タイトル：一番明るく */
+}
+
+.backgroundColor-dark .pubItem__venue {
+  color: var(--c-text-soft);              /* 掲載先 */
+}
+
+@media (max-width: 767px) {
+  .pubItem {
+    font-size: 15px;
+    line-height: 1.8;
+  }
+}
